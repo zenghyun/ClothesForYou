@@ -18,7 +18,7 @@ const onScroll = event => {
   }
 
   if (scrollPosition < 60) {
-    subWeather.style.transition = "0.2s";
+    subWeather.style.transition = "0.5s";
     subWeather.style.top = "70px";
   }
   else {

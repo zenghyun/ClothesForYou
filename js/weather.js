@@ -52,7 +52,7 @@ function iconLoader(data, i, concreteDayData) {
 function getChart(tempArr, timeArr) {
 
     const tempChart = document.getElementById("temp-chart").getContext("2d");
-    var gradientStroke = tempChart.createLinearGradient(0, 50, 0, 0);
+    let gradientStroke = tempChart.createLinearGradient(0, 50, 0, 0);
     gradientStroke.addColorStop(1, '#f11f61');
     gradientStroke.addColorStop(0, '#79a5fe');
 
@@ -211,14 +211,14 @@ function subWeatherBackground(nowHour) {
     const $subWeatherArea = document.querySelector('.sub-weather');
 
     if (nowHour > 6 && nowHour < 16) {
-        $subWeatherArea.style.backgroundImage = "url('../weather/images/06시~16시.gif')";
+        $subWeatherArea.style.backgroundImage = "url('../weather/images/weather/06시~16시.gif')";
         $subWeatherArea.style.color = "#333032";
     }
     else if (nowHour >= 16 && nowHour <= 20) {
-        $subWeatherArea.style.backgroundImage = "url('../weather/images/16시~20시.gif')";
+        $subWeatherArea.style.backgroundImage = "url('../weather/images/weather/16시~20시.gif')";
         $subWeatherArea.style.color = "#cdcbc1";
     } else {
-        $subWeatherArea.style.backgroundImage = "url('../weather/images/20시~06시.gif')";
+        $subWeatherArea.style.backgroundImage = "url('../weather/images/weather/20시~06시.gif')";
         $subWeatherArea.style.color = "#eeeb99";
     }
 }

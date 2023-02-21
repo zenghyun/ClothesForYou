@@ -211,7 +211,7 @@ body #main-container #main-section #weather-container .weather #weather-lists .w
   color: slateblue;
 }
 body #main-container #weekly-article {
-  grid-row: 3/4;
+  grid-row: 2/4;
   border: 1px solid black;
   display: flex;
   align-items: center;
