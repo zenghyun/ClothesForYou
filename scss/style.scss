@@ -1,0 +1,324 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import "_extend.scss";
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: "Jua", sans-serif;
+  scroll-behavior: smooth;
+  header {
+    position: fixed;
+    width: 100%;
+    min-width: 300px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 4fr;
+    grid-template-rows: 60px;
+    margin-bottom: 60px;
+    z-index: 10;
+    transition: all 0.5s;
+    background-color: transparent;
+    .logo {
+      min-width: 300px;
+      font-size: 1.8rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav {
+      ul {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        li {
+        }
+      }
+    }
+  }
+  .scrolledDown {
+    background-color: white;
+    box-shadow: 0 5px 5px 1px #8a8888;
+  }
+
+  #main-container {
+    width: 100%;
+    height: 200vh;
+    display: grid;
+    grid-template-columns: 1.3fr 4fr;
+    grid-template-rows: 200vh;
+
+    #left-aside {
+      grid-column: 1/2;
+      min-width: 300px;
+      overflow-y: auto;
+      background-color: transparent;
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      .sub-weather {
+        width: 20%;
+        height: 260px;
+        min-width: 280px;
+        min-height: 240px;
+        border-radius: 10px;
+        position: fixed;
+        top: 70px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 180%;
+
+        #sub-weather-lists {
+          width: 100%;
+          height: 100%;
+
+          .weather-item {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .weather-main {
+              .wi {
+                font-size: 100px;
+                color: #fff;
+                animation: translate 4s infinite ease-in-out;
+              }
+
+              @keyframes translate {
+                0% {
+                  transform: translateY(10px);
+                }
+                50% {
+                  transform: translateY(0px);
+                }
+                100% {
+                  transform: translateY(10px);
+                }
+              }
+            }
+
+            .temp {
+              font-size: 60px;
+              z-index: 100;
+              margin-top: -40px;
+              margin-left: 130px;
+            }
+
+            .time {
+              position: absolute;
+              top: 15px;
+              left: 15px;
+              font-size: 18px;
+            }
+
+            .weather-data {
+              width: 100%;
+              margin-top: 10px;
+              font-size: 18px;
+              display: grid;
+              justify-content: center;
+              grid-template-columns: repeat(2, 1fr);
+              text-align: center;
+              gap: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    #main-section {
+      margin-top: 60px;
+      display: grid;
+      width: 4fr;
+      grid-template-rows: 40vh repeat(3,50vh);
+      #weather-container {
+        grid-row: 1/2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .weather-period {
+          font-size: 24px;
+          margin-left: -530px;
+          margin-bottom: 10px;
+        }
+        .weather {
+          border-radius: 30px;
+          width: 1000px;
+          height: 300px;
+          border: 1px solid black;
+          overflow-x: auto;
+          position: relative;
+          #weather-lists {
+            display: flex;
+            gap: 50px;
+
+            #temp-chart {
+              position: absolute;
+              top: 100px;
+              margin-left: 25px;
+            }
+
+            .weather-item {
+              display: flex;
+              flex-direction: column;
+
+              .weather-main {
+                margin-top: 30px;
+                height: 60px;
+                width: 150px;
+                .wi {
+                  margin-left: 40px;
+                  font-size: 40px;
+                  color: #6e7567;
+                  animation: scale 1.5s infinite ease-in-out;
+                }
+                @keyframes scale {
+                  0% {
+                    transform: scale(1.2);
+                  }
+                  50% {
+                    transform: scale(1);
+                  }
+                  100% {
+                    transform: scale(1.2);
+                  }
+                }
+              }
+              .temp {
+                font-size: 25px;
+                font-weight: 600;
+                margin-top: -15px;
+                margin-left: 65px;
+              }
+            
+              .day {
+                width: 110px;
+                margin-top: 140px;
+                margin-left: 15px;
+                font-weight: 600;
+                font-size: 18px;
+                color: slateblue;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    #weekly-article {
+      grid-row: 3/4;
+      border: 1px solid black;
+      display: flex;
+      align-items: center;
+      .weekly-weather {
+        margin-left: 10px;
+        width: 350px;
+        height: 400px;
+        #weekly-weather-lists {
+          height: 100%;
+          display: grid;
+          grid-template-rows: repeat(6, 1fr);
+          .weekly-weather-item {
+            display: grid;
+            grid-template-columns: 4fr 2.5fr repeat(4, 2.5fr);
+            grid-template-rows: 1fr;
+            grid-auto-rows: min-content;
+            text-align: center;
+            align-items: center;
+            border: 1px solid black;
+            box-shadow: 3px 3px 5px #868585;
+            border-radius: 10px;
+            margin: 8px;
+            animation: shake 2s infinite alternate linear;
+            cursor: pointer;
+            .today {
+              font-size: 20px;
+            }
+            .humidity {
+              color: skyblue;
+              font-weight: 600;
+              .pnt {
+                color: black;
+              }
+            }
+            .max-weather-main {
+              font-size: 20px;
+              animation: scale 2s infinite ease-in-out;
+              color: #ec8180;
+            }
+            .max-temp {
+              color: #ec8180;
+              font-size: 18px;
+            }
+            .min-weather-main {
+              font-size: 20px;
+              animation: scale 2s infinite ease-in-out;
+              color: #95b6c9;
+            }
+            
+            .min-temp {
+              font-size: 18px;
+              color: #95b6c9;
+            }
+            @keyframes scale {
+              0% {
+                transform: scale(1.1);
+              }
+              50% {
+                transform: scale(1);
+              }
+              100% {
+                transform: scale(1.1);
+              }
+            }
+          }
+          @keyframes shake {
+            0% {
+              transform: rotate(1deg);
+            }
+            50% {
+              transform: rotate(0deg)
+            }
+            100% {
+              transform: rotate(-1deg);
+            }
+          }
+          .weekly-weather-item:hover {
+            background-color: #d0d0c5c2;
+          }
+          .weekly-weather-item:nth-child(1) {
+            grid-row: 1/2;
+            @extend %weeklyTemplate;
+          }
+          .weekly-weather-item:nth-child(2) {
+            grid-row: 2/3;
+            @extend %weeklyTemplate;
+          }
+          .weekly-weather-item:nth-child(3) {
+            grid-row: 3/4;
+            @extend %weeklyTemplate;
+          }
+          .weekly-weather-item:nth-child(4) {
+            grid-row: 4/5;
+            @extend %weeklyTemplate;
+          }
+          .weekly-weather-item:nth-child(5) {
+            grid-row: 5/6;
+            @extend %weeklyTemplate;
+          }
+          .weekly-weather-item:nth-child(6) {
+            grid-row: 6/7;
+            @extend %weeklyTemplate;
+          }
+        }
+      }
+    }
+  }
+}

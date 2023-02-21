@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clothes For You</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./weather-icons-master/css/weather-icons.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  </head>
+  <body>
+    <!-- <button id="get-location">위치 공유</button> -->
+    <template class="weather-template">
+      <li class="weather-item">
+        <span class="weather-main"></span>
+        <span class="temp"></span>
+        <span class="day"></span>
+      </li>
+    </template>
+
+    <template class="sub-weather-template">
+      <li class="weather-item">
+        <span class="weather-main"></span>
+        <span class="temp"></span>
+        <span class="day"></span>
+        <span class="time"></span>
+
+        <span class="weather-data">
+          <span class="weather-description"></span>
+          <span class="feel-temp"></span>
+          <span class="humidity"></span>
+          <span class="wind"></span>
+        </span>
+      </li>
+    </template> 
+
+    <template class="weekly-weather-template">
+      <li class="weather-item weekly-weather-item">
+        <span class="today"></span>
+        <span class="humidity">
+        </span>
+        <span class="max-weather-main"></span>
+        <span class="max-temp"></span>
+        <span class="min-weather-main"></span>
+        <span class="min-temp"></span>
+      </li>
+    </template>
+
+    <template class="clothes-template">
+
+    </template>
+    
+    
+    <header>
+      <a href="./index.html"><h1 class="logo">Clothes For You</h1></a>
+      <nav>
+        <ul>
+          <li>메뉴1</li>
+          <li>메뉴2</li>
+          <li>메뉴3</li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-container">
+      
+      <aside id="left-aside">
+        <div class="sub-weather">
+          <ul id="sub-weather-lists"></ul>
+        </div>
+      </aside>
+      
+      <section id="main-section">
+        <article id="weather-container">
+          <p class="weather-period"></p>
+          <div class="weather">
+            <ul id="weather-lists">
+              <canvas id="temp-chart" width="7880px" height="120px"></canvas>
+            </ul>
+          </div>
+        </article> 
+
+        <article id="weekly-article">
+          <div class="weekly-weather">
+            <ul id="weekly-weather-lists">
+            </ul>
+            <ul id="clothes-lists">
+            </ul>
+          </div>   
+        </article>
+      
+      </section>
+    </main>
+    <script src="./js/main.js"></script> 
+    <script type="module" src="./js/weather.js"></script> 
+  </body>
+</html>
+
+<!-- 
+  <div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/roundicons-premium" title="Roundicons Premium">Roundicons Premium</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/neungstockr" title="neungstockr">neungstockr</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/amethystdesign" title="AmethystDesign">AmethystDesign</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/wanicon" title="wanicon">wanicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/nhor-phai" title="Nhor Phai">Nhor Phai</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/victoruler" title="Victoruler">Victoruler</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pronicon" title="Pronicon">Pronicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/umeicon" title="Umeicon">Umeicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/kmg-design" title="kmg design">kmg design</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/iconixar" title="iconixar">iconixar</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/bzzrincantation" title="BZZRINCANTATION">BZZRINCANTATION</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/nawicon" title="nawicon">nawicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pongsakornred" title="pongsakornRed">pongsakornRed</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/slidicon" title="Slidicon">Slidicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/uniconlabs" title="Uniconlabs">Uniconlabs</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/rudiyana" title="Rudiyana">Rudiyana</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/alfian-dwi-hartanto" title="Alfian Dwi Hartanto">Alfian Dwi Hartanto</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/witdhawaty" title="Witdhawaty">Witdhawaty</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/safaruly" title="Safaruly">Safaruly</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/fliqqer" title="Fliqqer">Fliqqer</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/hasymi" title="Hasymi">Hasymi</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/lumi" title="Lumi">Lumi</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pojok-d" title="pojok d">pojok d</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/toz-icon" title="ToZ Icon">ToZ Icon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/microstd" title="microstd">microstd</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/atif-arshad" title="Atif Arshad">Atif Arshad</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/muhammad-usman" title="Muhammad_Usman">Muhammad_Usman</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/futuer" title="Futuer">Futuer</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/juicy-fish" title="juicy_fish">juicy_fish</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/maan-icons" title="Maan Icons">Maan Icons</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/nathania-desmonda-tjipto" title="Nathania Desmonda Tjipto">Nathania Desmonda Tjipto</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/graphixs-art" title="Graphix's Art">Graphix's Art</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/rizky-maulidhani" title="rizky maulidhani">rizky maulidhani</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/aswell-studio" title="Aswell Studio">Aswell Studio</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div>
+
+ -->
