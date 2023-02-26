@@ -6,6 +6,7 @@ body {
   height: 100vh;
   font-family: "Jua", sans-serif;
   scroll-behavior: smooth;
+  // overflow-x: hidden;
   header {
     position: fixed;
     width: 100%;
@@ -214,11 +215,11 @@ body {
 
     #weekly-article {
       grid-row: 2/4;
-      border: 1px solid black;
       display: flex;
       align-items: center;
+      position: relative;
       .weekly-weather {
-        margin-left: 10px;
+        margin: 0 10px 0 10px;
         width: 350px;
         height: 400px;
         #weekly-weather-lists {
@@ -227,12 +228,11 @@ body {
           grid-template-rows: repeat(6, 1fr);
           .weekly-weather-item {
             display: grid;
-            grid-template-columns: 4fr 2.5fr repeat(4, 2.5fr);
+            grid-template-columns: 5fr 5fr repeat(4, 3fr);
             grid-template-rows: 1fr;
             grid-auto-rows: min-content;
             text-align: center;
             align-items: center;
-            border: 1px solid black;
             box-shadow: 3px 3px 5px #868585;
             border-radius: 10px;
             margin: 8px;
@@ -319,6 +319,138 @@ body {
           }
         }
       }
+      .slide {
+        /* layout */
+        display: flex;
+        flex-wrap: nowrap;
+        /* 컨테이너의 내용물이 컨테이너 크기(width, height)를 넘어설 때 보이지 않도록 하기 위해 hidden을 준다. */
+        overflow: hidden;
+      
+        /* position */
+        /* slide_button의 position absolute가 컨테이너 안쪽에서 top, left, right offset이 적용될 수 있도록 relative를 준다. (기본값이 static인데, static인 경우 그 상위 컨테이너로 나가면서 현재 코드에선 html을 기준으로 offset을 적용시키기 때문) */
+        position: relative;
+      
+        /* size */
+        width: 1000px;
+      
+        /* slide drag를 위해 DOM요소가 드래그로 선택되는것을 방지 */
+        user-select: none;
+      .slide_item {
+        /* layout */
+        margin: 50px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+        /* position - 버튼 클릭시 left offset값을 적용시키기 위해 */
+        position: relative;
+        left: 0px;
+      
+        /* size */
+        width: 100%;
+        height: 600px;
+        /* flex item의 flex-shrink는 기본값이 1이므로 컨테이너 크기에 맞게 줄어드는데, 슬라이드를 구현할 것이므로 줄어들지 않도록 0을 준다. */
+        flex-shrink: 0;
+      
+        /* transition */
+        transition: left 0.5s;
+        
+        .clothes-container{
+          display: grid;
+          grid-template-columns: repeat(auto-fit,min-content(100px,1fr));
+          grid-template-rows: 64px 64px 50px 200px 150px;
+          text-align: center;
+          align-items: center;
+          .clothes-temp-area{
+            grid-row: 1/2;
+            font-size: 22px;
+          }
+         .clothes-by-temperature{
+          font-size: 36px;
+         }
+        
+          .by-temperature-clothes-list{
+            display: flex;
+            gap: 50px;
+            li {
+              width: 100px;
+              height: 100px;
+              text-align: center;
+              background-position: center center;
+              background-size: cover;
+              span {
+                line-height: 280px;
+                font-size: 18px;
+              }
+            }
+          }
+         
+          .show-text{
+            grid-row: 3/4;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+      .slide_button {
+        /* layout */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        /* position */
+        position: absolute;
+        /* 버튼이 중앙에 위치하게 하기위해 계산 */
+        top: calc(50% - 16px);
+      
+        /* size */
+        width: 32px;
+        height: 32px;
+      
+        /* style */
+        border-radius: 100%;
+        background-color: #cccc;
+        cursor: pointer;
+      }
+      
+      .slide_prev_button {
+        left: 10px;
+      }
+      .slide_next_button {
+        right: 10px;
+      }
+      
+      /* 페이지네이션 스타일 */
+      ul,
+      li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      .slide_pagination {
+        /* layout */
+        display: flex;
+        gap: 5px;
+      
+        /* position */
+        position: absolute;
+        bottom: 0;
+        /* left:50%, translateX(-50%)를 하면 가로 가운데로 위치시킬 수 있다. */
+        left: 50%;
+        transform: translateX(-50%);
+        li {
+           /* 현재 슬라이드가 아닌 것은 투명도 부여 */
+           color: #7fb5ff88;
+           cursor: pointer;
+           font-size: 25px;
+         }
+        li.active {
+           /* 현재 슬라이드 색상은 투명도 없이 */
+           color: #7fb5ff;
+         }
+      }
+      
+    
     }
   }
 }

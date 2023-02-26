@@ -26,4 +26,14 @@ const onScroll = event => {
   }
 }
 
+const ul = document.querySelectorAll('.by-temperature-clothes-list');
+console.log("ul:", ul);
+
+ul.forEach(li => {
+  li.addEventListener('click', (event)=> {
+    console.log(event.target.style.backgroundImage);
+  })
+
+})
+
 window.addEventListener('scroll', onScroll);
