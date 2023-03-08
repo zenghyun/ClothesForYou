@@ -501,7 +501,6 @@ mac OS: Safari -> 기본 설정 -> 웹 사이트 -> 목록 -> 위치 -> 허용
         } else {
             const loadData = sessionStorage.getItem("location");
             const parsedData = JSON.parse(loadData);
-            console.log("parsedData:", parsedData);
             getWeather(parsedData);
         }
     } catch (error) {
