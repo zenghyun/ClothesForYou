@@ -480,7 +480,18 @@ function onGeoOk(position) {
 }
 
 function onGeoError() {
-    alert("위치를 가져올 수 없습니다.");
+    const NOTICE = `
+위치를 가져오지 못했습니다. 
+    
+위치를 가져오는데 동의하였을 때, 가져오지 못할 경우 위치 서비스 활성화를 해야합니다.
+    
+Android: 설정 -> 위치 -> 사용 중 활성화 및 앱 내 위치정보 설정 권한 활성화
+
+iOS: 설정 -> Safari -> 위치 -> 위치 활성화 
+    
+mac OS: Safari -> 기본 설정 -> 웹 사이트 -> 목록 -> 위치 -> 허용
+    `
+    alert(NOTICE);
 }
 
 (function getAPIData() {
