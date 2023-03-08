@@ -1,0 +1,716 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(6) .wi, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(5) .wi, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(4) .wi, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(3) .wi, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(2) .wi, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(1) .wi {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(6) .max-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(5) .max-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(4) .max-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(3) .max-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(2) .max-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(1) .max-weather-main {
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(6) .max-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(5) .max-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(4) .max-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(3) .max-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(2) .max-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(1) .max-temp {
+  grid-row: 1/2;
+  grid-column: 4/5;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(6) .min-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(5) .min-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(4) .min-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(3) .min-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(2) .min-weather-main, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(1) .min-weather-main {
+  grid-row: 1/2;
+  grid-column: 5/6;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(6) .min-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(5) .min-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(4) .min-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(3) .min-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(2) .min-temp, body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(1) .min-temp {
+  grid-row: 1/2;
+  grid-column: 6/-1;
+}
+
+body {
+  width: 100%;
+  font-family: "Jua", sans-serif;
+  scroll-behavior: smooth;
+  background-color: rgba(235, 240, 246, 0.8666666667);
+  overflow-x: hidden;
+}
+body header {
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 4fr;
+  grid-template-rows: 60px;
+  margin-bottom: 60px;
+  z-index: 10;
+  transition: all 0.5s;
+  background-color: transparent;
+  text-shadow: 5px 5px 3px #e2e2e4;
+}
+body header .logo {
+  min-width: 300px;
+  font-size: 1.8rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body header nav ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+body header nav ul li:hover {
+  color: rgb(157, 214, 236);
+}
+body .scrolledDown {
+  background-color: white;
+  box-shadow: 0 5px 5px 1px #8a8888;
+}
+body #main-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 4fr;
+}
+body #main-container #left-aside {
+  grid-column: 1/2;
+  min-width: 380px;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+body #main-container #left-aside .sub-weather {
+  width: 20%;
+  height: 260px;
+  min-width: 320px;
+  min-height: 240px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #868585;
+  position: fixed;
+  top: 70px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 165%;
+  text-shadow: 5px 5px 3px rgba(236, 236, 238, 0.3333333333);
+}
+body #main-container #left-aside .sub-weather #sub-weather-lists {
+  width: 100%;
+  height: 100%;
+}
+body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-main .wi {
+  font-size: 100px;
+  color: #fff;
+  text-shadow: 5px 5px 5px #e4e7ea;
+  animation: translate 4s infinite ease-in-out;
+}
+@keyframes translate {
+  0% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .temp {
+  font-size: 60px;
+  z-index: 100;
+  margin-top: -40px;
+  margin-left: 130px;
+}
+body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .time {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 18px;
+}
+body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-data {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 18px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  gap: 20px;
+}
+body #main-container #main-section {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 400px) 550px;
+}
+body #main-container #main-section #weather-container {
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body #main-container #main-section #weather-container .weather-period {
+  font-size: 24px;
+  margin-left: -530px;
+  margin-bottom: 10px;
+  text-shadow: 5px 5px 5px #c3c6c9;
+}
+body #main-container #main-section #weather-container .weather {
+  border-radius: 30px;
+  width: 1000px;
+  min-height: 300px;
+  background-color: #fff;
+  box-shadow: 3px 3px 1px #868585;
+  overflow: auto hidden;
+  position: relative;
+}
+body #main-container #main-section #weather-container .weather #weather-lists {
+  display: flex;
+  gap: 50px;
+}
+body #main-container #main-section #weather-container .weather #weather-lists #temp-chart {
+  position: absolute;
+  top: 100px;
+  margin-left: 25px;
+}
+body #main-container #main-section #weather-container .weather #weather-lists .weather-item {
+  display: flex;
+  flex-direction: column;
+}
+body #main-container #main-section #weather-container .weather #weather-lists .weather-item .weather-main {
+  margin-top: 40px;
+  height: 60px;
+  width: 150px;
+}
+body #main-container #main-section #weather-container .weather #weather-lists .weather-item .weather-main .wi {
+  margin-left: 40px;
+  font-size: 40px;
+  color: #6e7567;
+  animation: scale 1.5s infinite ease-in-out;
+  text-shadow: 5px 5px 1px #e4e7ea;
+}
+@keyframes scale {
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+body #main-container #main-section #weather-container .weather #weather-lists .weather-item .temp {
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: -15px;
+  margin-left: 65px;
+}
+body #main-container #main-section #weather-container .weather #weather-lists .weather-item .day {
+  width: 110px;
+  margin-top: 150px;
+  margin-left: 15px;
+  font-weight: 600;
+  font-size: 16px;
+  color: slateblue;
+}
+body #main-container #main-section #weather-container .weather::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+body #main-container #main-section #weather-container .weather::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+body #main-container #main-section #weather-container .weather::-webkit-scrollbar-thumb {
+  height: 7%;
+  background-color: rgba(127, 181, 255, 0.5333333333);
+  border-radius: 7px;
+}
+body #main-container #main-section #slide-container {
+  grid-row: 2/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 페이지네이션 스타일 */
+}
+body #main-container #main-section #slide-container .slide {
+  position: static;
+  background-color: #fff;
+  box-shadow: 3px 3px 5px #868585;
+  border-radius: 30px;
+  /* layout */
+  display: flex;
+  flex-wrap: nowrap;
+  /* 컨테이너의 내용물이 컨테이너 크기(width, height)를 넘어설 때 보이지 않도록 하기 위해 hidden을 준다. */
+  overflow: hidden;
+  /* position */
+  /* slide_button의 position absolute가 컨테이너 안쪽에서 top, left, right offset이 적용될 수 있도록 relative를 준다. (기본값이 static인데, static인 경우 그 상위 컨테이너로 나가면서 현재 코드에선 html을 기준으로 offset을 적용시키기 때문) */
+  position: relative;
+  /* size */
+  width: 1370px;
+  /* slide drag를 위해 DOM요소가 드래그로 선택되는것을 방지 */
+  user-select: none;
+}
+body #main-container #main-section #slide-container .slide .slide_item {
+  /* layout */
+  margin: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position - 버튼 클릭시 left offset값을 적용시키기 위해 */
+  position: relative;
+  left: 0px;
+  /* size */
+  width: 100%;
+  height: 500px;
+  /* flex item의 flex-shrink는 기본값이 1이므로 컨테이너 크기에 맞게 줄어드는데, 슬라이드를 구현할 것이므로 줄어들지 않도록 0을 준다. */
+  flex-shrink: 0;
+  /* transition */
+  transition: left 0.5s;
+}
+body #main-container #main-section #slide-container .slide .slide_item .clothes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, min-content(100px, 1fr));
+  grid-template-rows: 64px 100px 50px 200px;
+  margin-top: -100px;
+  text-align: center;
+  align-items: center;
+  text-shadow: 5px 5px 1px #e4e7ea;
+}
+body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-temp-area {
+  grid-row: 1/2;
+  font-size: 28px;
+}
+body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-by-temperature {
+  font-size: 48px;
+}
+body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list {
+  display: flex;
+  gap: 60px;
+}
+body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  background-position: center center;
+  background-size: cover;
+}
+body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li span {
+  line-height: 350px;
+  font-size: 18px;
+  text-shadow: none;
+}
+body #main-container #main-section #slide-container .slide .slide_item .clothes-container .show-text {
+  grid-row: 3/4;
+  font-size: 22px;
+}
+body #main-container #main-section #slide-container .slide_button {
+  /* layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position */
+  position: absolute;
+  /* 버튼이 중앙에 위치하게 하기위해 계산 */
+  top: calc(50% - 16px);
+  /* size */
+  width: 32px;
+  height: 32px;
+  /* style */
+  border-radius: 100%;
+  background-color: rgba(204, 204, 204, 0.8);
+  cursor: pointer;
+  margin: 0 40px;
+}
+body #main-container #main-section #slide-container .slide_prev_button {
+  left: 10px;
+}
+body #main-container #main-section #slide-container .slide_next_button {
+  right: 10px;
+}
+body #main-container #main-section #slide-container ul,
+body #main-container #main-section #slide-container li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+body #main-container #main-section #slide-container .slide_pagination {
+  /* layout */
+  display: flex;
+  gap: 5px;
+  /* position */
+  position: absolute;
+  bottom: 0;
+  top: 90%;
+  /* left:50%, translateX(-50%)를 하면 가로 가운데로 위치시킬 수 있다. */
+  left: 50%;
+  transform: translateX(-50%);
+}
+body #main-container #main-section #slide-container .slide_pagination li {
+  /* 현재 슬라이드가 아닌 것은 투명도 부여 */
+  color: rgba(127, 181, 255, 0.5333333333);
+  cursor: pointer;
+  font-size: 25px;
+}
+body #main-container #main-section #slide-container .slide_pagination li.active {
+  /* 현재 슬라이드 색상은 투명도 없이 */
+  color: #7fb5ff;
+}
+body #main-container #multi-container {
+  grid-row: 4/5;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 10px;
+}
+body #main-container #multi-container .weekly-weather {
+  width: 350px;
+  height: 430px;
+}
+body #main-container #multi-container .weekly-weather .weekly-weather-title {
+  font-size: 24px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  text-shadow: 5px 5px 1px #c3c6c9;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists {
+  height: 400px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item {
+  display: grid;
+  grid-template-columns: 5fr 5fr repeat(4, 3fr);
+  grid-template-rows: 1fr;
+  grid-auto-rows: min-content;
+  background-color: #fff;
+  text-align: center;
+  align-items: center;
+  box-shadow: 3px 3px 5px #868585;
+  border-radius: 10px;
+  margin: 8px;
+  animation: shake 2s infinite alternate linear;
+  cursor: pointer;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item .today {
+  font-size: 20px;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item .humidity {
+  color: skyblue;
+  font-weight: 600;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item .humidity .pnt {
+  color: black;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item .max-weather-main {
+  font-size: 20px;
+  animation: scale 2s infinite ease-in-out;
+  color: #ec8180;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item .max-temp {
+  color: #ec8180;
+  font-size: 18px;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item .min-weather-main {
+  font-size: 20px;
+  animation: scale 2s infinite ease-in-out;
+  color: #95b6c9;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item .min-temp {
+  font-size: 18px;
+  color: #95b6c9;
+}
+@keyframes scale {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-1deg);
+  }
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:hover {
+  background-color: rgba(208, 208, 197, 0.7607843137);
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(1) {
+  grid-row: 1/2;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(2) {
+  grid-row: 2/3;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(3) {
+  grid-row: 3/4;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(4) {
+  grid-row: 4/5;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(5) {
+  grid-row: 5/6;
+}
+body #main-container #multi-container .weekly-weather #weekly-weather-lists .weekly-weather-item:nth-child(6) {
+  grid-row: 6/7;
+}
+body #main-container #multi-container .show-youtube-container {
+  grid-column: 2/3;
+}
+body #main-container #multi-container .show-youtube-container .show-youtube-title {
+  font-size: 24px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+  text-shadow: 5px 5px 1px #c3c6c9;
+}
+body #main-container #multi-container .show-youtube-container .youtube-container {
+  height: 360px;
+  width: 520px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  box-shadow: 3px 3px 5px #868585;
+}
+body #main-container #multi-container .show-youtube-container .youtube-container .thumbnail {
+  width: 480px;
+  height: 260px;
+  border-radius: 20px;
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: 20px;
+}
+body #main-container #multi-container .show-youtube-container .youtube-container .thumbnail-title {
+  text-align: center;
+  font-size: 18px;
+}
+body #main-container #multi-container .dressing-tips-container {
+  grid-column: 3/-1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body #main-container #multi-container .dressing-tips-container .dressing-tip-title {
+  font-size: 24px;
+  margin-left: -180px;
+  margin-bottom: 20px;
+  text-shadow: 5px 5px 1px #c3c6c9;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container {
+  width: 350px;
+  height: 450px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px #868585;
+  background-color: #fff;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .window {
+  overflow: hidden; /*check out container's movement : command + */
+  position: relative;
+  top: 3%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  width: 320px;
+  height: 380px;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .container {
+  position: absolute;
+  width: 1800px;
+  height: 380px;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .cell {
+  font-size: 30px;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  width: 300px;
+  height: 380px;
+  margin: 10px 10px;
+  line-height: 35px;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .cell .temp-title {
+  margin-top: 20px;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .cell .temp-sub-text {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #957cfa;
+  text-shadow: 5px 5px 3px #e4e7ea;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .cell .describe-temp {
+  font-size: 22px;
+  margin-bottom: 50px;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .cell .recommend-clothes {
+  font-size: 24px;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container button {
+  font-size: 28px;
+  width: 36px;
+  height: 36px;
+  background-color: #6e7567;
+  border-radius: 10px;
+  color: #fff;
+  font-family: "Jua", sans-serif;
+  border: none;
+  cursor: pointer;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container button:hover {
+  background-color: #cdcdcb;
+  color: #6e7567;
+}
+body #main-container #multi-container .dressing-tips-container .tip-container .button-container {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+body footer {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr 0.8fr;
+  grid-template-rows: 150px;
+}
+body footer .active-api-list {
+  margin-left: 45px;
+}
+body footer .active-api-list .active-api {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 5px 5px 1px #c3c6c9;
+}
+body footer .active-api-list li {
+  margin-bottom: 10px;
+}
+body footer .active-api-list li .use-api {
+  margin-top: 10px;
+  color: #7fb5ff;
+}
+body footer .copyright-list {
+  display: grid;
+  grid-template-columns: 350px 150px 150px;
+  grid-template-rows: 43px 50px;
+}
+body footer .copyright-list .copyright {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: 5px 5px 1px #c3c6c9;
+}
+body footer .copyright-list .ann_maulina {
+  grid-column: 1/2;
+}
+body footer .copyright-list .ann_maulina a {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+body footer .copyright-list .ann_maulina a .title {
+  margin-bottom: 10px;
+}
+body footer .copyright-list .ann_maulina img {
+  width: 100px;
+  margin-right: 5px;
+}
+body footer .copyright-list .weather-icon {
+  display: block;
+}
+body footer .copyright-list .clothes-icon .clothes-title {
+  display: block;
+}
+body footer .copyright-list .clothes-icon select {
+  margin-top: 10px;
+  border: none;
+  font-family: "Jua", sans-serif;
+  background-color: rgba(235, 240, 246, 0.8666666667);
+  cursor: pointer;
+}
+body footer .copyright-list .clothes-icon select option {
+  font-size: 18px;
+}
+body footer .copyright-list .clothes-icon select::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+body footer .copyright-list .clothes-icon select::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+body footer .copyright-list .clothes-icon select::-webkit-scrollbar-thumb {
+  height: 17%;
+  background-color: rgba(127, 181, 255, 0.5333333333);
+  border-radius: 10px;
+}
+body footer .contact-me {
+  margin-left: 100px;
+  text-shadow: 5px 5px 1px #c3c6c9;
+}
+body footer .contact-me .title {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 30px;
+}
+body footer .contact-me li {
+  font-size: 48px;
+  display: inline;
+  margin-right: 30px;
+}
+body footer .contact-me li i {
+  transform: rotate(20deg) skew(-10deg, -5deg);
+  transition: translate 0.25s, box-shadow 0.25s;
+}
+body footer .contact-me li i:hover {
+  translate: 0 -30px;
+  box-shadow: 5px 3px #9ebbe7, 10px 6px #8da7cf, 15px 9px #89abdd;
+}
+body footer .contact-me li .instagram i:hover {
+  background: radial-gradient(circle farthest-corner at 32% 106%, #ffe17d 0%, #ffcd69 10%, #fa9137 28%, #eb4141 42%, transparent 82%), linear-gradient(135deg, #4465dd 12%, #c33cbe 58%);
+  text-shadow: 5px 5px 1px #cca1fa;
+}
+body footer .contact-me li .mail i:hover {
+  background-color: lightgreen;
+  text-shadow: 5px 5px 1px rgb(251, 248, 171);
+}
+body footer .contact-me li .phone i:hover {
+  background-color: rgb(247, 162, 192);
+  text-shadow: 5px 5px 1px rgb(171, 242, 251);
+}
+body footer .contact-me li .github i:hover {
+  background-color: #b0b2ae;
+  text-shadow: 5px 5px 1px rgb(255, 177, 122);
+}
+
+body::-webkit-scrollbar {
+  width: 15px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  height: 17%;
+  background-color: rgba(127, 181, 255, 0.5333333333);
+  border-radius: 10px;
+}

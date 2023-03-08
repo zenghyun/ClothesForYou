@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clothes For You</title>
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/weather-icons.min.css"/>
+    <link rel="stylesheet" href="./css/index/index.css" />
+    <link rel="stylesheet" href="./css/index/responsive.css">
+    <link rel="stylesheet" href="./css/weather-icons.min.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
   <body>
-    <!-- <button id="get-location">위치 공유</button> -->
     <template class="weather-template">
       <li class="weather-item">
         <span class="weather-main"></span>
@@ -34,7 +38,7 @@
           <span class="wind"></span>
         </span>
       </li>
-    </template> 
+    </template>
 
     <template class="weekly-weather-template">
       <li class="weather-item weekly-weather-item">
@@ -47,225 +51,668 @@
       </li>
     </template>
 
+    <template class="youtube-iframe-template">
+      <a class="youtube-link" href="" target="_blank" rel="noopener noreferrer">
+        <div class="thumbnail"></div>
+        <p class="thumbnail-title"></p>
+      </a>
+    </template>
+
     <header>
       <a href="./index.html"><h1 class="logo">Clothes For You</h1></a>
       <nav>
         <ul>
-          <li>메뉴1</li>
-          <li>메뉴2</li>
-          <li>메뉴3</li>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./views/myClothes.html">Clothes Diary</a></li>
         </ul>
       </nav>
     </header>
 
     <main id="main-container">
-      
       <aside id="left-aside">
         <div class="sub-weather">
           <ul id="sub-weather-lists"></ul>
         </div>
       </aside>
-      
-      <section id="main-section">
+
+      <section id="main-section"> 
         <article id="weather-container">
           <p class="weather-period"></p>
           <div class="weather">
             <ul id="weather-lists">
-              <canvas id="temp-chart" width="7880px" height="120px"></canvas>
+              <canvas id="temp-chart" width= "7880px" height="120px"></canvas>
             </ul>
           </div>
-        </article> 
-
-        <article id="weekly-article">
-          <div class="weekly-weather">
-            <ul id="weekly-weather-lists">
-            </ul>
-          </div>   
-
-            <div class="slide slide_wrap">
-             
-              <div class="slide_item item1">
-                <div class="clothes-container clothes-container1">
-                  <span class="clothes-temp-area clothes-temp-area1"></span>
-                  <span class="clothes-by-temperature clothes-by-temperature1"></span>
-
-                  <ul class="by-temperature-clothes-list by-temperature-clothes-list1">
-                    <li class="by-temperature-outer by-temperature-outer1">
-                      <span class="by-temperature-outer-tag by-temperature-outer-tag1"></span>
-                    </li>
-                    <li class="by-temperature-top by-temperature-top1">
-                      <span class="by-temperature-top-tag by-temperature-top-tag1"></span>
-                    </li>
-                    <li class="by-temperature-pants by-temperature-pants1">
-                      <span class="by-temperature-pants-tag by-temperature-pants-tag1"></span>
-                    </li>
-                    <li class="by-temperature-socks by-temperature-socks1">
-                      <span class="by-temperature-socks-tag by-temperature-socks-tag1"></span>
-                    </li>
-                    <li class="by-temperature-acc by-temperature-acc1">
-                      <span class="by-temperature-acc-tag by-temperature-acc-tag1"></span>
-                    </li>
-                  </ul>
-
-                  <span class="show-text show-text1"></span>
-                </div>
-              </div>
-
-              <div class="slide_item item2">
-                <div class="clothes-container clothes-container2">
-                  <span class="clothes-temp-area clothes-temp-area2"></span>
-                  <span class="clothes-by-temperature clothes-by-temperature2"></span>
-
-                  <ul class="by-temperature-clothes-list by-temperature-clothes-list2">
-                    <li class="by-temperature-outer by-temperature-outer2">
-                      <span class="by-temperature-outer-tag by-temperature-outer-tag2"></span>
-                    </li>
-                    <li class="by-temperature-top by-temperature-top2">
-                      <span class="by-temperature-top-tag by-temperature-top-tag2"></span>
-                    </li>
-                    <li class="by-temperature-pants by-temperature-pants2">
-                      <span class="by-temperature-pants-tag by-temperature-pants-tag2"></span>
-                    </li>
-                    <li class="by-temperature-socks by-temperature-socks2">
-                      <span class="by-temperature-socks-tag by-temperature-socks-tag2"></span>
-                    </li>
-                    <li class="by-temperature-acc by-temperature-acc2">
-                      <span class="by-temperature-acc-tag by-temperature-acc-tag2"></span>
-                    </li>
-                  </ul>
-
-                  <span class="show-text show-text2"></span>
-                </div>
-              </div>
-
-              <div class="slide_item item3">
-                <div class="clothes-container clothes-container3">
-                  <span class="clothes-temp-area clothes-temp-area3"></span>
-                  <span class="clothes-by-temperature clothes-by-temperature3"></span>
-
-                  <ul class="by-temperature-clothes-list by-temperature-clothes-list3">
-                    <li class="by-temperature-outer by-temperature-outer3">
-                      <span class="by-temperature-outer-tag by-temperature-outer-tag3"></span>
-                    </li>
-                    <li class="by-temperature-top by-temperature-top3">
-                      <span class="by-temperature-top-tag by-temperature-top-tag3"></span>
-                    </li>
-                    <li class="by-temperature-pants by-temperature-pants3">
-                      <span class="by-temperature-pants-tag by-temperature-pants-tag3"></span>
-                    </li>
-                    <li class="by-temperature-socks by-temperature-socks3">
-                      <span class="by-temperature-socks-tag by-temperature-socks-tag3"></span>
-                    </li>
-                    <li class="by-temperature-acc by-temperature-acc3">
-                      <span class="by-temperature-acc-tag by-temperature-acc-tag3"></span>
-                    </li>
-                  </ul>
-
-                  <span class="show-text show-text3"></span>
-                </div>
-              </div>
-
-              <div class="slide_item item4">
-                <div class="clothes-container clothes-container4">
-                  <span class="clothes-temp-area clothes-temp-area4"></span>
-                  <span class="clothes-by-temperature clothes-by-temperature4"></span>
-
-                  <ul class="by-temperature-clothes-list by-temperature-clothes-list4">
-                    <li class="by-temperature-outer by-temperature-outer4">
-                      <span class="by-temperature-outer-tag by-temperature-outer-tag4"></span>
-                    </li>
-                    <li class="by-temperature-top by-temperature-top4">
-                      <span class="by-temperature-top-tag by-temperature-top-tag4"></span>
-                    </li>
-                    <li class="by-temperature-pants by-temperature-pants4">
-                      <span class="by-temperature-pants-tag by-temperature-pants-tag4"></span>
-                    </li>
-                    <li class="by-temperature-socks by-temperature-socks4">
-                      <span class="by-temperature-socks-tag by-temperature-socks-tag4"></span>
-                    </li>
-                    <li class="by-temperature-acc by-temperature-acc4">
-                      <span class="by-temperature-acc-tag by-temperature-acc-tag4"></span>
-                    </li>
-                  </ul>
-
-                  <span class="show-text show-text4"></span>
-                </div>
-              </div>
-
-              <div class="slide_item item5">
-                <div class="clothes-container clothes-container5">
-                  <span class="clothes-temp-area clothes-temp-area5"></span>
-                  <span class="clothes-by-temperature clothes-by-temperature5"></span>
-
-                  <ul class="by-temperature-clothes-list by-temperature-clothes-list5">
-                    <li class="by-temperature-outer by-temperature-outer5">
-                      <span class="by-temperature-outer-tag by-temperature-outer-tag5"></span>
-                    </li>
-                    <li class="by-temperature-top by-temperature-top5">
-                      <span class="by-temperature-top-tag by-temperature-top-tag5"></span>
-                    </li>
-                    <li class="by-temperature-pants by-temperature-pants5">
-                      <span class="by-temperature-pants-tag by-temperature-pants-tag5"></span>
-                    </li>
-                    <li class="by-temperature-socks by-temperature-socks5">
-                      <span class="by-temperature-socks-tag by-temperature-socks-tag5"></span>
-                    </li>
-                    <li class="by-temperature-acc by-temperature-acc5">
-                      <span class="by-temperature-acc-tag by-temperature-acc-tag5"></span>
-                    </li>
-                  </ul>
-
-                  <span class="show-text show-text5"></span>
-                </div>
-              </div>
-
-              <div class="slide_item item6">
-                <div class="clothes-container clothes-container6">
-                  <span class="clothes-temp-area clothes-temp-area6"></span>
-                  <span class="clothes-by-temperature clothes-by-temperature6"></span>
-                  
-                  <ul class="by-temperature-clothes-list by-temperature-clothes-list6">
-                    <li class="by-temperature-outer by-temperature-outer6">
-                      <span class="by-temperature-outer-tag by-temperature-outer-tag6"></span>
-                    </li>
-                    <li class="by-temperature-outer by-temperature-top6">
-                      <span class="by-temperature-outer-tag by-temperature-top-tag6"></span>
-                    </li>
-                    <li class="by-temperature-outer by-temperature-pants6">
-                      <span class="by-temperature-outer-tag by-temperature-pants-tag6"></span>
-                    </li>
-                    <li class="by-temperature-outer by-temperature-socks6">
-                      <span class="by-temperature-outer-tag by-temperature-socks-tag6"></span>
-                    </li>
-                    <li class="by-temperature-outer by-temperature-acc6">
-                      <span class="by-temperature-outer-tag by-temperature-acc-tag6"></span>
-                    </li>
-                  </ul>
-
-                  <span class="show-text show-text6"></span>
-                </div>
-              </div>
-
-              <div class="slide_item item7">
-                <div class="trash">
-                </div>
-              </div>
-              <div class="slide_prev_button slide_button">◀</div>
-              <div class="slide_next_button slide_button">▶</div>
-              <ul class="slide_pagination"></ul>
-            </div>
-            
         </article>
-      
+
+        <article id="slide-container">
+          <div class="slide slide_wrap">
+            <div class="slide_item item1">
+              <div class="clothes-container clothes-container1">
+                <span class="clothes-temp-area clothes-temp-area1"></span>
+                <span
+                  class="clothes-by-temperature clothes-by-temperature1"
+                ></span>
+
+                <ul
+                  class="by-temperature-clothes-list by-temperature-clothes-list1"
+                >
+                  <li class="by-temperature-outer by-temperature-outer1">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-outer-tag1"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-top by-temperature-top1">
+                    <span
+                      class="by-temperature-top-tag by-temperature-top-tag1"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-pants by-temperature-pants1">
+                    <span
+                      class="by-temperature-pants-tag by-temperature-pants-tag1"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-socks by-temperature-socks1">
+                    <span
+                      class="by-temperature-socks-tag by-temperature-socks-tag1"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-acc by-temperature-acc1">
+                    <span
+                      class="by-temperature-acc-tag by-temperature-acc-tag1"
+                    ></span>
+                  </li>
+                </ul>
+
+                <span class="show-text show-text1"></span>
+              </div>
+            </div>
+
+            <div class="slide_item item2">
+              <div class="clothes-container clothes-container2">
+                <span class="clothes-temp-area clothes-temp-area2"></span>
+                <span
+                  class="clothes-by-temperature clothes-by-temperature2"
+                ></span>
+
+                <ul
+                  class="by-temperature-clothes-list by-temperature-clothes-list2"
+                >
+                  <li class="by-temperature-outer by-temperature-outer2">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-outer-tag2"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-top by-temperature-top2">
+                    <span
+                      class="by-temperature-top-tag by-temperature-top-tag2"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-pants by-temperature-pants2">
+                    <span
+                      class="by-temperature-pants-tag by-temperature-pants-tag2"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-socks by-temperature-socks2">
+                    <span
+                      class="by-temperature-socks-tag by-temperature-socks-tag2"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-acc by-temperature-acc2">
+                    <span
+                      class="by-temperature-acc-tag by-temperature-acc-tag2"
+                    ></span>
+                  </li>
+                </ul>
+
+                <span class="show-text show-text2"></span>
+              </div>
+            </div>
+
+            <div class="slide_item item3">
+              <div class="clothes-container clothes-container3">
+                <span class="clothes-temp-area clothes-temp-area3"></span>
+                <span
+                  class="clothes-by-temperature clothes-by-temperature3"
+                ></span>
+
+                <ul
+                  class="by-temperature-clothes-list by-temperature-clothes-list3"
+                >
+                  <li class="by-temperature-outer by-temperature-outer3">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-outer-tag3"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-top by-temperature-top3">
+                    <span
+                      class="by-temperature-top-tag by-temperature-top-tag3"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-pants by-temperature-pants3">
+                    <span
+                      class="by-temperature-pants-tag by-temperature-pants-tag3"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-socks by-temperature-socks3">
+                    <span
+                      class="by-temperature-socks-tag by-temperature-socks-tag3"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-acc by-temperature-acc3">
+                    <span
+                      class="by-temperature-acc-tag by-temperature-acc-tag3"
+                    ></span>
+                  </li>
+                </ul>
+
+                <span class="show-text show-text3"></span>
+              </div>
+            </div>
+
+            <div class="slide_item item4">
+              <div class="clothes-container clothes-container4">
+                <span class="clothes-temp-area clothes-temp-area4"></span>
+                <span
+                  class="clothes-by-temperature clothes-by-temperature4"
+                ></span>
+
+                <ul
+                  class="by-temperature-clothes-list by-temperature-clothes-list4"
+                >
+                  <li class="by-temperature-outer by-temperature-outer4">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-outer-tag4"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-top by-temperature-top4">
+                    <span
+                      class="by-temperature-top-tag by-temperature-top-tag4"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-pants by-temperature-pants4">
+                    <span
+                      class="by-temperature-pants-tag by-temperature-pants-tag4"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-socks by-temperature-socks4">
+                    <span
+                      class="by-temperature-socks-tag by-temperature-socks-tag4"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-acc by-temperature-acc4">
+                    <span
+                      class="by-temperature-acc-tag by-temperature-acc-tag4"
+                    ></span>
+                  </li>
+                </ul>
+
+                <span class="show-text show-text4"></span>
+              </div>
+            </div>
+
+            <div class="slide_item item5">
+              <div class="clothes-container clothes-container5">
+                <span class="clothes-temp-area clothes-temp-area5"></span>
+                <span
+                  class="clothes-by-temperature clothes-by-temperature5"
+                ></span>
+
+                <ul
+                  class="by-temperature-clothes-list by-temperature-clothes-list5"
+                >
+                  <li class="by-temperature-outer by-temperature-outer5">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-outer-tag5"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-top by-temperature-top5">
+                    <span
+                      class="by-temperature-top-tag by-temperature-top-tag5"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-pants by-temperature-pants5">
+                    <span
+                      class="by-temperature-pants-tag by-temperature-pants-tag5"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-socks by-temperature-socks5">
+                    <span
+                      class="by-temperature-socks-tag by-temperature-socks-tag5"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-acc by-temperature-acc5">
+                    <span
+                      class="by-temperature-acc-tag by-temperature-acc-tag5"
+                    ></span>
+                  </li>
+                </ul>
+
+                <span class="show-text show-text5"></span>
+              </div>
+            </div>
+
+            <div class="slide_item item6">
+              <div class="clothes-container clothes-container6">
+                <span class="clothes-temp-area clothes-temp-area6"></span>
+                <span
+                  class="clothes-by-temperature clothes-by-temperature6"
+                ></span>
+
+                <ul
+                  class="by-temperature-clothes-list by-temperature-clothes-list6"
+                >
+                  <li class="by-temperature-outer by-temperature-outer6">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-outer-tag6"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-outer by-temperature-top6">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-top-tag6"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-outer by-temperature-pants6">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-pants-tag6"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-outer by-temperature-socks6">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-socks-tag6"
+                    ></span>
+                  </li>
+                  <li class="by-temperature-outer by-temperature-acc6">
+                    <span
+                      class="by-temperature-outer-tag by-temperature-acc-tag6"
+                    ></span>
+                  </li>
+                </ul>
+
+                <span class="show-text show-text6"></span>
+              </div>
+            </div>
+
+            <div class="slide_item item7">
+              <div class="trash"></div>
+            </div>
+            <div class="slide_prev_button slide_button">◀</div>
+            <div class="slide_next_button slide_button">▶</div>
+            <ul class="slide_pagination"></ul>
+          </div>
+        </article>
+
+        <article id="multi-container">
+          <div class="weekly-weather">
+            <p class="weekly-weather-title">주간 날씨⭐</p>
+            <ul id="weekly-weather-lists"></ul>
+          </div>
+
+          <div class="show-youtube-container">
+            <p class="show-youtube-title">날씨 예보⭐</p>
+            <div class="youtube-container"></div>
+          </div>
+
+          <div class="dressing-tips-container">
+            <p class="dressing-tip-title">Choice Tip⭐</p>
+            <div class="tip-container">
+              <div class="window">
+                <ul class="container">
+                  <li class="cell">
+                    <p class="temp-title temp-title1">🌡️ 28˚ 이상</p>
+                    <p class="temp-sub-text temp-sub-text1">
+                      "꼭.. 나가야 하는거지..?"
+                    </p>
+                    <p class="describe-temp describe-temp1">
+                      따뜻하기보다는 더운 날씨, 가급적 바깥 활동은 피해주세요!
+                    </p>
+                    <p class="recommend-clothes recommend-clothes1">
+                      추천: 민소매, 반팔 티, 반바지, 린넨 옷
+                    </p>
+                  </li>
+                  <li class="cell">
+                    <p class="temp-title temp-title2">🌡️ 27˚ ~ 23˚</p>
+                    <p class="temp-sub-text temp-sub-text2">
+                      "바깥에 오래 있을 생각은 아니지?"
+                    </p>
+                    <p class="describe-temp describe-temp2">
+                      무더위는 아니지만 더운 날씨
+                    </p>
+                    <p class="recommend-clothes recommend-clothes2">
+                      추천: 반팔, 얇은 셔츠, 반바지, 면바지
+                    </p>
+                  </li>
+                  <li class="cell">
+                    <p class="temp-title temp-title3">🌡️ 22˚ ~ 20˚</p>
+                    <p class="temp-sub-text temp-sub-text3">
+                      "따뜻한 봄, 초가을 정도의 날씨"
+                    </p>
+                    <p class="describe-temp describe-temp3">
+                      가볍게 입고 벗을 수 있는 외투 챙기는거 어떠세요?
+                    </p>
+                    <p class="recommend-clothes recommend-clothes3">
+                      추천: 가디건, 후드집업, 블레이저, 얇은 긴팔, 청바지
+                    </p>
+                  </li>
+                  <li class="cell">
+                    <p class="temp-title temp-title4">🌡️ 19˚ ~ 17˚</p>
+                    <p class="temp-sub-text temp-sub-text4">
+                      "약간은 서늘한듯, 활동하기 딱 좋은 기온"
+                    </p>
+                    <p class="describe-temp describe-temp4">
+                      산책하기 딱 좋은 날씨
+                    </p>
+                    <p class="recommend-clothes recommend-clothes4">
+                      추천: 바시티 자켓, 청자켓, 바람막이, 후드티, 니트
+                    </p>
+                  </li>
+                  <li class="cell">
+                    <p class="temp-title temp-title5">🌡️ 16˚ ~ 12˚</p>
+                    <p class="temp-sub-text temp-sub-text5">
+                      "트렌치 코트, 타이밍인거 알지?"
+                    </p>
+                    <p class="describe-temp describe-temp5">
+                      슬슬 추위를 느끼게 되는 기온, 감기 조심!
+                    </p>
+                    <p class="recommend-clothes recommend-clothes5">
+                      추천: 트렌치 코트, 간절기 자켓, 따뜻한 니트"
+                    </p>
+                  </li>
+                  <li class="cell">
+                    <p class="temp-title temp-title6">🌡️ 11˚ ~ 9˚</p>
+                    <p class="temp-sub-text temp-sub-text6">
+                      "슬슬 보온을 챙겨야하는 기온"
+                    </p>
+                    <p class="describe-temp describe-temp6">
+                      두꺼운 점퍼는 약간 덥게 느껴질 수 있지만, 어느정도 쌀쌀한
+                    </p>
+                    <p class="recommend-clothes recommend-clothes6">
+                      추천: 코트, 후리스, 가죽 자켓, 경량 패딩
+                    </p>
+                  </li>
+                  <li class="cell">
+                    <p class="temp-title temp-title7">🌡️ 8˚ ~ 5˚</p>
+                    <p class="temp-sub-text temp-sub-text7">
+                      "겨울의 시작과 끝의 온도"
+                    </p>
+                    <p class="describe-temp describe-temp7">
+                      장롱 속 패딩을 꺼내기 좋은 지금!
+                    </p>
+                    <p class="recommend-clothes recommend-clothes7">
+                      추천: 두꺼운 코트, 숏패딩, 무스탕
+                    </p>
+                  </li>
+                  <li class="cell">
+                    <p class="temp-title temp-title8">🌡️ 4˚ 이하</p>
+                    <p class="temp-sub-text temp-sub-text8">
+                      "패딩은 곧 나의 피부"
+                    </p>
+                    <p class="describe-temp describe-temp8">
+                      비니, 목도리, 장갑끼는거 어때요?
+                    </p>
+                    <p class="recommend-clothes recommend-clothes8">
+                      추천: 헤비 아우터, 롱패딩, 누빔 옷, 히트 택
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="button-container">
+                <button class="prev"><</button>
+                <button class="next">></button>
+              </div>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
-    <script src="./js/main.js"></script> 
-    <script src="./js/slider.js"></script>
-    <script type="module" src="./js/weather.js"></script> 
+
+    <footer>
+      <ul class="active-api-list">
+        <p class="active-api">활용 API</p>
+        <li class="api-list">
+          <a
+            href="https://openweathermap.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >OpenWeatherMap API
+          </a>
+          <p class="use-api">Use: 5 Day / 3 Hour Forecast</p>
+        </li>
+        <li class="api-list">
+          <a
+            href="https://developers.google.com/youtube/v3/getting-started?hl=ko"
+            target="_blank"
+            rel="noopener noreferrer"
+            >YouTube Data API v3</a
+          >
+        </li>
+      </ul>
+      <ul class="copyright-list">
+        <p class="copyright">Copyright</p>
+        <li class="ann_maulina">
+          <a
+            href="https://instagram.com/ann_maulina?igshid=NTdlMDg3MTY="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p class="title">@ann_maulina</p>
+          </a>
+          <img src="./images/weather/06시~16시.gif" alt="" />
+          <img src="./images/weather/16시~20시.gif" alt="" />
+          <img src="./images/weather/20시~06시.gif" alt="" />
+        </li>
+        <li class="weather-icon">
+          <a
+            href="https://erikflowers.github.io/weather-icons/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Weather Icons</a
+          >
+        </li>
+        <li class="clothes-icon">
+          <a
+            class="clothes-title"
+            href="https://www.flaticon.com/kr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Clothes Icon</a
+          >
+          <select
+            name="flaticon"
+            id="flaticon-list"
+            onchange="window.open(value,'_blank')"
+            rel="noopener noreferrer"
+          >
+            <option value="" selected>---저작자 리스트---</option>
+            <option value="https://www.flaticon.com/kr/authors/pixel-perfect">
+              Pixel perfect
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/neungstockr">
+              neungstockr
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/amethystdesign">
+              AmethystDesign
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/wanicon">
+              wanicon
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/nhor-phai">
+              Nhor Phai
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/victoruler">
+              Victoruler
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/pronicon">
+              Pronicon
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/umeicon">
+              Umeicon
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/kmg-design">
+              kmg design
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/iconixar">
+              iconixar
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/smashicons">
+              Smashicons
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/bzzrincantation">
+              BZZRINCANTATION
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/nawicon">
+              nawicon
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/pongsakornred">
+              pongsakornRed
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/slidicon">
+              Slidicon
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/uniconlabs">
+              Uniconlabs
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/rudiyana">
+              Rudiyana
+            </option>
+            <option
+              value="https://www.flaticon.com/kr/authors/alfian-dwi-hartanto"
+            >
+              Alfian Dwi Hartanto
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/witdhawaty">
+              Witdhawaty
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/safaruly">
+              Safaruly
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/fliqqer">
+              Fliqqer
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/surang">
+              surang
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/hasymi">
+              Hasymi
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/lumi">
+              Lumi
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/pojok-d">
+              pojok d
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/toz-icon">
+              ToZ Icon
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/microstd">
+              microstd
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/atif-arshad">
+              Atif Arshad
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/eucalyp">
+              Eucalyp
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/muhammad-usman">
+              Muhammad_Usman
+            </option>
+            <option value="https://www.freepik.com">Freepik</option>
+            <option value="https://www.flaticon.com/kr/authors/futuer">
+              Futuer
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/juicy-fish">
+              juicy_fish
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/maan-icons">
+              Maan Icons
+            </option>
+            <option
+              value="https://www.flaticon.com/kr/authors/nathania-desmonda-tjipto"
+            >
+              Nathania Desmonda Tjipto
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/graphixs-art">
+              Graphix's Art
+            </option>
+            <option
+              value="https://www.flaticon.com/kr/authors/rizky-maulidhani"
+            >
+              rizky maulidhani
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/aswell-studio">
+              Aswell Studio
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/justicon">
+              justicon
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/victoruler">
+              Victoruler
+            </option>
+            <option
+              value="https://www.flaticon.com/kr/authors/amonrat-rungreangfangsai"
+            >
+              amonrat rungreangfangsai
+            </option>
+            <option value="https://www.flaticon.com/kr/free-icons/">
+              Freepik
+            </option>
+            <option value="https://www.flaticon.com/authors/amethystdesign">
+              AmethystDesign
+            </option>
+            <option
+              value="https://www.flaticon.com/kr/authors/vitaly-gorbachev"
+            >
+              Vitaly Gorbachev
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/victoruler">
+              Victoruler
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/iconixar">
+              iconixar
+            </option>
+            <option value="https://www.flaticon.com/kr/authors/lapiyee">
+              lapiyee
+            </option>
+          </select>
+        </li>
+      </ul>
+      <ul class="contact-me">
+        <p class="title">Contact Me</p>
+        <li>
+          <a
+            class="instagram"
+            href="https://instagram.com/zenghyun?igshid=NTdlMDg3MTY="
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="bx bxl-instagram"></i
+          ></a>
+        </li>
+        <li>
+          <a class="mail" href="mailto:pipo36@naver.com"
+            ><i class="bx bx-envelope"></i
+          ></a>
+        </li>
+        <li>
+          <a class="phone" href="tel:010-7767-2138"
+            ><i class="bx bx-phone-call"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            class="github"
+            href="https://github.com/zenghyun/weatherProject"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="bx bxl-github"></i
+          ></a>
+        </li>
+      </ul>
+    </footer>
+
+    <script src="./js/index/scroll.js"></script>
+    <script src="./js/index/clothesSlider.js"></script>
+    <script src="./js/index/getYoutube.js"></script>
+    <script src="./js/index/choiceTip.js"></script>
+    <script type="module" src="./js/index/weather.js"></script>
   </body>
 </html>
-
-<!-- 
-  <div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/roundicons-premium" title="Roundicons Premium">Roundicons Premium</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/neungstockr" title="neungstockr">neungstockr</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/amethystdesign" title="AmethystDesign">AmethystDesign</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/wanicon" title="wanicon">wanicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/nhor-phai" title="Nhor Phai">Nhor Phai</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/victoruler" title="Victoruler">Victoruler</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pronicon" title="Pronicon">Pronicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/umeicon" title="Umeicon">Umeicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/kmg-design" title="kmg design">kmg design</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/iconixar" title="iconixar">iconixar</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/bzzrincantation" title="BZZRINCANTATION">BZZRINCANTATION</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/nawicon" title="nawicon">nawicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pongsakornred" title="pongsakornRed">pongsakornRed</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/slidicon" title="Slidicon">Slidicon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/uniconlabs" title="Uniconlabs">Uniconlabs</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/rudiyana" title="Rudiyana">Rudiyana</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/alfian-dwi-hartanto" title="Alfian Dwi Hartanto">Alfian Dwi Hartanto</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/witdhawaty" title="Witdhawaty">Witdhawaty</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/safaruly" title="Safaruly">Safaruly</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/fliqqer" title="Fliqqer">Fliqqer</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/hasymi" title="Hasymi">Hasymi</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/lumi" title="Lumi">Lumi</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/pojok-d" title="pojok d">pojok d</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/toz-icon" title="ToZ Icon">ToZ Icon</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/microstd" title="microstd">microstd</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/atif-arshad" title="Atif Arshad">Atif Arshad</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/muhammad-usman" title="Muhammad_Usman">Muhammad_Usman</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/futuer" title="Futuer">Futuer</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/juicy-fish" title="juicy_fish">juicy_fish</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/maan-icons" title="Maan Icons">Maan Icons</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/nathania-desmonda-tjipto" title="Nathania Desmonda Tjipto">Nathania Desmonda Tjipto</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/graphixs-art" title="Graphix's Art">Graphix's Art</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/rizky-maulidhani" title="rizky maulidhani">rizky maulidhani</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div><div>아이콘 제작자 <a href="https://www.flaticon.com/kr/authors/aswell-studio" title="Aswell Studio">Aswell Studio</a> from <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a></div>
-
- -->

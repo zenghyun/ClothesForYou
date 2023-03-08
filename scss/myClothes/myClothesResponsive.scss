@@ -1,0 +1,529 @@
+@media screen and (max-width: 1710px) {
+  body {
+    & #main-container {
+      grid-template-columns: 0.3fr 1fr;
+      & #left-aside {
+        & .sub-weather {
+          width: 300px;
+          margin-left: 20px;
+          background-size: 210%;
+        }
+      }
+      & #main-section {
+        & .upload-picture-container {
+          & .title {
+            margin-left: -50px;
+          }
+          & .upload-area {
+            & .img-upload-btn {
+              width: 110px;
+            }
+            & #fileName-preview {
+              width: 200px;
+              font-size: 10px;
+            }
+          }
+          & .picture-container {
+            width: 480px;
+            & .img-preview {
+              width: 480px;
+              & .upload-container {
+                width: 200px;
+                & .log {
+                  width: 180px;
+                }
+                & img {
+                  width: 180px;
+                  height: 230px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1460px) {
+  body {
+    height: 1750px;
+
+    & header {
+      grid-template-columns: 1.5fr 2fr 3fr;
+      z-index: 1000;
+    }
+    & #main-container {
+      grid-template-columns: 1fr;
+      & #left-aside {
+        height: 450px;
+        display: grid;
+        justify-items: center;
+        & .sub-weather {
+          position: absolute;
+          width: 650px;
+          height: 320px;
+          background-size: 130%;
+          & #sub-weather-lists {
+            & .weather-item {
+              & .weather-main {
+                & .wi {
+                  font-size: 120px;
+                }
+              }
+              & .temp {
+                font-size: 60px;
+              }
+              & .time {
+                font-size: 32px;
+              }
+              & .weather-data {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+      }
+      & #main-section {
+        grid-column: 1/-1;
+        & .upload-picture-container {
+          & .title {
+            margin-left: -30px;
+          }
+          & .upload-area {
+            & .img-upload-btn {
+              width: 100px;
+            }
+            & #fileName-preview {
+              width: 200px;
+              font-size: 10px;
+            }
+            & .delete-all {
+              width: 80px;
+            }
+          }
+          & .picture-container {
+            width: 450px;
+            & .img-preview {
+              width: 450px;
+              & .upload-container {
+                width: 220px;
+                & .log {
+                  width: 160px;
+                }
+                & img {
+                  width: 160px;
+                  height: 230px;
+                }
+                & span {
+                  margin-left: 160px;
+                }
+              }
+            }
+          }
+        }
+        & .color-arrangement-container {
+          & .title {
+            margin-left: -340px;
+          }
+          & .explain {
+            margin-left: -200px;
+          }
+          & .color-match-area {
+            grid-template-columns: repeat(2, 250px);
+            grid-template-rows: repeat(2, 295px);
+          }
+        }
+      }
+    }
+    footer {
+      display: grid;
+      grid-template-columns: 0.6fr 1.2fr;
+      grid-template-rows: 150px 150px;
+      justify-items: center;
+      & .copyright-list {
+        grid-row: 2/-1;
+        grid-column: 1/-1;
+        grid-template-columns: 400px 200px 200px;
+      }
+      & .contact-me {
+        & li {
+          font-size: 48px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    height: 2550px;
+    & #main-container {
+      & #main-section {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 780px);
+        & .upload-picture-container {
+          margin-top: 0;
+          display: grid;
+          grid-column: 1/-1;
+          grid-row: 1/2;
+          & .title {
+            margin-left: 10px;
+          }
+          & .upload-area {
+            & .img-upload-btn {
+              width: 130px;
+            }
+            & #fileName-preview {
+              width: 250px;
+              font-size: 10px;
+            }
+            & .delete-all {
+              width: 110px;
+            }
+          }
+          & .picture-container {
+            width: 550px;
+            & .img-preview {
+              width: 550px;
+              & .upload-container {
+                width: 250px;
+                & .log {
+                  width: 210px;
+                  font-size: 18px;
+                }
+                & img {
+                  width: 220px;
+                  height: 230px;
+                }
+                 & span {
+                  margin-left: 210px;
+                }
+              }
+            }
+          }
+        }
+        & .color-arrangement-container {
+          margin-top: 0;
+          display: grid;
+          grid-column: 1/-1;
+          grid-row: 2/-1;
+          & .title {
+            margin-left: 0px;
+          }
+          & .explain {
+            margin-left: 0;
+          }
+          & .color-match-area {
+            grid-template-columns: repeat(2, 350px);
+            grid-template-rows: repeat(2, 345px);
+          }
+        }
+      }
+    }
+    footer {
+      & .copyright-list {
+        grid-template-columns: 300px 200px 200px;
+        & .ann_maulina {
+          & img {
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    & header {
+      grid-template-columns:1fr 1fr;
+      & .logo {
+      min-width: 150px;
+        font-size: 1.5rem;
+      }
+      & nav {
+        & ul {
+          font-size: 14px;
+          & li:last-child{
+            grid-column: 3/-1;
+          }
+        }
+      }
+    }
+    & #main-container {
+      & #left-aside {
+        & .sub-weather {
+          width: 450px;
+          background-size: 180%;
+          margin-left: -20px;
+          & #sub-weather-lists {
+            & .weather-item {
+              & .weather-main {
+                & .wi {
+                  font-size: 120px;
+                }
+              }
+              & .temp {
+                font-size: 60px;
+              }
+              & .time {
+                font-size: 32px;
+              }
+              & .weather-data {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+      }
+      & #main-section {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 780px);
+        & .upload-picture-container {
+          margin-top: 0;
+          display: grid;
+          grid-column: 1/-1;
+          grid-row: 1/2;
+          & .title {
+            margin-left: 0px;
+          }
+          & .upload-area {
+            & .img-upload-btn {
+              width: 110px;
+            }
+            & #fileName-preview {
+              width: 200px;
+              font-size: 10px;
+            }
+          }
+          & .picture-container {
+            width: 480px;
+            & .img-preview {
+              width: 480px;
+              & .upload-container {
+                width: 200px;
+                & .log {
+                  width: 180px;
+                }
+                & img {
+                  width: 180px;
+                  height: 230px;
+                }
+                & span {
+                  margin-left: 170px;
+                }
+              }
+            }
+          }
+        }
+        & .color-arrangement-container {
+          margin-top: 0;
+          display: grid;
+          grid-column: 1/-1;
+          grid-row: 2/-1;
+          & .title {
+            margin-left: 0px;
+          }
+          & .explain {
+            margin-left: 0;
+          }
+          & .color-match-area {
+            grid-template-columns: repeat(2, 250px);
+            grid-template-rows: repeat(2, 295px);
+            & .clothes-box {
+              font-size: 60px;
+            }
+          }
+        }
+      }
+    }
+    footer {
+      margin-top: 20px;
+      grid-template-rows: 150px 250px;
+      & .copyright-list {
+        grid-row: 2/-1;
+        grid-column: 1/-1;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 2fr 1fr;
+        & .copyright {
+          font-size: 30px;
+        }
+        & .ann_maulina {
+          grid-row: 2/3;
+          grid-column: 1/-1;
+          a {
+            font-size: 20px;
+          }
+          img {
+            width: 150px;
+          }
+        }
+        & .weather-icon {
+          grid-row: 3/4;
+        }
+        & .clothes-icon {
+          grid-row: 3/4;
+        }
+      }
+      & .contact-me {
+        li {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body {
+    height: 3450px;
+    & #main-container {
+      & #left-aside {
+        & .sub-weather {
+          width: 350px;
+          height: 260px;
+          background-size: 225%;
+          & #sub-weather-lists {
+            & .weather-item {
+              & .weather-main {
+                & .wi {
+                  font-size: 100px;
+                }
+              }
+              & .temp {
+                font-size: 60px;
+              }
+              & .time {
+                font-size: 24px;
+              }
+              & .weather-data {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+      & #main-section {
+        margin-top: -200px;
+        grid-template-columns: 1fr;
+        & .upload-picture-container {
+          & .title {
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            & .explain {
+              margin-top: 20px;
+              margin-left: -15px;
+            }
+          }
+          & .upload-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(2, 40px);
+            & .img-upload-btn {
+              width: 140px;
+              grid-row: 2/3;
+            }
+            & #fileName-preview {
+              grid-column: 1/-1;
+              width: 350px;
+              font-size: 14px;
+            }
+            & .delete-all {
+              grid-row: 2/3;
+              width:150px;
+            }
+          }
+          & .picture-container {
+            width: 360px;
+            & .img-preview {
+              width: 360px;
+              & .upload-container {
+                width: 150px;
+                & .log {
+                  width: 140px;
+                  font-size: 12px;
+                }
+                & img {
+                  width: 140px;
+                  height: 180px;
+                }
+                & span {
+                  margin-left: 150px;
+                }
+              }
+            }
+          }
+        }
+        & .color-arrangement-container {
+          margin-top: 50px;
+          display: grid;
+          grid-column: 1/-1;
+          grid-row: 2/-1;
+          & .title {
+            margin-left: 0px;
+          }
+          & .explain {
+            margin-left: 0;
+          }
+          & .color-match-area {
+            grid-template-columns: repeat(1, 300px);
+            grid-template-rows: repeat(4, 295px);
+            gap: 30px;
+            & .clothes-box {
+              font-size: 80px;
+            }
+          }
+        }
+      }
+    }
+    footer {
+      margin-top: 500px;
+      grid-template-rows: 150px 150px 250px;
+      & .active-api-list {
+        grid-column: 1/-1;
+        margin-top: -20px;
+        margin-left: -50px;
+      & .active-api{
+          font-size: 30px;
+        }
+       & li{
+        & a {
+          font-size: 20px;
+        }
+         & .use-api{
+            font-size: 20px;
+          }
+        }
+      }
+      & .copyright-list {
+        grid-column: 1/-1;
+        grid-row: 3/4;
+        justify-items: center;
+        & .copyright {
+          font-size: 30px;
+        }
+        & .ann_maulina {
+          margin-left: 20px;
+          a {
+            font-size: 20px;
+          }
+          img {
+            width: 100px;
+          }
+        }
+      }
+      & .contact-me {
+        grid-column: 1/-1;
+        margin-left: 0px;
+        & .title {
+          font-size: 30px;
+        }
+        & li {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}

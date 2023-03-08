@@ -1,6 +1,8 @@
 import { clothesTemperature, clothesRoute } from './clothesLists.mjs';
 
-export const getClothesByTemperature = (num,i)=> {
+
+
+function getClothesByTemperature (num,i) {
  
     let closet = [
         {  

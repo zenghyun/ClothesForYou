@@ -1,0 +1,639 @@
+@media screen and (max-width: 1785px) {
+  body {
+    & #main-container {
+      grid-template-columns: 0.3fr 1fr;
+      & #left-aside {
+        height: 230vh;
+        & .sub-weather {
+          margin-left: 20px;
+          background-size: 210%;
+        }
+      }
+      & #main-section {
+        grid-template-rows: repeat(3,400px) calc(550px + 500px);
+        & #weather-container {
+          justify-content: flex-start;
+          & .weather {
+            width: 850px;
+          }
+          & .weather-period {
+            padding-left: 160px;
+          }
+        }
+        #slide-container {
+          & .slide {
+            width: 900px;
+          }
+        }
+      }
+      & #multi-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 500px);
+        gap: 60px;
+        width: 100%;
+        height: 100%;
+        justify-items: center;
+        & .weekly-weather {
+          width: 400px;
+        }
+        & .show-youtube-container {
+          grid-row: 2/-1;
+          grid-column: 1/-1;
+          & .youtube-container {
+            width: 600px;
+          }
+        }
+        & .dressing-tips-container {
+          grid-column: 2/3;
+          width: 400px;
+        }
+      }
+    }
+    footer {
+      margin-top: -20px;
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  body {
+    & header {
+      grid-template-columns: 1.5fr 2fr 3fr;
+      z-index: 1000;
+    }
+    & #main-container {
+      grid-template-columns: 1fr;
+      & #left-aside {
+        height: 420px;
+        display: grid;
+        justify-items: center;
+        & .sub-weather {
+          position: absolute;
+          height: 340px;
+          width: 800px;
+          background-size: 115%;
+          margin-left: -10px;
+          & #sub-weather-lists {
+            & .weather-item {
+              & .weather-main {
+                & .wi {
+                  font-size: 150px;
+                }
+              }
+              & .temp {
+                font-size: 80px;
+              }
+              & .time {
+                font-size: 32px;
+              }
+              & .weather-data {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+      }
+      & #main-section {
+        & #weather-container {
+          & .weather {
+            width: 900px;
+          }
+          & .weather-period {
+            padding-left: 100px;
+          }
+        }
+      }
+      & #multi-container {
+        & .weekly-weather {
+          width: 350px;
+        }
+      }
+    }
+    footer {
+      grid-template-columns: 0.6fr 1.2fr;
+      grid-template-rows: 150px 150px;
+      justify-items: center;
+      & .copyright-list {
+        grid-row: 2/-1;
+        grid-column: 1/-1;
+        grid-template-columns: 400px 200px 200px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    & #main-container {
+      & #left-aside {
+        & .sub-weather {
+          width: 600px;
+          background-size: 150%;
+          & #sub-weather-lists {
+            & .weather-item {
+              & .weather-main {
+                & .wi {
+                  font-size: 130px;
+                }
+              }
+              & .temp {
+                font-size: 60px;
+              }
+              & .time {
+                font-size: 24px;
+              }
+              & .weather-data {
+                font-size: 24px;
+              }
+            }
+          }
+        }
+      }
+      & #main-section {
+        & #weather-container {
+          & .weather {
+            width: 700px;
+          }
+          & .weather-period {
+            padding-left: 220px;
+            font-size: 20px;
+          }
+        }
+        #slide-container {
+          & .slide {
+            width: 700px;
+            & .slide_item {
+              & .clothes-container {
+                & .clothes-temp-area {
+                  font-size: 20px;
+                }
+                & .by-temperature-clothes-list {
+                  gap: 50px;
+                  li {
+                    margin-top: 30px;
+                    width: 80px;
+                    height: 80px;
+                    text-align: center;
+                    background-position: center center;
+                    background-size: cover;
+                    span {
+                      line-height: 250px;
+                      font-size: 14px;
+                      text-shadow: none;
+                    }
+                  }
+                }
+                & .show-text {
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    footer {
+      margin-top: 20px;
+      grid-template-rows: 150px 250px;
+      & .copyright-list {
+        grid-row: 2/-1;
+        grid-column: 1/-1;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr 2fr 1fr;
+        & .copyright {
+          font-size: 30px;
+        }
+        & .ann_maulina {
+          grid-row: 2/3;
+          grid-column: 1/-1;
+          a {
+            font-size: 20px;
+          }
+          img {
+            width: 150px;
+          }
+        }
+        & .weather-icon {
+          grid-row: 3/4;
+        }
+        & .clothes-icon {
+          grid-row: 3/4;
+        }
+      }
+      & .contact-me {
+        li {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    & header {
+      grid-template-columns: 1fr 4fr;
+      & .logo {
+        font-size: 1.4rem;
+      }
+      & nav {
+        grid-column: 2/-1;
+        & ul {
+          font-size: 14px;
+        }
+      }
+    }
+    & #main-container {
+      & #left-aside {
+        display: grid;
+        justify-items: center;
+        & .sub-weather {
+          position: absolute;
+          width: 500px;
+          height: 260px;
+          background-size: 190%;
+          margin-left: -10px;
+          & #sub-weather-lists {
+            & .weather-item {
+              & .weather-main {
+                & .wi {
+                  font-size: 100px;
+                }
+              }
+              & .temp {
+                font-size: 50px;
+              }
+              & .time {
+                font-size: 18px;
+              }
+              & .weather-data {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+      & #main-section {
+        grid-template-rows: 400px repeat(2,350px) calc(550px + 450px + 500px);
+        margin-top: -10px;
+        & #weather-container {
+          & .weather {
+            width: 500px;
+          }
+          & .weather-period {
+            padding-left: 380px;
+            font-size: 18px;
+          }
+        }
+        #slide-container {
+          & .slide {
+            width: 500px;
+            height: 500px;
+            & .slide_item {
+              & .clothes-container {
+                grid-template-rows: 64px 64px 64px 100px;
+                margin-top: -200px;
+                & .clothes-temp-area {
+                  font-size: 20px;
+                }
+                & .by-temperature-clothes-list {
+                  gap: 40px;
+                  li {
+                    width: 64px;
+                    height: 64px;
+                    text-align: center;
+                    background-position: center center;
+                    background-size: cover;
+                    span {
+                      line-height: 200px;
+                      font-size: 12px;
+                      text-shadow: none;
+                    }
+                  }
+                }
+                & .show-text {
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+        & #multi-container {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(3, 1fr);
+          & .weekly-weather {
+            grid-column: 1/-1;
+            width: 350px;
+          }
+          & .show-youtube-container {
+            grid-row: 3/4;
+            grid-column: 1/-1;
+            & .youtube-container {
+              width: 520px;
+            }
+          }
+          & .dressing-tips-container {
+            grid-row: 2/3;
+            grid-column: 1/-1;
+          }
+        }
+      }
+    }
+    footer {
+      & .active-api-list {
+        & .api-list {
+          font-size: 14px;
+        }
+      }
+      & .contact-me {
+        li {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  body {
+    & header {
+      grid-template-columns:1fr 1fr;
+      & .logo {
+      min-width: 150px;
+        font-size: 1.5rem;
+      }
+      & nav {
+        & ul {
+          font-size: 14px;
+          & li:last-child{
+            grid-column: 3/-1;
+          }
+        }
+      }
+    }
+    & #main-container {
+      & #left-aside {
+        & .sub-weather {
+          width: 350px;
+            }
+          }
+      & #main-section {
+        & #weather-container {
+          & .weather {
+            width: 400px;
+            height: 350px;
+          }
+          & .weather-period {
+            padding-left: 480px;
+            font-size: 18px;
+          }
+        }
+        #slide-container {
+          & .slide {
+            width: 400px;
+            height: 450px;
+            & .slide_item {
+              height: 450px;
+              & .clothes-container {
+                margin-top: -200px;
+                & .clothes-temp-area {
+                  font-size: 16px;
+                }
+                & .clothes-by-temperature{
+                  font-size: 32px;
+                 }
+                & .by-temperature-clothes-list {
+                  gap: 25px;
+                  li {
+                    width: 56px;
+                    height: 56px;
+                    span {
+                      line-height: 150px;
+                      font-size: 12px;
+                    }
+                  }
+                }
+                & .show-text {
+                  font-size: 11px;
+                }
+              }
+            }
+          }
+          & .slide_button {
+            width: 20px;
+            height: 20px;
+          }
+
+        }
+        & #multi-container {
+          & .weekly-weather {
+            width: 350px;
+          }
+          & .show-youtube-container {
+            & .youtube-container {
+              width: 380px;
+             & .thumbnail{
+                width: 350px;
+                height: 260px;
+                border-radius: 20px;
+                background-position: center center;
+                background-size:cover;
+                margin-bottom: 20px;
+              }
+              & .thumbnail-title{
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    footer {
+      margin-top: 20px;
+      grid-template-rows: 150px 150px 250px;
+      & .active-api-list {
+        grid-column: 1/-1;
+        margin-top: -20px;
+        margin-left: -50px;
+      & .active-api{
+          font-size: 30px;
+        }
+       & li{
+        & a {
+          font-size: 20px;
+        }
+         & .use-api{
+            font-size: 20px;
+          }
+        }
+      }
+      & .copyright-list {
+        grid-column: 1/-1;
+        grid-row: 3/4;
+        justify-items: center;
+        & .copyright {
+          font-size: 30px;
+        }
+        & .ann_maulina {
+          margin-left: 20px;
+          a {
+            font-size: 20px;
+          }
+          img {
+            width: 100px;
+          }
+        }
+      }
+      & .contact-me {
+        grid-column: 1/-1;
+        margin-left: 0px;
+        & .title {
+          font-size: 30px;
+        }
+        & li {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 420px) {
+  body {
+    & #main-container {
+      & #left-aside {
+        & .sub-weather {
+          width: 250px;
+          background-size: 200%;
+            }
+          }
+      & #main-section {
+        grid-template-rows: 350px 200px 450px calc(550px + 450px + 500px);
+        & #weather-container {
+          & .weather {
+            width: 360px;
+            height: 300px;
+            & #weather-lists {
+              & .weather-item{
+              & .weather-main {
+                width: 150px;
+                height: 50px;
+                .wi {
+                  font-size: 32px;
+                }
+              }
+            }
+          }
+          & .weather-period {
+            padding-left: 500px;
+            font-size: 15px;
+          }
+        }
+        }
+        #slide-container {
+          & .slide {
+            width: 350px;
+            height: 450px;
+            & .slide_item {
+              height: 450px;
+              & .clothes-container {
+                margin-top: -200px;
+                & .clothes-temp-area {
+                  font-size: 12px;
+                }
+                & .clothes-by-temperature{
+                  font-size: 25px;
+                 }
+                & .by-temperature-clothes-list {
+                  display: flex;
+                  justify-content: space-evenly;
+                  li {
+                    width: 40px;
+                    height: 40px;
+                    span {
+                      line-height: 150px;
+                      font-size: 10px;
+                    }
+                  }
+                }
+                & .show-text {
+                  padding:  0 10px;
+                  font-size: 12.2px;
+                  line-height: 20px;
+                }
+              }
+            }
+          }
+        }
+        & #multi-container {
+          & .weekly-weather {
+            width: 350px;
+          }
+          & .dressing-tips-container {
+            & .tip-container{
+              width: 300px;
+              .window {
+                width:300px;
+              }
+              .container {
+                width: 1800px;
+              }
+                .cell {
+                  width: 280px;
+                  .temp-title{
+                    margin-top: 20px;
+                    font-size: 30px;
+                  }
+                  .temp-sub-text {
+                    font-size: 16px;
+                    margin-bottom: 40px;
+                    color: #957cfa;
+                    text-shadow: 5px 5px 3px #e4e7ea;
+                  }
+                  .describe-temp {
+                    padding: 0 15px;
+                    font-size: 16px;
+                    margin-bottom: 50px;
+                  }
+                  .recommend-clothes {
+                    padding: 0 15px;
+                    font-size: 18px;
+                  }
+                }
+                
+                button {
+                  font-size: 20px;
+                  width: 28px;
+                  height: 28px;
+                  background-color: #6e7567;
+                  border-radius: 10px;
+                  color: #fff;
+                  font-family: "Jua", sans-serif;
+                  border: none;
+                  cursor: pointer;
+                }
+            }
+          }
+          & .show-youtube-container {
+            & .youtube-container {
+              width: 360px;
+             & .thumbnail{
+                width: 340px;
+                height: 260px;
+                border-radius: 20px;
+                background-position: center center;
+                background-size:cover;
+                margin-bottom: 20px;
+              }
+              & .thumbnail-title{
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

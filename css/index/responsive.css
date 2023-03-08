@@ -1,0 +1,526 @@
+@media screen and (max-width: 1785px) {
+  body #main-container {
+    grid-template-columns: 0.3fr 1fr;
+  }
+  body #main-container #left-aside {
+    height: 230vh;
+  }
+  body #main-container #left-aside .sub-weather {
+    margin-left: 20px;
+    background-size: 210%;
+  }
+  body #main-container #main-section {
+    grid-template-rows: repeat(3, 400px) 1050px;
+  }
+  body #main-container #main-section #weather-container {
+    justify-content: flex-start;
+  }
+  body #main-container #main-section #weather-container .weather {
+    width: 850px;
+  }
+  body #main-container #main-section #weather-container .weather-period {
+    padding-left: 160px;
+  }
+  body #main-container #main-section #slide-container .slide {
+    width: 900px;
+  }
+  body #main-container #multi-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 500px);
+    gap: 60px;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+  }
+  body #main-container #multi-container .weekly-weather {
+    width: 400px;
+  }
+  body #main-container #multi-container .show-youtube-container {
+    grid-row: 2/-1;
+    grid-column: 1/-1;
+  }
+  body #main-container #multi-container .show-youtube-container .youtube-container {
+    width: 600px;
+  }
+  body #main-container #multi-container .dressing-tips-container {
+    grid-column: 2/3;
+    width: 400px;
+  }
+  body footer {
+    margin-top: -20px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  body header {
+    grid-template-columns: 1.5fr 2fr 3fr;
+    z-index: 1000;
+  }
+  body #main-container {
+    grid-template-columns: 1fr;
+  }
+  body #main-container #left-aside {
+    height: 420px;
+    display: grid;
+    justify-items: center;
+  }
+  body #main-container #left-aside .sub-weather {
+    position: absolute;
+    height: 340px;
+    width: 800px;
+    background-size: 115%;
+    margin-left: -10px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-main .wi {
+    font-size: 150px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .temp {
+    font-size: 80px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .time {
+    font-size: 32px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-data {
+    font-size: 24px;
+  }
+  body #main-container #main-section #weather-container .weather {
+    width: 900px;
+  }
+  body #main-container #main-section #weather-container .weather-period {
+    padding-left: 100px;
+  }
+  body #main-container #multi-container .weekly-weather {
+    width: 350px;
+  }
+  body footer {
+    grid-template-columns: 0.6fr 1.2fr;
+    grid-template-rows: 150px 150px;
+    justify-items: center;
+  }
+  body footer .copyright-list {
+    grid-row: 2/-1;
+    grid-column: 1/-1;
+    grid-template-columns: 400px 200px 200px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  body #main-container #left-aside .sub-weather {
+    width: 600px;
+    background-size: 150%;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-main .wi {
+    font-size: 130px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .temp {
+    font-size: 60px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .time {
+    font-size: 24px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-data {
+    font-size: 24px;
+  }
+  body #main-container #main-section #weather-container .weather {
+    width: 700px;
+  }
+  body #main-container #main-section #weather-container .weather-period {
+    padding-left: 220px;
+    font-size: 20px;
+  }
+  body #main-container #main-section #slide-container .slide {
+    width: 700px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-temp-area {
+    font-size: 20px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list {
+    gap: 50px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li {
+    margin-top: 30px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    background-position: center center;
+    background-size: cover;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li span {
+    line-height: 250px;
+    font-size: 14px;
+    text-shadow: none;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .show-text {
+    font-size: 18px;
+  }
+  body footer {
+    margin-top: 20px;
+    grid-template-rows: 150px 250px;
+  }
+  body footer .copyright-list {
+    grid-row: 2/-1;
+    grid-column: 1/-1;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 2fr 1fr;
+  }
+  body footer .copyright-list .copyright {
+    font-size: 30px;
+  }
+  body footer .copyright-list .ann_maulina {
+    grid-row: 2/3;
+    grid-column: 1/-1;
+  }
+  body footer .copyright-list .ann_maulina a {
+    font-size: 20px;
+  }
+  body footer .copyright-list .ann_maulina img {
+    width: 150px;
+  }
+  body footer .copyright-list .weather-icon {
+    grid-row: 3/4;
+  }
+  body footer .copyright-list .clothes-icon {
+    grid-row: 3/4;
+  }
+  body footer .contact-me li {
+    font-size: 36px;
+  }
+}
+@media screen and (max-width: 768px) {
+  body header {
+    grid-template-columns: 1fr 4fr;
+  }
+  body header .logo {
+    font-size: 1.4rem;
+  }
+  body header nav {
+    grid-column: 2/-1;
+  }
+  body header nav ul {
+    font-size: 14px;
+  }
+  body #main-container #left-aside {
+    display: grid;
+    justify-items: center;
+  }
+  body #main-container #left-aside .sub-weather {
+    position: absolute;
+    width: 500px;
+    height: 260px;
+    background-size: 190%;
+    margin-left: -10px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-main .wi {
+    font-size: 100px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .temp {
+    font-size: 50px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .time {
+    font-size: 18px;
+  }
+  body #main-container #left-aside .sub-weather #sub-weather-lists .weather-item .weather-data {
+    font-size: 20px;
+  }
+  body #main-container #main-section {
+    grid-template-rows: 400px repeat(2, 350px) 1500px;
+    margin-top: -10px;
+  }
+  body #main-container #main-section #weather-container .weather {
+    width: 500px;
+  }
+  body #main-container #main-section #weather-container .weather-period {
+    padding-left: 380px;
+    font-size: 18px;
+  }
+  body #main-container #main-section #slide-container .slide {
+    width: 500px;
+    height: 500px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container {
+    grid-template-rows: 64px 64px 64px 100px;
+    margin-top: -200px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-temp-area {
+    font-size: 20px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list {
+    gap: 40px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li {
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    background-position: center center;
+    background-size: cover;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li span {
+    line-height: 200px;
+    font-size: 12px;
+    text-shadow: none;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .show-text {
+    font-size: 14px;
+  }
+  body #main-container #main-section #multi-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+  body #main-container #main-section #multi-container .weekly-weather {
+    grid-column: 1/-1;
+    width: 350px;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container {
+    grid-row: 3/4;
+    grid-column: 1/-1;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container .youtube-container {
+    width: 520px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container {
+    grid-row: 2/3;
+    grid-column: 1/-1;
+  }
+  body footer .active-api-list .api-list {
+    font-size: 14px;
+  }
+  body footer .contact-me li {
+    font-size: 36px;
+  }
+}
+@media screen and (max-width: 576px) {
+  body header {
+    grid-template-columns: 1fr 1fr;
+  }
+  body header .logo {
+    min-width: 150px;
+    font-size: 1.5rem;
+  }
+  body header nav ul {
+    font-size: 14px;
+  }
+  body header nav ul li:last-child {
+    grid-column: 3/-1;
+  }
+  body #main-container #left-aside .sub-weather {
+    width: 350px;
+  }
+  body #main-container #main-section #weather-container .weather {
+    width: 400px;
+    height: 350px;
+  }
+  body #main-container #main-section #weather-container .weather-period {
+    padding-left: 480px;
+    font-size: 18px;
+  }
+  body #main-container #main-section #slide-container .slide {
+    width: 400px;
+    height: 450px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item {
+    height: 450px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container {
+    margin-top: -200px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-temp-area {
+    font-size: 16px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-by-temperature {
+    font-size: 32px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list {
+    gap: 25px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li {
+    width: 56px;
+    height: 56px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li span {
+    line-height: 150px;
+    font-size: 12px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .show-text {
+    font-size: 11px;
+  }
+  body #main-container #main-section #slide-container .slide_button {
+    width: 20px;
+    height: 20px;
+  }
+  body #main-container #main-section #multi-container .weekly-weather {
+    width: 350px;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container .youtube-container {
+    width: 380px;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container .youtube-container .thumbnail {
+    width: 350px;
+    height: 260px;
+    border-radius: 20px;
+    background-position: center center;
+    background-size: cover;
+    margin-bottom: 20px;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container .youtube-container .thumbnail-title {
+    font-size: 14px;
+  }
+  body footer {
+    margin-top: 20px;
+    grid-template-rows: 150px 150px 250px;
+  }
+  body footer .active-api-list {
+    grid-column: 1/-1;
+    margin-top: -20px;
+    margin-left: -50px;
+  }
+  body footer .active-api-list .active-api {
+    font-size: 30px;
+  }
+  body footer .active-api-list li a {
+    font-size: 20px;
+  }
+  body footer .active-api-list li .use-api {
+    font-size: 20px;
+  }
+  body footer .copyright-list {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    justify-items: center;
+  }
+  body footer .copyright-list .copyright {
+    font-size: 30px;
+  }
+  body footer .copyright-list .ann_maulina {
+    margin-left: 20px;
+  }
+  body footer .copyright-list .ann_maulina a {
+    font-size: 20px;
+  }
+  body footer .copyright-list .ann_maulina img {
+    width: 100px;
+  }
+  body footer .contact-me {
+    grid-column: 1/-1;
+    margin-left: 0px;
+  }
+  body footer .contact-me .title {
+    font-size: 30px;
+  }
+  body footer .contact-me li {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 420px) {
+  body #main-container #left-aside .sub-weather {
+    width: 250px;
+    background-size: 200%;
+  }
+  body #main-container #main-section {
+    grid-template-rows: 350px 200px 450px 1500px;
+  }
+  body #main-container #main-section #weather-container .weather {
+    width: 360px;
+    height: 300px;
+  }
+  body #main-container #main-section #weather-container .weather #weather-lists .weather-item .weather-main {
+    width: 150px;
+    height: 50px;
+  }
+  body #main-container #main-section #weather-container .weather #weather-lists .weather-item .weather-main .wi {
+    font-size: 32px;
+  }
+  body #main-container #main-section #weather-container .weather .weather-period {
+    padding-left: 500px;
+    font-size: 15px;
+  }
+  body #main-container #main-section #slide-container .slide {
+    width: 350px;
+    height: 450px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item {
+    height: 450px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container {
+    margin-top: -200px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-temp-area {
+    font-size: 12px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .clothes-by-temperature {
+    font-size: 25px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li {
+    width: 40px;
+    height: 40px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .by-temperature-clothes-list li span {
+    line-height: 150px;
+    font-size: 10px;
+  }
+  body #main-container #main-section #slide-container .slide .slide_item .clothes-container .show-text {
+    padding: 0 10px;
+    font-size: 12.2px;
+    line-height: 20px;
+  }
+  body #main-container #main-section #multi-container .weekly-weather {
+    width: 350px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container {
+    width: 300px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container .window {
+    width: 300px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container .container {
+    width: 1800px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container .cell {
+    width: 280px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container .cell .temp-title {
+    margin-top: 20px;
+    font-size: 30px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container .cell .temp-sub-text {
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #957cfa;
+    text-shadow: 5px 5px 3px #e4e7ea;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container .cell .describe-temp {
+    padding: 0 15px;
+    font-size: 16px;
+    margin-bottom: 50px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container .cell .recommend-clothes {
+    padding: 0 15px;
+    font-size: 18px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container .tip-container button {
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+    background-color: #6e7567;
+    border-radius: 10px;
+    color: #fff;
+    font-family: "Jua", sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container .youtube-container {
+    width: 360px;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container .youtube-container .thumbnail {
+    width: 340px;
+    height: 260px;
+    border-radius: 20px;
+    background-position: center center;
+    background-size: cover;
+    margin-bottom: 20px;
+  }
+  body #main-container #main-section #multi-container .show-youtube-container .youtube-container .thumbnail-title {
+    font-size: 14px;
+  }
+}
