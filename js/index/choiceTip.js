@@ -1,15 +1,13 @@
-// Choice Tip 
-
 const $container = document.querySelector(".container");
 const $prev = document.querySelector(".prev");
-const $next = document.querySelector(".next"); 
+const $next = document.querySelector(".next");
 
-(function addEvent(){
+(function addEvent() {
   $prev.addEventListener('click', translateContainer.bind(this, 1));
   $next.addEventListener('click', translateContainer.bind(this, -1));
 })();
 
-function translateContainer(direction){
+function translateContainer(direction) {
   const selectedBtn = (direction === 1) ? 'prev' : 'next';
   $container.style.transitionDuration = '500ms';
   $container.style.transform = `translateX(${direction * (100 / 5)}%)`;
@@ -18,5 +16,5 @@ function translateContainer(direction){
 
 function reorganizeEl(selectedBtn) {
   $container.removeAttribute('style');
-  (selectedBtn === 'prev') ? $container.insertBefore($container.lastElementChild, $container.firstElementChild): $container.appendChild($container.firstElementChild);
+  (selectedBtn === 'prev') ? $container.insertBefore($container.lastElementChild, $container.firstElementChild) : $container.appendChild($container.firstElementChild);
 }

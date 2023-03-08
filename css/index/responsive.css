@@ -417,7 +417,8 @@
     grid-template-rows: 350px 200px 450px 1500px;
   }
   body #main-container #main-section #weather-container .weather {
-    width: 360px;
+    margin-left: -10px;
+    width: 345px;
     height: 300px;
   }
   body #main-container #main-section #weather-container .weather #weather-lists .weather-item .weather-main {
@@ -432,7 +433,8 @@
     font-size: 15px;
   }
   body #main-container #main-section #slide-container .slide {
-    width: 350px;
+    margin-left: -10px;
+    width: 340px;
     height: 450px;
   }
   body #main-container #main-section #slide-container .slide .slide_item {
@@ -465,6 +467,9 @@
     line-height: 20px;
   }
   body #main-container #main-section #multi-container .weekly-weather {
+    width: 350px;
+  }
+  body #main-container #main-section #multi-container .dressing-tips-container {
     width: 350px;
   }
   body #main-container #main-section #multi-container .dressing-tips-container .tip-container {

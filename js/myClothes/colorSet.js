@@ -1,5 +1,3 @@
-// color set 
-
 const $pickColor = document.querySelectorAll('.clothes-color');
 const $detailClothesBox = document.querySelectorAll('.detail-clothes-box');
 

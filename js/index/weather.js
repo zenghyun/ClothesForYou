@@ -1,7 +1,7 @@
 import { mainWeather, descriptionWeather } from './weatherList.mjs';
 import { getClothes } from './clothes.mjs';
 
-const API_KEY = "de9afcffc19013aaef1ec97ef50bc2fc";
+const API_KEY = "";
 
 function getDecsriptionWeather(arrayLength, listLength) {
     return `${descriptionWeather[arrayLength].list[listLength + 4]}`;
@@ -220,7 +220,7 @@ function getWeeklyWeather(getWeeklyWeatherData) {
                         getWeeklyWeatherData[0] === 5 ? getWeeklyWeatherData[0] = "금요일" :
                             getWeeklyWeatherData[0] = "토요일";
 
-    if (getWeeklyWeatherData[12] === LAST_CLOCK ) {
+    if (getWeeklyWeatherData[12] === LAST_CLOCK  || getWeeklyWeatherData[6] === getWeeklyWeatherData[5].list.length-1) {
      
         getWeeklyWeatherData[1].querySelector('.max-weather-main').insertAdjacentHTML('afterbegin', getMaxTempAry[getMaxTempIcon]);
 
@@ -348,7 +348,7 @@ function calcDay(concreteDayData) {
         let date = concreteDayData.split(' ')[0];
         let koreaDate = date.substr(0, date.length - 2);
         let setDate = parseInt(date.substr(-2)) + 1;
-        setDate < 10 ? setDate = `0${String(setDate)}`  : setDate = String(setDate);
+        setDate < 10 ? setDate = `0${String(setDate)}` : setDate = String(setDate);
 
         return [koreaDate, (koreaDate + setDate)];
 }
@@ -378,7 +378,7 @@ function getWeather(data) {
     let date = new Date();
     let nowDate = date.getDate();
     let nowHour = date.getHours();
-    let SubWeatherTrue = true;
+     let SubWeatherTrue = true;
     let dailyMaxTempAry = [];
     let dailyMinTempAry = [];
     let getToday = [];
