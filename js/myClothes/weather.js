@@ -1,17 +1,17 @@
 function subWeatherBackground(nowHour) {
-    const $subWeatherArea = document.querySelector('.sub-weather');
+  const subWeatherArea = document.querySelector('.sub-weather');
 
-    if (nowHour > 6 && nowHour < 17) {
-        $subWeatherArea.style.backgroundImage = "url('../images/weather/06시~16시.gif')";
-        $subWeatherArea.style.color = "#333032";
-    }
-    else if (nowHour >= 17 && nowHour <= 20) {
-        $subWeatherArea.style.backgroundImage = "url('../images/weather/16시~20시.gif')";
-        $subWeatherArea.style.color = "#aeeaff";
-    } else {
-        $subWeatherArea.style.backgroundImage = "url('../images/weather/20시~06시.gif')";
-        $subWeatherArea.style.color = "#eeeb99";
-    }
+  if (nowHour > 6 && nowHour < 17) {
+    subWeatherArea.style.backgroundImage = "url('../images/weather/06시~16시.gif')";
+    subWeatherArea.style.color = "#333032";
+  }
+  else if (nowHour >= 17 && nowHour <= 20) {
+    subWeatherArea.style.backgroundImage = "url('../images/weather/16시~20시.gif')";
+    subWeatherArea.style.color = "#aeeaff";
+  } else {
+    subWeatherArea.style.backgroundImage = "url('../images/weather/20시~06시.gif')";
+    subWeatherArea.style.color = "#eeeb99";
+  }
 }
 /**
  * 
@@ -26,41 +26,40 @@ function subWeatherBackground(nowHour) {
  *  parsedData[0].wind = 풍속
  */
 function getSubWeather(parsedData) {
-    const $subWeatherLists = document.querySelector('#sub-weather-lists');
-    const $subWeatherTemplate = document.querySelector('.sub-weather-template');
-    const $subWeatherLi = document.importNode($subWeatherTemplate.content, true);
-    
-   $subWeatherLi.querySelector('.time').textContent = parsedData[0].time;
+  const subWeatherLists = document.querySelector('#sub-weather-lists');
+  const subWeatherTemplate = document.querySelector('.sub-weather-template');
+  const subWeatherLi = document.importNode(subWeatherTemplate.content, true);
 
-   $subWeatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', parsedData[0].weatherIcon);
+  subWeatherLi.querySelector('.time').textContent = parsedData[0].time;
 
-   $subWeatherLi.querySelector('.temp').textContent = `${parsedData[0].subTemp}˚`;
+  subWeatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', parsedData[0].weatherIcon);
 
-   $subWeatherLi.querySelector('.weather-description').textContent = parsedData[0].weatherDescription;
+  subWeatherLi.querySelector('.temp').textContent = `${parsedData[0].subTemp}˚`;
 
-   $subWeatherLi.querySelector('.feel-temp').textContent = `체감 온도 ${parsedData[0].feelTemp}˚`;
+  subWeatherLi.querySelector('.weather-description').textContent = parsedData[0].weatherDescription;
 
-   $subWeatherLi.querySelector('.humidity').textContent = `습도 ${parsedData[0].humidity}%`;
+  subWeatherLi.querySelector('.feel-temp').textContent = `체감 온도 ${parsedData[0].feelTemp}˚`;
 
-   $subWeatherLi.querySelector('.wind').textContent = `${parsedData[0].deg} ${parsedData[0].wind}m/s`;
+  subWeatherLi.querySelector('.humidity').textContent = `습도 ${parsedData[0].humidity}%`;
 
-    $subWeatherLists.append($subWeatherLi);
+  subWeatherLi.querySelector('.wind').textContent = `${parsedData[0].deg} ${parsedData[0].wind}m/s`;
+
+  subWeatherLists.append(subWeatherLi);
 }
 
 
 
-(function loadData (){
+(function loadData() {
 
-    const loadData = sessionStorage.getItem("subWeather");
-    try {
-      if (sessionStorage.hasOwnProperty("subWeather")){
-        const parsedData = JSON.parse(loadData);
-        console.log("parseData:", parsedData);
-        getSubWeather(parsedData);
-        subWeatherBackground(parsedData[0].nowHour);
-      } 
-    } catch (error) {
-      console.log("Data not found in session storage");
+  const loadData = sessionStorage.getItem("subWeather");
+  try {
+    if (sessionStorage.hasOwnProperty("subWeather")) {
+      const parsedData = JSON.parse(loadData);
+      getSubWeather(parsedData);
+      subWeatherBackground(parsedData[0].nowHour);
     }
-    
-  })();
+  } catch (error) {
+    console.log("Data not found in session storage");
+  }
+
+})();

@@ -1,39 +1,39 @@
-const $getFileBtn = document.querySelector('#image');
+const getFileBtn = document.querySelector('#image');
 const fileName = document.querySelector('#fileName-preview');
 const IMG_KEY = "IMG";
 let routeLength = 0;
 let images = [];
 
-$getFileBtn.addEventListener('change', (event) => {
+getFileBtn.addEventListener('change', (event) => {
   let route = event.target.files
   const routeAry = (Array.from(route));
   routeLength += route.length;
 
-  if(routeLength === 1) {
-   fileName.value = (`${route[0].name}`).trim();
-  }  else {
-    fileName.value = (`${route[0].name}외 ${routeLength-1}개`).trim();
-  } 
+  if (routeLength === 1) {
+    fileName.value = (`${route[0].name}`).trim();
+  } else {
+    fileName.value = (`${route[0].name}외 ${routeLength - 1}개`).trim();
+  }
   handleImg(routeAry);
 })
 
 // 전체 제거 
-const $deleteAllBtn = document.querySelector('.delete-all');
-$deleteAllBtn.addEventListener('click', () => {
+const deleteAllBtn = document.querySelector('.delete-all');
+deleteAllBtn.addEventListener('click', () => {
   localStorage.removeItem(IMG_KEY);
-  const $imgPreview = document.querySelector('.img-preview');
-  $imgPreview.replaceChildren();
+  const imgPreview = document.querySelector('.img-preview');
+  imgPreview.replaceChildren();
   fileName.value = "";
 });
 
 // delete image
 function deleteImage(event) {
 
-// 내가 선택한 이미지 제거 
-const img = event.target.parentElement;
-img.remove();
-images = images.filter(image => image.id !== parseInt(img.id));
-saveImage();
+  // 내가 선택한 이미지 제거 
+  const img = event.target.parentElement;
+  img.remove();
+  images = images.filter(image => image.id !== parseInt(img.id));
+  saveImage();
 }
 
 // save Image 
@@ -44,27 +44,27 @@ function saveImage() {
 
 // paint Image 
 function paintImage(newImageObj) {
-  const $imgPreview = document.querySelector('.img-preview');
+  const imgPreview = document.querySelector('.img-preview');
 
-  const $uploadContainer = document.createElement('div');
-  $uploadContainer.classList.add("upload-container");
-  $uploadContainer.id = newImageObj.id;
+  const uploadContainer = document.createElement('div');
+  uploadContainer.classList.add("upload-container");
+  uploadContainer.id = newImageObj.id;
 
-  const $log = document.createElement('div');
-  $log.classList.add('log');
-  $log.textContent = newImageObj.log; 
+  const log = document.createElement('div');
+  log.classList.add('log');
+  log.textContent = newImageObj.log;
 
-  const $img = document.createElement('img');
-  $img.setAttribute('src', newImageObj.src);
+  const img = document.createElement('img');
+  img.setAttribute('src', newImageObj.src);
 
-  const $btn = document.createElement('span');
-  $btn.textContent="X"; 
-  $btn.addEventListener('click', deleteImage)
+  const btn = document.createElement('span');
+  btn.textContent = "X";
+  btn.addEventListener('click', deleteImage)
 
-  $uploadContainer.appendChild($btn);
-  $uploadContainer.appendChild($log);
-  $uploadContainer.appendChild($img);
-  $imgPreview.appendChild($uploadContainer);
+  uploadContainer.appendChild($btn);
+  uploadContainer.appendChild($log);
+  uploadContainer.appendChild($img);
+  imgPreview.appendChild($uploadContainer);
 }
 
 // upload한 image 
@@ -76,11 +76,11 @@ function handleImg(routeAry) {
       fileReader.readAsDataURL(data);
 
       fileReader.addEventListener('load', (event) => {
-       
-        let date = new Date(); 
+
+        let date = new Date();
         let today = date.toLocaleDateString();
         const newImageObj = {
-          id:  Date.now(),
+          id: Date.now(),
           log: today,
           src: event.target.result
         }
@@ -94,17 +94,17 @@ function handleImg(routeAry) {
 }
 
 // load Image 
-(function loadImage (){
+(function loadImage() {
 
   const loadImage = localStorage.getItem(IMG_KEY);
   try {
-    if (localStorage.hasOwnProperty(IMG_KEY)){
+    if (localStorage.hasOwnProperty(IMG_KEY)) {
       const parseImage = JSON.parse(loadImage);
       images = parseImage;
       parseImage.forEach(paintImage);
-    } 
+    }
   } catch (error) {
     console.log("Item not found in local storage");
   }
-  
+
 })();

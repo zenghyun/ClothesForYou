@@ -151,7 +151,7 @@ function clothesLoader(getClothesAry) {
  * 
  * @param {object} getWeeklyWeatherData 
  * getWeeklyWeatherData[0] = getWeekOfDay ( 요일 구하기 위한 숫자 )
- * getWeeklyWeatherData[1] = $weeklyWeatherLi ( weekly weather template )
+ * getWeeklyWeatherData[1] = weeklyWeatherLi ( weekly weather template )
  * getWeeklyWeatherData[2] = humidity ( 습도 )
  * getWeeklyWeatherData[3] = maxTemp ( 최고 기온 )
  * getWeeklyWeatherData[4] = minTemp ( 최저 기온 )
@@ -161,7 +161,7 @@ function clothesLoader(getClothesAry) {
  * getWeeklyWeatherData[8] = weeklyMaxTemp ( 주간별 최고 기온 )
  * getWeeklyWeatherData[9] = weeklyMinTemp ( 주간별 최저 기온 )
  * getWeeklyWeatherData[10] = weekend ( 월, 화, 수, 목, 금, 토, 일 )
- * getWeeklyWeatherData[11] = $weeklyWeatherLists ( #weekly-weather-lists )
+ * getWeeklyWeatherData[11] = weeklyWeatherLists ( #weekly-weather-lists )
  * getWeeklyWeatherData[12] = concreteTime ( utc 기준 12시 = 한국 시간 21시 마지막 출력 )
  * getWeeklyWeatherData[13] = weeklyMaxIcon ( 시간대별 최고 기온 icon ary )
  * getWeeklyWeatherData[14] = weeklyMinIcon ( 시간대별 최저 기온 icon ary)
@@ -200,7 +200,7 @@ function getWeeklyWeather(getWeeklyWeatherData) {
             getMinTempAry = getWeeklyWeatherData[14][i].reduce((pre, cur) => {
                 return [...pre, ...cur];
             })
-            
+
             getWeeklyWeatherData[10][i]++;
 
             dailyMaxTemp[0] = Math.max(...getWeeklyWeatherData[8][i]);
@@ -220,8 +220,8 @@ function getWeeklyWeather(getWeeklyWeatherData) {
                         getWeeklyWeatherData[0] === 5 ? getWeeklyWeatherData[0] = "금요일" :
                             getWeeklyWeatherData[0] = "토요일";
 
-    if (getWeeklyWeatherData[12] === LAST_CLOCK  || getWeeklyWeatherData[6] === getWeeklyWeatherData[5].list.length-1) {
-     
+    if (getWeeklyWeatherData[12] === LAST_CLOCK || getWeeklyWeatherData[6] === getWeeklyWeatherData[5].list.length - 1) {
+
         getWeeklyWeatherData[1].querySelector('.max-weather-main').insertAdjacentHTML('afterbegin', getMaxTempAry[getMaxTempIcon]);
 
         getWeeklyWeatherData[1].querySelector('.min-weather-main').insertAdjacentHTML('afterbegin', getMinTempAry[getMinTempIcon]);
@@ -262,10 +262,10 @@ function subWeatherBackground(nowHour) {
  *  getSubWeatherData[0] = data ( weather API data )
  *  getSubWeatherData[1] = i ( data 개수 )
  *  getSubWeatherData[2] = koreaTime ( 한국 시간 )
- *  getSubWeatherData[3] = $subWeatherLi ( sub weather template )
+ *  getSubWeatherData[3] = subWeatherLi ( sub weather template )
  *  getSubWeatherData[4] = concreteDayData ( 데이터 별 날짜 )
  *  getSubWeatherData[5] = humidity ( 습도 )
- *  getSubWeatherData[6] = $subWeatherLists ( sub-weather-lists )
+ *  getSubWeatherData[6] = subWeatherLists ( sub-weather-lists )
  *  getSubWeatherData[7] = nowHour ( 현재 시간 )
  */
 function getSubWeather(getSubWeatherData) {
@@ -315,21 +315,21 @@ function getWeatherDay(i, concreteDayData, concreteTime) {
         return `\u00A0\u00A0\u00A0\u00A0\u00A0 오늘`;
     }
     else if (concreteTime === 0) {
-       return calcDay(concreteDayData)[1];
+        return calcDay(concreteDayData)[1];
     }
 }
 
 /**
  * 
  * @param {object} getMainWeatherData 
- * getMainWeatherData[0] = $weatherLi ( weather template )
+ * getMainWeatherData[0] = weatherLi ( weather template )
  * getMainWeatherData[1] = data ( weather API data )
  * getMainWeatherData[2] = i ( data 개수 )
  * getMainWeatherData[3] = concreteDayData ( 데이터 별 날짜 )
  * getMainWeatherData[4] = temp ( 온도 별 날짜 )
  * getMainWeatherData[5] = koreaTime ( 한국 시간 )
  * getMainWeatherData[6] = timeArr ( 시간을 담을 배열 )
- * getMainWeatherData[7] = $weatherLists ( main-weather-lists )
+ * getMainWeatherData[7] = weatherLists ( main-weather-lists )
  */
 function getMainWeather(getMainWeatherData) {
 
@@ -345,24 +345,24 @@ function getMainWeather(getMainWeatherData) {
 }
 
 function calcDay(concreteDayData) {
-        let date = concreteDayData.split(' ')[0];
-        let koreaDate = date.substr(0, date.length - 2);
-        let setDate = parseInt(date.substr(-2)) + 1;
-        setDate < 10 ? setDate = `0${String(setDate)}` : setDate = String(setDate);
+    let date = concreteDayData.split(' ')[0];
+    let koreaDate = date.substr(0, date.length - 2);
+    let setDate = parseInt(date.substr(-2)) + 1;
+    setDate < 10 ? setDate = `0${String(setDate)}` : setDate = String(setDate);
 
-        return [koreaDate, (koreaDate + setDate)];
+    return [koreaDate, (koreaDate + setDate)];
 }
 
 function getWeather(data) {
     const weatherDatas = data.list.length;
 
-    const $weatherLists = document.querySelector('#weather-lists');
-    const $subWeatherLists = document.querySelector('#sub-weather-lists');
-    const $weeklyWeatherLists = document.querySelector('#weekly-weather-lists');
+    const weatherLists = document.querySelector('#weather-lists');
+    const subWeatherLists = document.querySelector('#sub-weather-lists');
+    const weeklyWeatherLists = document.querySelector('#weekly-weather-lists');
 
-    const $weatherTemplate = document.querySelector('.weather-template');
-    const $subWeatherTemplate = document.querySelector('.sub-weather-template');
-    const $weeklyWeatherTemplate = document.querySelector('.weekly-weather-template');
+    const weatherTemplate = document.querySelector('.weather-template');
+    const subWeatherTemplate = document.querySelector('.sub-weather-template');
+    const weeklyWeatherTemplate = document.querySelector('.weekly-weather-template');
 
     let tempArr = [];
     let timeArr = [];
@@ -378,15 +378,15 @@ function getWeather(data) {
     let date = new Date();
     let nowDate = date.getDate();
     let nowHour = date.getHours();
-     let SubWeatherTrue = true;
+    let SubWeatherTrue = true;
     let dailyMaxTempAry = [];
     let dailyMinTempAry = [];
     let getToday = [];
 
     for (let i = 0; i < weatherDatas; i++) {
-        const $weatherLi = document.importNode($weatherTemplate.content, true);
-        const $subWeatherLi = document.importNode($subWeatherTemplate.content, true);
-        const $weeklyWeatherLi = document.importNode($weeklyWeatherTemplate.content, true);
+        const weatherLi = document.importNode(weatherTemplate.content, true);
+        const subWeatherLi = document.importNode(subWeatherTemplate.content, true);
+        const weeklyWeatherLi = document.importNode(weeklyWeatherTemplate.content, true);
 
         let temp = Math.round(`${data.list[i].main.temp}`);
         tempArr.push(temp);
@@ -396,40 +396,40 @@ function getWeather(data) {
         // utc 시간 한국 표준 시간으로 변환 
         let koreaTime = concreteTime + 9;
         koreaTime === 24 ? koreaTime = 0 :
-        koreaTime === 27 ? koreaTime = 3 :
-        koreaTime === 30 ? koreaTime = 6 : "";
-        
+            koreaTime === 27 ? koreaTime = 3 :
+                koreaTime === 30 ? koreaTime = 6 : "";
+
         let changeDate = new Date(concreteDayData);
         let getWeekOfDay = changeDate.getDay();
         let concreteDate = parseInt(concreteDayData.split(' ')[0].slice(8));
         let maxTemp = `${data.list[i].main.temp_max}`;
         let minTemp = `${data.list[i].main.temp_min}`;
         let humidity = `${data.list[i].main.humidity}`;
-        
+
         // main-weather 
         //  concreTime이 15시인 순간, 한국 시간은 다음날 0시 
-        if ( i === 0) {
+        if (i === 0) {
             nowDate < 10 ? nowDate = `0${String(nowDate)}` : nowDate = String(nowDate);
             weatherPeriod.push(nowDate);
-        } else if ( i !== 0 && concreteTime === 15 ) {
-           let calcData = calcDay(concreteDayData)[1];
-            
+        } else if (i !== 0 && concreteTime === 15) {
+            let calcData = calcDay(concreteDayData)[1];
+
             weatherPeriod.push(calcData);
 
-             document.querySelector('.weather-period').textContent = `날짜별 예보 (${calcDay(concreteDayData)[0] + weatherPeriod[0]} ~ ${weatherPeriod[weatherPeriod.length-1]})`;
+            document.querySelector('.weather-period').textContent = `날짜별 예보 (${calcDay(concreteDayData)[0] + weatherPeriod[0]} ~ ${weatherPeriod[weatherPeriod.length - 1]})`;
         }
 
-        const getMainWeatherData = [$weatherLi, data, i, concreteDayData, temp, koreaTime, timeArr, $weatherLists];
+        const getMainWeatherData = [weatherLi, data, i, concreteDayData, temp, koreaTime, timeArr, weatherLists];
         getMainWeather(getMainWeatherData);
 
         // sub-weather 
 
-        const getSubWeatherData = [data, i, koreaTime, $subWeatherLi, concreteDayData, humidity, $subWeatherLists, nowHour]
+        const getSubWeatherData = [data, i, koreaTime, subWeatherLi, concreteDayData, humidity, subWeatherLists, nowHour]
         // utc 시간 기준 15시 이상이면 가져온 날짜 + 1 = 실제 한국 날짜  
-        concreteTime >= 15 ? concreteDate = concreteDate + 1 : concreteDate = concreteDate; 
-        if (parseInt(nowDate)  === concreteDate  && koreaTime <= nowHour + 3) {
+        concreteTime >= 15 ? concreteDate = concreteDate + 1 : concreteDate = concreteDate;
+        if (parseInt(nowDate) === concreteDate && koreaTime <= nowHour + 3) {
             if (SubWeatherTrue) {
-                $subWeatherLists.replaceChildren();
+                subWeatherLists.replaceChildren();
             }
 
             getSubWeather(getSubWeatherData);
@@ -438,7 +438,7 @@ function getWeather(data) {
 
         // weekly weather
 
-        const getWeeklyWeatherData = [getWeekOfDay, $weeklyWeatherLi, humidity, maxTemp, minTemp, data, i, concreteDayData, weeklyMaxTemp, weeklyMinTemp, weekend, $weeklyWeatherLists, concreteTime, weeklyMaxIcon, weeklyMinIcon, dailyMaxTempAry, dailyMinTempAry, getToday];
+        const getWeeklyWeatherData = [getWeekOfDay, weeklyWeatherLi, humidity, maxTemp, minTemp, data, i, concreteDayData, weeklyMaxTemp, weeklyMinTemp, weekend, weeklyWeatherLists, concreteTime, weeklyMaxIcon, weeklyMinIcon, dailyMaxTempAry, dailyMinTempAry, getToday];
         getWeeklyWeather(getWeeklyWeatherData);
 
 

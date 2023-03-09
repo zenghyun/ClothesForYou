@@ -1,15 +1,15 @@
 function getYoutube(data) {
-    const $videoLists = document.querySelector('.youtube-container');
-    const $videoTemplate = document.querySelector('.youtube-iframe-template');
-    const $weatheriframe = document.importNode($videoTemplate.content, true);
+    const videoLists = document.querySelector('.youtube-container');
+    const videoTemplate = document.querySelector('.youtube-iframe-template');
+    const weatheriframe = document.importNode(videoTemplate.content, true);
     const videoId = data.items[0].id.videoId
 
     let link = data.items[0].snippet.thumbnails.high.url;
-    $weatheriframe.querySelector('.youtube-link').setAttribute('href', `https://www.youtube.com/watch?v=${videoId}`);
-    $weatheriframe.querySelector('.thumbnail').style.backgroundImage = `url(${link})`;
-    $weatheriframe.querySelector('.thumbnail-title').insertAdjacentHTML('afterbegin', `${data.items[0].snippet.title}`);
+    weatheriframe.querySelector('.youtube-link').setAttribute('href', `https://www.youtube.com/watch?v=${videoId}`);
+    weatheriframe.querySelector('.thumbnail').style.backgroundImage = `url(${link})`;
+    weatheriframe.querySelector('.thumbnail-title').insertAdjacentHTML('afterbegin', `${data.items[0].snippet.title}`);
 
-    $videoLists.append($weatheriframe);
+    videoLists.append(weatheriframe);
 }
 (function Youtube() {
 

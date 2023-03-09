@@ -1,4 +1,4 @@
-export const mainWeather= [
+export const mainWeather = [
     {
         title: 'Thunderstorm',
         id: 100,
@@ -9,23 +9,23 @@ export const mainWeather= [
     },
     {
         title: "Rain",
-        id : 102,
+        id: 102,
     },
     {
         title: "Snow",
-        id : 103,
+        id: 103,
     },
     {
-        title : "Atmosphere",
-        id : 104,
+        title: "Atmosphere",
+        id: 104,
     },
     {
-        title : "Clear",
-        id : 105,
+        title: "Clear",
+        id: 105,
     },
     {
         title: "Clouds",
-        id : 106,
+        id: 106,
     },
 ];
 
@@ -75,7 +75,7 @@ export const descriptionWeather = [
             "wi-lightning",
             "wi-night-alt-lightning",
             "천둥",
-            
+
             "thunderstorm with light drizzle",
             "wi-day-storm-showers",
             "wi-storm-showers",
@@ -99,7 +99,7 @@ export const descriptionWeather = [
     {
         title: "Drizzle",
         id: 101,
-        list : [
+        list: [
             "light intensity drizzle",
             "wi-day-sprinkle",
             "wi-sprinkle",
@@ -157,8 +157,8 @@ export const descriptionWeather = [
     },
     {
         title: "Rain",
-        id : 102,
-        list : [
+        id: 102,
+        list: [
             "light rain",
             "wi-day-rain-mix",
             "wi-showers",
@@ -225,8 +225,8 @@ export const descriptionWeather = [
     {
 
         title: "Snow",
-        id : 103,
-        list : [
+        id: 103,
+        list: [
             "light snow",
             "wi-day-snow",
             "wi-snow",
@@ -297,8 +297,8 @@ export const descriptionWeather = [
     },
     {
         title: "Atmosphere",
-        id : 104,
-        list : [
+        id: 104,
+        list: [
             "mist",
             "wi-day-cloudy",
             "wi-cloudy",
@@ -362,8 +362,8 @@ export const descriptionWeather = [
     },
     {
         title: "Clear",
-        id : 105,
-        list : [
+        id: 105,
+        list: [
             "clear sky",
             "wi-day-sunny",
             "wi-stars",
@@ -373,8 +373,8 @@ export const descriptionWeather = [
     },
     {
         title: "Clouds",
-        id : 106,
-        list : [
+        id: 106,
+        list: [
             "few clouds",
             "wi-day-cloudy",
             "wi-cloud",
