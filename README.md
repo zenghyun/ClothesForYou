@@ -52,10 +52,10 @@ OpenWeatherMap API를 이용하여 기온에 따른 옷차림을 추천해주는
 
 <br>
 
-## **1.** OpenWeatherMap API에서 Data 받아오기 
+### **1.** OpenWeatherMap API에서 Data 받아오기 
 <br>
 
-우선, OpenWeatherMAP API Data를 받아오기 위해서 fetch 메서드를 사용했습니다.<br>
+우선, OpenWeatherMAP API Data를 받아오기 위해서 `fetch` 메서드를 사용했습니다.<br>
 
 ```javascript
 (function getAPIData() {
