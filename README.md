@@ -74,7 +74,7 @@
 
 |메인 페이지 - 날짜별 예보|메인 페이지 - 오늘의 코디|메인 페이지 - 상세 날짜 |
 |------|---|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="600px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="500px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="350px" height="300px"></p>|
+|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="750px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="550px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="350px" height="300px"></p>|
 <br>
 
 메인 페이지 - 주간 날씨|메인 페이지 - 날씨 예보|메인 페이지 - Choice Tip|
@@ -91,8 +91,8 @@
 <br>
 
 ## 시작 가이드 
-- OpenWeatherMap API를 사용하기 위한 API KEY [OpenWeatherMap API](https://openweathermap.org/price)
-- YOUTUBE API를 사용하기 위한 API KEY [YouTube API](https://developers.google.com/youtube/v3/getting-started?hl=ko)
+- OpenWeatherMap API를 사용하기 위한 API KEY가 필요합니다. [OpenWeatherMap API](https://openweathermap.org/price)
+- YOUTUBE API를 사용하기 위한 API KEY가 필요합니다. [YouTube API](https://developers.google.com/youtube/v3/getting-started?hl=ko)
 
 <br>
 
@@ -334,7 +334,7 @@ for (let i = 0; i < weatherDatas; i++) {
 
     /* 생략 */
 ```
-[weatherLists](#1-3시간-간격으로-5일간의-기온과-날씨를-알려주는-기능), [subWeatherLists](#2-현재-시간을-기준으로-가까운-시간대의-기온과-상세-날씨-체감온도-습도-풍향-및-풍속을-알려주는-기능), [weeklyWeatherLists](#3-주간-날씨의-습도-최고-기온-최저-기온-및-날씨를-알려주는-기능-입니다)는 HTML 상에서 template를 자식 요소로 받을 부모입니다. 
+[weatherLists](#1-3시간-간격으로-5일간의-기온과-날씨를-알려주는-기능), [subWeatherLists](#2-현재-시간을-기준으로-가까운-시간대의-기온과-상세-날씨-체감온도-습도-풍향-및-풍속을-알려주는-기능), [weeklyWeatherLists](#3-주간-날씨의-습도-최고-기온-최저-기온-및-날씨를-알려주는-기능입니다)는 HTML 상에서 template를 자식 요소로 받을 부모입니다. 
 
 아래의 template 변수들은 HTML상에 있는 `template` 태그입니다. 
 
