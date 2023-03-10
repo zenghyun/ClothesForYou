@@ -72,9 +72,14 @@
 ## 📷 페이지 사진
 <br>
 
-|메인 페이지 - 날짜별 예보|메인 페이지 - 오늘의 코디|메인 페이지 - 상세 날짜 |메인 페이지 - 주간 날씨|메인 페이지 - 날씨 예보|메인 페이지 - Choice Tip|
-|------|---|---|---|---|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="600px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="600px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="500px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220354-2fd281ac-c989-4850-ae0c-43603b654a57.png" width="400px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220369-b86b7f9c-190e-4913-9354-5db9b556a188.png" width="600px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220384-1c56a14a-42eb-41e5-9eac-86efebd4b732.png" width="400px" height="500px"></p>|
+|메인 페이지 - 날짜별 예보|메인 페이지 - 오늘의 코디|메인 페이지 - 상세 날짜 |
+|------|---|---|
+|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="600px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="500px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="350px" height="300px"></p>|
+<br>
+
+메인 페이지 - 주간 날씨|메인 페이지 - 날씨 예보|메인 페이지 - Choice Tip|
+|---|---|---|
+|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220354-2fd281ac-c989-4850-ae0c-43603b654a57.png" width="300px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220369-b86b7f9c-190e-4913-9354-5db9b556a188.png" width="300px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220384-1c56a14a-42eb-41e5-9eac-86efebd4b732.png" width="300px" height="300px"></p>|
 <br>
 
 |서브 페이지 - Clothes Diary|서브 페이지 - Color Match|
@@ -105,7 +110,7 @@
 
 <br>
 
-<img src="https://user-images.githubusercontent.com/114131063/224218043-e26bda23-6860-4b15-a9c7-2a9bf2fb8056.png" width="600px" height="450px">
+<img src="https://user-images.githubusercontent.com/114131063/224218043-e26bda23-6860-4b15-a9c7-2a9bf2fb8056.png" width="650px" height="550px">
 
 <br>
 
