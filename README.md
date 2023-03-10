@@ -1,5 +1,7 @@
 # 🌈 Clothes For You
- <p align="center"><img src="../weather/images/weatherProjectMain.png" width="400px" height="250px"></p> 
+<br>
+
+ <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="400px" height="250px"></p> 
 <br>
 <br>
 
@@ -21,7 +23,7 @@ Clothes for You는 OpenWeatherMap API를 이용하여 기온에 따른 옷차림
 
 | <p style="font-size:20px">이정현</p> |
 | :------------: |
-|   <p align="center"><img src="../weather/images/profile.jpg" width="250px" height="250px"></p>   |   
+|   <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213911-72bc1119-ba49-4d3f-8249-d7031c8fd0d9.jpg" width="250px" height="250px"></p>   |   
 |  <p style="font-size:18px"> [@zenghyun](https://github.com/zenghyun)  </p>   |  
 
 <br>
