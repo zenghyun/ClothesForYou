@@ -74,7 +74,7 @@
 
 |메인 페이지 - 날짜별 예보|메인 페이지 - 오늘의 코디|메인 페이지 - 상세 날짜 |메인 페이지 - 주간 날씨|메인 페이지 - 날씨 예보|메인 페이지 - Choice Tip|
 |------|---|---|---|---|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="500px" height="250px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="500px" height="250px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="500px" height="250px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220354-2fd281ac-c989-4850-ae0c-43603b654a57.png" width="400px" height="250px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220369-b86b7f9c-190e-4913-9354-5db9b556a188.png" width="500px" height="250px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220384-1c56a14a-42eb-41e5-9eac-86efebd4b732.png" width="400px" height="250px"></p>|
+|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="600px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="600px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="500px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220354-2fd281ac-c989-4850-ae0c-43603b654a57.png" width="400px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220369-b86b7f9c-190e-4913-9354-5db9b556a188.png" width="600px" height="500px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220384-1c56a14a-42eb-41e5-9eac-86efebd4b732.png" width="400px" height="500px"></p>|
 <br>
 
 |서브 페이지 - Clothes Diary|서브 페이지 - Color Match|
@@ -109,167 +109,11 @@
 
 <br>
 
-- [weather-icon](https://erikflowers.github.io/weather-icons/)
+- [weather-icon](https://erikflowers.github.io/weather-icons/) ( 날씨 아이콘 저작권 )
 
 <br>
 
-- [flaticon](https://www.flaticon.com/kr/) &nbsp;&nbsp;&nbsp;   <select
-            name="flaticon"
-            id="flaticon-list"
-            onchange="window.open(value,'_blank')"
-            rel="noopener noreferrer"
-          >
-            <option value="" selected>---저작자 리스트---</option>
-            <option value="https://www.flaticon.com/kr/authors/pixel-perfect">
-              Pixel perfect
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/neungstockr">
-              neungstockr
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/amethystdesign">
-              AmethystDesign
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/wanicon">
-              wanicon
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/nhor-phai">
-              Nhor Phai
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/victoruler">
-              Victoruler
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/pronicon">
-              Pronicon
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/umeicon">
-              Umeicon
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/kmg-design">
-              kmg design
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/iconixar">
-              iconixar
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/smashicons">
-              Smashicons
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/bzzrincantation">
-              BZZRINCANTATION
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/nawicon">
-              nawicon
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/pongsakornred">
-              pongsakornRed
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/slidicon">
-              Slidicon
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/uniconlabs">
-              Uniconlabs
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/rudiyana">
-              Rudiyana
-            </option>
-            <option
-              value="https://www.flaticon.com/kr/authors/alfian-dwi-hartanto"
-            >
-              Alfian Dwi Hartanto
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/witdhawaty">
-              Witdhawaty
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/safaruly">
-              Safaruly
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/fliqqer">
-              Fliqqer
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/surang">
-              surang
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/hasymi">
-              Hasymi
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/lumi">
-              Lumi
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/pojok-d">
-              pojok d
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/toz-icon">
-              ToZ Icon
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/microstd">
-              microstd
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/atif-arshad">
-              Atif Arshad
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/eucalyp">
-              Eucalyp
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/muhammad-usman">
-              Muhammad_Usman
-            </option>
-            <option value="https://www.freepik.com">Freepik</option>
-            <option value="https://www.flaticon.com/kr/authors/futuer">
-              Futuer
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/juicy-fish">
-              juicy_fish
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/maan-icons">
-              Maan Icons
-            </option>
-            <option
-              value="https://www.flaticon.com/kr/authors/nathania-desmonda-tjipto"
-            >
-              Nathania Desmonda Tjipto
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/graphixs-art">
-              Graphix's Art
-            </option>
-            <option
-              value="https://www.flaticon.com/kr/authors/rizky-maulidhani"
-            >
-              rizky maulidhani
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/aswell-studio">
-              Aswell Studio
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/justicon">
-              justicon
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/victoruler">
-              Victoruler
-            </option>
-            <option
-              value="https://www.flaticon.com/kr/authors/amonrat-rungreangfangsai"
-            >
-              amonrat rungreangfangsai
-            </option>
-            <option value="https://www.flaticon.com/kr/free-icons/">
-              Freepik
-            </option>
-            <option value="https://www.flaticon.com/authors/amethystdesign">
-              AmethystDesign
-            </option>
-            <option
-              value="https://www.flaticon.com/kr/authors/vitaly-gorbachev"
-            >
-              Vitaly Gorbachev
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/victoruler">
-              Victoruler
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/iconixar">
-              iconixar
-            </option>
-            <option value="https://www.flaticon.com/kr/authors/lapiyee">
-              lapiyee
-            </option>
-          </select>
+- [flaticon](https://www.flaticon.com/kr/)  ( 의류 png 저작권 )
 
 <br>
 <br>
