@@ -1,9 +1,12 @@
 # 🌈 Clothes For You
-
+ <p align="center"><img src="../weather/images/weatherProjectMain.png" width="400px" height="250px"></p> 
+<br>
 <br>
 
 ## 배포 주소 
+**추가 예정** 
 
+<br>
 <br>
 
 ## 💻 프로젝트 소개
@@ -14,17 +17,25 @@ Clothes for You는 OpenWeatherMap API를 이용하여 기온에 따른 옷차림
 
 ## 😀 개발 인원
 
-| <p style font-size ="36px">이정현</p> |
+<br>
+
+| <p style="font-size:20px">이정현</p> |
 | :------------: |
-|   <p align="center"><img src="../../profile.jpg" width="250px" height="250px"></p>   |   
-|   [@zenghyun](https://github.com/zenghyun)    |  
+|   <p align="center"><img src="../weather/images/profile.jpg" width="250px" height="250px"></p>   |   
+|  <p style="font-size:18px"> [@zenghyun](https://github.com/zenghyun)  </p>   |  
+
+<br>
+<br>
 
 ## 🕰 개발 기간
 
-- 23.02.13 ~ 23.03.08
-  <br><br>
+## - 23.02.13 ~ 23.03.08
+ 
+  <br>
+  <br>
 
-### ⚙ 개발 환경
+
+## ⚙ 개발 환경
 
 - `HTML`
 
@@ -40,7 +51,7 @@ Clothes for You는 OpenWeatherMap API를 이용하여 기온에 따른 옷차림
 <br>
 <br>
 
-### 📃 페이지 소개
+## 📃 페이지 소개
 <br>
 
 ### 메인 페이지
@@ -52,7 +63,15 @@ Clothes for You는 OpenWeatherMap API를 이용하여 기온에 따른 옷차림
 서브 페이지에서는 과거에 내가 입었던 옷차림을 업로드할 수 있는 다이어리와 **굳이 입어보지 않아도 옷에대한 color match를 할 수 있는 기능이 있으면 좋겠다.** 라는 생각에 간단한 color match를 통해 나만의 코디를 완성해 볼 수 있게 만들었습니다. 
 
 다이어리와 color match를 나란히 배치함으로서 다이어리에 올린 사진에서 입은 옷의 색을 `input` 태그의 `type="color"`를 통해 가져올 수 있게 하여 사용자가 실제로 갖고 있는 옷의 색을 반영하여 코디할 수 있는 장점이 있습니다. 
+
 <br>
+<br>
+
+
+## 시작 가이드 
+- OpenWeatherMap API를 사용하기 위한 API KEY [OpenWeatherMap API](https://openweathermap.org/price)
+- YOUTUBE API를 사용하기 위한 API KEY [YouTube API](https://developers.google.com/youtube/v3/getting-started?hl=ko)
+
 <br>
 
 ## 📌 주요 기능
@@ -83,7 +102,6 @@ Clothes for You는 OpenWeatherMap API를 이용하여 기온에 따른 옷차림
 <br>
 
 ## 데이터 불러오기
-
 <br>
 
 ### 📌 목차
@@ -176,7 +194,7 @@ function onGeoOk(position) {
 
 ### **2.** 받아온 data를 통해 날씨 정보 불러오기
 
-`getWeather`함수에서는 날씨 정보를 사용하는 방식이 크개 3가지가 있습니다. <br>
+`getWeather` 함수에서는 날씨 정보를 사용하는 방식이 크개 3가지가 있습니다. <br>
 
 #### 1. 3시간 간격으로 5일간의 기온과 날씨를 알려주는 기능
 
@@ -188,6 +206,7 @@ function onGeoOk(position) {
 
 * * *
 <br>
+
 다음은 `getWeather` 함수에서 가져온 날씨 data를 HTML에서 어떤 방식으로 보여줄 것인지에 대한 설명입니다.  
 
 <br>
