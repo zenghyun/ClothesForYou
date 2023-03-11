@@ -16,7 +16,7 @@
 
 ## 💻 프로젝트 소개
 
-**Clothes for You**는 OpenWeatherMap API를 이용하여 기온에 따른 옷차림을 추천해 주는 사이트입니다. 이 프로젝트는 출근할 때, 외출할 때, 혹은 잠깐 외출할 때 어떻게 옷을 입고 나가야 할지에 대한 고민을 덜어주고 싶은 생각에서 시작되었습니다. 
+**Clothes for You**는 OpenWeatherMap API를 이용하여 기온에 따른 옷차림을 추천해 주는 사이트입니다. 이 프로젝트는 출근할 때, 친구를 만날 때, 혹은 잠깐 외출할 때 어떻게 옷을 입고 나가야 할지에 대한 고민을 덜어주고 싶은 생각에서 시작되었습니다. 
 <br>
 <br>
 
@@ -468,8 +468,7 @@ i가 0이 아니고 `concreteTime`이 15시일 때는 한국 시간으로 오전
  * getMainWeatherData[3] = concreteDayData ( 데이터 별 날짜 )
  * getMainWeatherData[4] = temp ( 날짜 별 온도 )
  * getMainWeatherData[5] = koreaTime ( 한국 시간 )
- * getMainWeatherData[6] = timeArr ( 시간을 담을 배열 )
- * getMainWeatherData[7] = weatherLists ( main-weather-lists )
+ * getMainWeatherData[6] = weatherLists ( main-weather-lists )
  */
 function getMainWeather(getMainWeatherData) {
 
@@ -479,9 +478,7 @@ function getMainWeather(getMainWeatherData) {
 
     getMainWeatherData[0].querySelector('.day').textContent = getWeatherDay(getMainWeatherData[2], getMainWeatherData[3], getMainWeatherData[5]);
 
-    getMainWeatherData[5] >= 12 ? getMainWeatherData[6].push(`${getMainWeatherData[5]}:00 pm`) : getMainWeatherData[6].push(`0${getMainWeatherData[5]}:00 am`);
-
-    getMainWeatherData[7].append(getMainWeatherData[0]);
+    getMainWeatherData[6].append(getMainWeatherData[0]);
 }
 ```
 
@@ -654,12 +651,80 @@ icon을 가져오기 위해 사용할 함수는 **getIcon** 이며, 후에 설�
 
 <br>
 
-<p style="font-size:26px">weather icon을 가져오기 위한 과정</p>
+<p style="font-size:24px">weather icon을 가져오기 위한 과정</p>
 
 iconLoader -> extractWeatherId -> getWeatherList -> getData -> getIcon
 
 <br>
 
-<p style="font-size:26px">날씨 상세 묘사를 가져오기 위한 과정</p>
+<p style="font-size:24px">날씨 상세 묘사를 가져오기 위한 과정</p>
 
 iconLoader -> extractWeatherId -> getWeatherList -> getData -> getDescriptionWeather
+
+<br>
+
+### **getIcon**
+<br>
+
+```javascript
+ // utc 시간 기준 9시간 더한게 현재 한국 시간 
+    if (weatherTime >= 21 || weatherTime <= 6) {
+        //  utc 기준 21시 ~ 6시 => 한국 기준 아침 6시 ~ 오후 3시 
+        return `<i class="wi ${descriptionWeather[objectLength].list[listLength + 1]}"></i>`;
+    } else if (weatherTime >= 7 && weatherTime <= 13) {
+        //  utc 기준 7시 ~ 13시 => 한국 기준 오후 4시 ~ 밤 10시 
+        return `<i class="wi ${descriptionWeather[objectLength].list[listLength + 2]}"></i>`;
+    } else if (weatherTime >= 14 && weatherTime <= 20) {
+        //  utc 기준 14시 ~ 20시 => 한국 기준 밤 11시 ~ 오전 5시 
+        return `<i class="wi ${descriptionWeather[objectLength].list[listLength + 3]}"></i>`;
+    }
+```
+매개변수로 받은 weatherTime은 utc 기준이기 때문에 한국 기준으로 바꿔서 시간대에 맞는 icon을 가져오게 됩니다. 
+
+<br>
+
+```javascript
+/**
+ * 
+ * @param {object} getMainWeatherData 
+ * getMainWeatherData[0] = weatherLi ( weather template )
+ * getMainWeatherData[1] = data ( weather API data )
+ * getMainWeatherData[2] = i ( data 개수 )
+ * getMainWeatherData[3] = concreteDayData ( 데이터 별 날짜 )
+ * getMainWeatherData[4] = temp ( 날짜 별 온도 )
+ * getMainWeatherData[5] = koreaTime ( 한국 시간 )
+ * getMainWeatherData[6] = weatherLists ( main-weather-lists )
+ */
+function getMainWeather(getMainWeatherData) {
+
+    getMainWeatherData[0].querySelector('.weather-main').insertAdjacentHTML('afterbegin', iconLoader(getMainWeatherData[1], getMainWeatherData[2], getMainWeatherData[3])[0]);
+
+    getMainWeatherData[0].querySelector('.temp').textContent = `${getMainWeatherData[4]}˚`;
+
+    getMainWeatherData[0].querySelector('.day').textContent = getWeatherDay(getMainWeatherData[2], getMainWeatherData[3], getMainWeatherData[5]);
+
+    getMainWeatherData[6].append(getMainWeatherData[0]);
+}
+```
+
+`.temp`라는 클래스를 가진 태그에 weather Data에서 가져온 온도를 `textContent`로 지정합니다.
+
+`.day`라는 클래스를 가진 태그에는 **getWeatherDay** 함수를 호출한 값을 `textContent`로 지정합니다. 
+
+<br>
+
+### **getWeatherDay**
+<br>
+
+```javascript
+function getWeatherDay(i, concreteDayData, concreteTime) {
+    if (i === 0) {
+        return `\u00A0\u00A0\u00A0\u00A0\u00A0 오늘`;
+    }
+    else if (concreteTime === 0) {
+        return calcDay(concreteDayData)[1];
+    }
+}
+```
+
+첫번째로 받아온 data는 **오늘**이라고 표시하고, 그 외에는 하루가 바뀔 때마다 실제 한국 날짜를 보여줍니다. 
