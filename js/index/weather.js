@@ -333,8 +333,7 @@ function getWeatherDay(i, concreteDayData, concreteTime) {
  * getMainWeatherData[3] = concreteDayData ( 데이터 별 날짜 )
  * getMainWeatherData[4] = temp ( 날짜 별 온도 )
  * getMainWeatherData[5] = koreaTime ( 한국 시간 )
- * getMainWeatherData[6] = timeArr ( 시간을 담을 배열 )
- * getMainWeatherData[7] = weatherLists ( main-weather-lists )
+ * getMainWeatherData[6] = weatherLists ( main-weather-lists )
  */
 function getMainWeather(getMainWeatherData) {
 
@@ -344,9 +343,8 @@ function getMainWeather(getMainWeatherData) {
 
     getMainWeatherData[0].querySelector('.day').textContent = getWeatherDay(getMainWeatherData[2], getMainWeatherData[3], getMainWeatherData[5]);
 
-    getMainWeatherData[5] >= 12 ? getMainWeatherData[6].push(`${getMainWeatherData[5]}:00 pm`) : getMainWeatherData[6].push(`0${getMainWeatherData[5]}:00 am`);
 
-    getMainWeatherData[7].append(getMainWeatherData[0]);
+    getMainWeatherData[6].append(getMainWeatherData[0]);
 }
 
 // 실제 한국 날짜 구하는 함수 
@@ -409,6 +407,8 @@ function getWeather(data) {
         koreaTime === 24 ? koreaTime = 0 :
             koreaTime === 27 ? koreaTime = 3 :
                 koreaTime === 30 ? koreaTime = 6 : "";
+        // chart를 위한 시간 배열화 
+        koreaTime >= 12 ? timeArr.push(`${koreaTime}:00 pm`) : timeArr.push(`0${koreaTime}:00 am`);
 
         let changeDate = new Date(calcDay(concreteDayData)[1]);
         let getWeekOfDay = changeDate.getDay();
@@ -429,7 +429,7 @@ function getWeather(data) {
             document.querySelector('.weather-period').textContent = `날짜별 예보 (${calcDay(concreteDayData)[0] + weatherPeriod[0]} ~ ${weatherPeriod[weatherPeriod.length - 1]})`;
         }
 
-        const getMainWeatherData = [weatherLi, data, i, concreteDayData, temp, koreaTime, timeArr, weatherLists];
+        const getMainWeatherData = [weatherLi, data, i, concreteDayData, temp, koreaTime, weatherLists];
         getMainWeather(getMainWeatherData);
 
         // sub-weather 
