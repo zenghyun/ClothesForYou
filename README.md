@@ -6,8 +6,11 @@
 <br>
 
 ## 배포 주소 
-**[ClothesForYou](https://clothesforyouu.netlify.app/)** 
-
+- <a
+            href="https://clothesforyouu.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >ClothesForYou</a>
 <br>
 <br>
 
@@ -651,12 +654,12 @@ icon을 가져오기 위해 사용할 함수는 **getIcon** 이며, 후에 설�
 
 <br>
 
-<p style="font-size:20px">weather icon을 가져오기 위한 과정</p>
+<p style="font-size:26px">weather icon을 가져오기 위한 과정</p>
 
-iconLoader -> extractWeatherId -> getWeatherList -> getData -> getIon
+iconLoader -> extractWeatherId -> getWeatherList -> getData -> getIcon
 
 <br>
 
-<p style="font-size:20px">날씨 상세 묘사를 가져오기 위한 과정</p>
+<p style="font-size:26px">날씨 상세 묘사를 가져오기 위한 과정</p>
 
 iconLoader -> extractWeatherId -> getWeatherList -> getData -> getDescriptionWeather
