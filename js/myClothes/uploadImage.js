@@ -99,7 +99,9 @@ function handleImg(routeAry) {
     if (localStorage.hasOwnProperty(IMG_KEY)) {
       const parseImage = JSON.parse(loadImage);
       images = parseImage;
-      fileName.value = `${parseImage.length}개의 파일이 등록되어 있습니다.`;
+
+      parseImage.length === 0 ? fileName.value = `파일을 등록해주세요.` : fileName.value = `${parseImage.length}개의 파일이 등록되어 있습니다.`;
+      
       parseImage.forEach(paintImage);
     }
   } catch (error) {
