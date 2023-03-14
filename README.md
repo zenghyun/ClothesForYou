@@ -189,7 +189,6 @@
 
 <br>
 
-우선, OpenWeatherMAP API Data를 받아오기 위해서 `fetch` 메서드를 사용했습니다.<br>
 
 ```javascript
 (function getAPIData() {
