@@ -7,7 +7,7 @@
 
 ## 배포 주소 
 - <a
-            href="https://clothesforyouu.netlify.app/"
+            href="https://clothes4oryou.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
             >ClothesForYou</a>
@@ -164,11 +164,11 @@
 
 ## 🛠 개선점 
 
-- [비가 왔을 때]
+- [비가 왔을 때 우산이나 우비를 챙기라고 알려주는 기능](#비가-왔을-때-우산이나-우비-챙기는-알림-만들기)
 
- - [Clothes Diary](#clothes-diary)
+ - [Clothes Diary](#clothes-diary-image-저장-방식)
 
- - [Color Match](#color-match)
+ - [Color Match](#color-match의-활용성)
 ---
 
 <br>
