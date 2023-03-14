@@ -197,10 +197,12 @@ function getWeeklyWeather(getWeeklyWeatherData) {
     let getMinTempIcon;
 
     getWeeklyWeatherData[17].push(getWeeklyWeatherData[0]);
+
     for (let i = 0; i < ONE_WEEK; i++) {
         if (getWeeklyWeatherData[0] === i) {
             getWeeklyWeatherData[8][i][getWeeklyWeatherData[10][i]] = getWeeklyWeatherData[3];
             getWeeklyWeatherData[9][i][getWeeklyWeatherData[10][i]] = getWeeklyWeatherData[4];
+
             getWeeklyWeatherData[13][i][getWeeklyWeatherData[10][i]] = [getWeeklyWeatherData[3], iconLoader(getWeeklyWeatherData[5], getWeeklyWeatherData[6], getWeeklyWeatherData[7])[0]];
 
             getMaxTempAry = getWeeklyWeatherData[13][i].reduce((pre, cur) => {
@@ -215,10 +217,10 @@ function getWeeklyWeather(getWeeklyWeatherData) {
 
             getWeeklyWeatherData[10][i]++;
 
-            dailyMaxTemp[0] = Math.max(...getWeeklyWeatherData[8][i]);
-            dailyMinTemp[0] = Math.min(...getWeeklyWeatherData[9][i]);
-            getMaxTempIcon = getMaxTempAry.indexOf(String(dailyMaxTemp[0])) + 1;
-            getMinTempIcon = getMinTempAry.indexOf(String(dailyMinTemp[0])) + 1;
+            dailyMaxTemp = Math.max(...getWeeklyWeatherData[8][i]);
+            dailyMinTemp = Math.min(...getWeeklyWeatherData[9][i]);
+            getMaxTempIcon = getMaxTempAry.indexOf(String(dailyMaxTemp)) + 1;
+            getMinTempIcon = getMinTempAry.indexOf(String(dailyMinTemp)) + 1;
 
         }
     }
@@ -229,8 +231,8 @@ function getWeeklyWeather(getWeeklyWeatherData) {
 
         getWeeklyWeatherData[1].querySelector('.min-weather-main').insertAdjacentHTML('afterbegin', getMinTempAry[getMinTempIcon]);
 
-        getWeeklyWeatherData[1].querySelector('.max-temp').textContent = `${Math.round(dailyMaxTemp[0] * 10) / 10}˚`;
-        getWeeklyWeatherData[1].querySelector('.min-temp').textContent = `${Math.round(dailyMinTemp[0] * 10) / 10}˚`;
+        getWeeklyWeatherData[1].querySelector('.max-temp').textContent = `${Math.round(dailyMaxTemp * 10) / 10}˚`;
+        getWeeklyWeatherData[1].querySelector('.min-temp').textContent = `${Math.round(dailyMinTemp * 10) / 10}˚`;
 
         getWeeklyWeatherData[1].querySelector('.today').textContent = getDay(getWeeklyWeatherData[0]);
         getWeeklyWeatherData[1].querySelector('.humidity').insertAdjacentHTML('afterend', `<i class="wi wi-raindrop humidity"> <span class= "pnt">${getWeeklyWeatherData[2]}%</span></i>`);
@@ -239,7 +241,7 @@ function getWeeklyWeather(getWeeklyWeatherData) {
 
         let eliminateDuplicateAry = [...new Set(getWeeklyWeatherData[17])];
 
-        const getClothesAry = [getWeeklyWeatherData[15], getWeeklyWeatherData[16], ONE_WEEK, (Math.round(dailyMaxTemp[0] * 10) / 10), (Math.round(dailyMinTemp[0] * 10) / 10), eliminateDuplicateAry];
+        const getClothesAry = [getWeeklyWeatherData[15], getWeeklyWeatherData[16], ONE_WEEK, (Math.round(dailyMaxTemp * 10) / 10), (Math.round(dailyMinTemp * 10) / 10), eliminateDuplicateAry];
         clothesLoader(getClothesAry);
     }
 }
