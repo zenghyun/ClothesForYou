@@ -8,13 +8,13 @@ function getYoutube(data) {
     weatheriframe.querySelector('.youtube-link').setAttribute('href', `https://www.youtube.com/watch?v=${videoId}`);
     weatheriframe.querySelector('.thumbnail').style.backgroundImage = `url(${link})`;
     weatheriframe.querySelector('.thumbnail-title').insertAdjacentHTML('afterbegin', `${data.items[0].snippet.title}`);
-
     videoLists.append(weatheriframe);
 }
-(function Youtube() {
+
+(function youtube() {
 
     const YOUTUBE_API = "";
-    const YOUTUBE_CHANNEL = "";
+    const YOUTUBE_CHANNEL = "UCs1omgoHHPENxs4b-fwMpPQ";
 
     const url = `https://www.googleapis.com/youtube/v3/search?list=PLsU45F2D-sEanSDUJ0LUye7uK8A66zDiL&part=snippet&maxResults=1&channelId=${YOUTUBE_CHANNEL}&type=video&order=date&key=${YOUTUBE_API}`;
     
