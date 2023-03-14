@@ -1,7 +1,7 @@
 import { mainWeather, descriptionWeather } from './weatherList.mjs';
 import { getClothes } from './clothes.mjs';
 
-const API_KEY = "de9afcffc19013aaef1ec97ef50bc2fc";
+const API_KEY = "";
 
 function getDecsriptionWeather(objectLength, listLength) {
     return `${descriptionWeather[objectLength].list[listLength + 4]}`;
@@ -250,14 +250,14 @@ function subWeatherBackground(nowHour) {
     const subWeatherArea = document.querySelector('.sub-weather');
 
     if (nowHour > 6 && nowHour < 17) {
-        subWeatherArea.style.backgroundImage = "url('./images/weather/06시~16시.gif')";
+        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
         subWeatherArea.style.color = "#333032";
     }
     else if (nowHour >= 17 && nowHour <= 20) {
-        subWeatherArea.style.backgroundImage = "url('./images/weather/16시~20시.gif')";
+        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
         subWeatherArea.style.color = "#aeeaff";
     } else {
-        subWeatherArea.style.backgroundImage = "url('./images/weather/20시~06시.gif')";
+        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
         subWeatherArea.style.color = "#eeeb99";
     }
 }
