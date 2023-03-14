@@ -4,16 +4,13 @@ const IMG_KEY = "IMG";
 let routeLength = 0;
 let images = [];
 
+
 getFileBtn.addEventListener('change', (event) => {
   let route = event.target.files
   const routeAry = (Array.from(route));
   routeLength += route.length;
 
-  if (routeLength === 1) {
-    fileName.value = (`${route[0].name}`).trim();
-  } else {
-    fileName.value = (`${route[0].name}외 ${routeLength - 1}개`).trim();
-  }
+    fileName.value = (`${routeLength}개의 파일이 등록되었습니다.`).trim();
   handleImg(routeAry);
 })
 
@@ -55,16 +52,17 @@ function paintImage(newImageObj) {
   log.textContent = newImageObj.log;
 
   const img = document.createElement('img');
+  img.classList.add('img-area');
   img.setAttribute('src', newImageObj.src);
 
   const btn = document.createElement('span');
   btn.textContent = "X";
   btn.addEventListener('click', deleteImage)
 
-  uploadContainer.appendChild($btn);
-  uploadContainer.appendChild($log);
-  uploadContainer.appendChild($img);
-  imgPreview.appendChild($uploadContainer);
+  uploadContainer.appendChild(btn);
+  uploadContainer.appendChild(log);
+  uploadContainer.appendChild(img);
+  imgPreview.appendChild(uploadContainer);
 }
 
 // upload한 image 
@@ -101,6 +99,7 @@ function handleImg(routeAry) {
     if (localStorage.hasOwnProperty(IMG_KEY)) {
       const parseImage = JSON.parse(loadImage);
       images = parseImage;
+      fileName.value = `${parseImage.length}개의 파일이 등록되어 있습니다.`;
       parseImage.forEach(paintImage);
     }
   } catch (error) {
