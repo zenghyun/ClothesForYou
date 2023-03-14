@@ -145,7 +145,7 @@
 
 - [3시간 간격으로 5일간의 기온과 날씨를 알려주는 기능](#3시간-간격으로-5일간의-기온과-날씨-가져오기)
 
-- [현재 시간을 기준으로 가까운 시간대의 기온과 상세 날씨, 체감온도, 습도, 풍향 및 풍속을 알려주는 기능](#)
+- [현재 시간을 기준으로 가까운 시간대의 기온과 상세 날씨, 체감온도, 습도, 풍향 및 풍속을 알려주는 기능](#현재-시간을-기준으로-가까운-시간대의-기온과-상세-날씨-체감온도-습도-풍향-및-풍속을-알려주기)
 
 - [평균 온도를 기준으로 기온별 옷차림을 정해주는 기능](#)
 
@@ -374,7 +374,7 @@ for (let i = 0; i < weatherDatas; i++) {
   
 - [2. getMainWeather 함수 호출](#2-getmainweather-함수-호출)
   
-- [3. getChart 함수 호출]()
+- [3. getChart 함수 호출](#3-getchart-함수-호출)
 <br>
 <br>
 
@@ -728,3 +728,255 @@ function getWeatherDay(i, concreteDayData, concreteTime) {
 ```
 
 첫번째로 받아온 data는 **오늘**이라고 표시하고, 그 외에는 하루가 바뀔 때마다 실제 한국 날짜를 보여줍니다. 
+
+마지막으로 **weatherLists**에 **weatherLi**를 `append` 해줘서 3시간 간격으로 5일동안의 날씨 icon과 온도 및 날짜를 알려줄 수 있게 됐습니다. 
+
+<br>
+
+### **3. getChart 함수 호출**
+<br>
+
+```javascript
+// getWeather 함수 일부
+
+    let tempArr = [];
+    let timeArr = [];
+
+ for (let i = 0; i < weatherDatas; i++) {
+
+   let temp = Math.round(`${data.list[i].main.temp}`);
+
+   tempArr.push(temp);
+
+ // utc 시간 한국 표준 시간으로 변환 
+      let koreaTime = concreteTime + 9;
+
+        koreaTime === 24 ? koreaTime = 0 :
+            koreaTime === 27 ? koreaTime = 3 :
+                koreaTime === 30 ? koreaTime = 6 : "";
+       
+  koreaTime >= 12 ? timeArr.push(`${koreaTime}:00 pm`) : timeArr.push(`0${koreaTime}:00 am`);
+
+ }
+
+  getChart(tempArr, timeArr);
+
+```
+
+`getChart` 함수를 호출시키기 전에 매개변수로 `tempArr`과 `timeArr`를 넘겨줍니다. `tempArr`는 전체 data의 온도를 담고있고, `timeArr`는 전체 data의 날짜를 담고 있습니다. 날짜는 **utc 시간이 기준인 data를 한국 시간으로 바꿔서 저장하였습니다.** 
+
+<br>
+
+### **getChart**
+<br>
+
+```javascript
+function getChart(tempArr, timeArr) {
+
+    const tempChart = document.getElementById("temp-chart").getContext("2d");
+    let gradientStroke = tempChart.createLinearGradient(0, 50, 0, 0);
+    gradientStroke.addColorStop(1, '#f11f61');
+    gradientStroke.addColorStop(0, '#79a5fe');
+
+    new Chart(tempChart, {
+        scaleLineColor: "rgba(0,0,0,0)",
+        type: 'line',
+        data: {
+            labels: timeArr,
+            datasets: [
+                {
+                    data: tempArr,
+                    label: ' ',
+                    backgroundColor: "transparent",
+                    fill: false,
+                    lineTension: 0,
+                    borderWidth: 4, // [막대 테두리 굵기 설정],
+                    borderColor: gradientStroke,
+                    pointBorderColor: gradientStroke,
+                    pointBackgroundColor: gradientStroke,
+                    pointHoverBackgroundColor: gradientStroke,
+                    pointHoverBorderColor: gradientStroke,
+                    pointBorderWidth: 4,
+                    pointHoverRadius: 4,
+                    pointHoverBorderWidth: 1,
+                    pointRadius: 4,
+                    pointStyle: 'rect', //포인터 스타일 변경
+                }
+            ]
+        },
+        options: {
+            responsive: false, // 내 맘대로 크기 조정
+            legend: {
+                display: false,
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: "transparent",
+                    },
+                    gridLines: {
+                        color: 'transparent',
+                        lineWidth: 0
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: 'black',
+                        fontSize: 18,
+                        fontFamily: 'Jua',
+                    },
+                    gridLines: {
+                        color: "transparent",
+                        lineWidth: 0
+                    }
+                }]
+            }
+        }
+    });
+}
+```
+
+이 함수는 **Chart.js** 라이브러리를 사용하여 선 그래프를 생성합니다. 함수는 두 개의 매개 변수 `tempArr`과 `timeArr`를 받습니다. 
+
+캔버스 요소를 가져와서 2D 컨텍스트를 설정합니다.
+
+```javascript
+const tempChart = document.getElementById("temp-chart").getContext("2d");
+```
+gradientStroke라는 변수를 선언하고, 이는 `createLinearGradient()` 메서드를 사용하여 2D 컨텍스트에서 선형 그라데이션을 만듭니다.
+
+```javascript
+let gradientStroke = tempChart.createLinearGradient(0, 50, 0, 0);
+gradientStroke.addColorStop(1, '#f11f61');
+gradientStroke.addColorStop(0, '#79a5fe');
+```
+Chart 객체를 생성하고, options 객체와 함께 인수로 전달합니다.
+```javascript
+new Chart(tempChart, {
+    ...
+});
+```
+옵션 객체는 다음과 같습니다.
+
+```javascript
+options: {
+    responsive: false,
+    legend: {
+        display: false,
+    },
+    scales: {
+        yAxes: [{
+            ticks: {
+                fontColor: "transparent",
+            },
+            gridLines: {
+                color: 'transparent',
+                lineWidth: 0
+            }
+        }],
+        xAxes: [{
+            ticks: {
+                fontColor: 'black',
+                fontSize: 18,
+                fontFamily: 'Jua',
+            },
+            gridLines: {
+                color: "transparent",
+                lineWidth: 0
+            }
+        }]
+    }
+}
+```
+그래프의 선 스타일, 축 레이블, 축 스타일 등을 정의합니다.
+
+```javascript
+scaleLineColor: "rgba(0,0,0,0)",
+```
+그래프 유형을 'line'으로 설정합니다.
+```javascript
+type: 'line',
+```
+데이터를 정의합니다. labels는 x축 레이블을 나타내며, datasets는 선 그래프의 데이터를 나타냅니다.
+
+```javascript
+data: {
+    labels: timeArr,
+    datasets: [
+        {
+            data: tempArr,
+            label: ' ',
+            backgroundColor: "transparent",
+            fill: false,
+            lineTension: 0,
+            borderWidth: 4,
+            borderColor: gradientStroke,
+            pointBorderColor: gradientStroke,
+            pointBackgroundColor: gradientStroke,
+            pointHoverBackgroundColor: gradientStroke,
+            pointHoverBorderColor: gradientStroke,
+            pointBorderWidth: 4,
+            pointHoverRadius: 4,
+            pointHoverBorderWidth: 1,
+            pointRadius: 4,
+            pointStyle: 'rect',
+        }
+    ]
+}
+```
+
+그래프의 크기 조정 및 범례 설정을 해줍니다.
+
+```javascript
+responsive: false,
+legend: {
+    display: false,
+},
+```
+y축과 x축의 스타일을 정의합니다.
+
+```javascript
+scales: {
+    yAxes: [{
+        ticks: {
+            fontColor: "transparent",
+        },
+        gridLines: {
+            color: 'transparent',
+            lineWidth: 0
+        }
+    }],
+     xAxes: [{
+                    ticks: {
+                        fontColor: 'black',
+                        fontSize: 18,
+                        fontFamily: 'Jua',
+                    },
+                    gridLines: {
+                        color: "transparent",
+                        lineWidth: 0
+                    }
+                }]
+            }
+```
+        
+<br>
+
+## 현재 시간을 기준으로 가까운 시간대의 기온과 상세 날씨, 체감온도, 습도, 풍향 및 풍속을 알려주기
+
+
+### **getWeather**
+
+```javascript
+// sub-weather
+const getSubWeatherData = [data, i, koreaTime, subWeatherLi, concreteDayData, humidity, subWeatherLists, nowHour]
+       
+        nowHour + 3 === 24 ? nowHour = 0 : nowHour = nowHour;
+
+        if (SubWeatherTrue === false) {
+            SubWeatherTrue = true;
+
+            getSubWeather(getSubWeatherData);
+            subWeatherBackground(nowHour);
+        }
+```
