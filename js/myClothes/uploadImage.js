@@ -104,7 +104,7 @@ function handleImg(routeAry) {
       parseImage.forEach(paintImage);
     }
   } catch (error) {
-    console.log("Item not found in local storage");
+    console.log("Unable to fetch items from local storage.");
   }
 
 })();
