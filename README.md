@@ -67,7 +67,7 @@
 ### 서브 페이지
 서브 페이지에서는 과거에 내가 입었던 옷차림을 업로드할 수 있는 다이어리와 **굳이 입어보지 않아도 옷에 대한 color match를 할 수 있는 기능이 있으면 좋겠다.** 라는 생각에 간단한 color match를 통해 나만의 코디를 완성해 볼 수 있게 만들었습니다. 
 
-다이어리와 color match를 나란히 배치함으로써 다이어리에 올린 사진에서 입은 옷의 색을 `input` 태그의 `type="color"`를 통해 가져올 수 있게 하여 사용자가 실제로 갖고 있는 옷의 색을 반영하여 코디할 수 있는 장점이 있습니다. 
+다이어리와 color match를 나란히 배치함으로써 다이어리에 올린 사진에서 입은 옷의 색을 `input` 요소의 `type="color"`를 통해 가져올 수 있게 하여 사용자가 실제로 갖고 있는 옷의 색을 반영하여 코디할 수 있는 장점이 있습니다. 
 
 <br>
 <br>
@@ -147,21 +147,28 @@
 
 - [현재 시간을 기준으로 가까운 시간대의 기온과 상세 날씨, 체감온도, 습도, 풍향 및 풍속을 알려주는 기능](#현재-시간을-기준으로-가까운-시간대의-기온과-상세-날씨-체감온도-습도-풍향-및-풍속을-알려주기)
 
-- [평균 온도를 기준으로 기온별 옷차림을 정해주는 기능](#)
+- [주간 날씨의 습도, 최고 기온, 최저 기온 및 날씨를 알려주는 기능](#주간-날씨의-습도-최고-기온-최저-기온-및-날씨를-알려주기)
 
-- [주간 날씨의 습도, 최고 기온, 최저 기온 및 날씨를 알려주는 기능](#)
+- [평균 온도를 기준으로 기온별 옷차림을 정해주는 기능](#평균-온도를-기준으로-기온별-옷차림-알려주기)
 
-- [유튜브 API를 이용하여 "오늘 비와?" 채널의 최근 날씨 예보를 보여주는 기능](#)
+- [유튜브 API를 이용하여 "오늘 비와?" 채널의 최근 날씨 예보를 보여주는 기능](#유튜브-api를-이용하여-오늘-비와-채널의-최근-날씨-예보-알려주기)
 
-- [기온별 옷차림 선정 Tip을 알려주는 기능](#)
+- [기온별 옷차림 선정 Tip을 알려주는 기능](#기온별-옷차림-선정-tip-알려주기)
 
-- [내가 입었던 옷차림을 기록할 수 있는 기능](#)
+- [내가 입었던 옷차림을 기록할 수 있는 기능](#내가-입었던-옷차림-기록하기)
 
-- [옷을 입을 때 컬러 매치를 간단하게 도와줄 수 있는 기능](#)
+- [옷을 입을 때 컬러 매치를 간단하게 도와줄 수 있는 기능](#옷-컬러-매치를-간단하게-알려주기)
 
 <br>
 <br>
 
+## 🛠 개선점 
+
+- [비가 왔을 때]
+
+ - [Clothes Diary](#clothes-diary)
+
+ - [Color Match](#color-match)
 ---
 
 <br>
@@ -273,13 +280,14 @@ function onGeoOk(position) {
 
 <br>
 
-처음에는 받아온 데이터를 일일이 자식 태그로 HTML에 작성해 줬습니다. 그러다가 반복되는 태그를 통해 HTML의 길이가 길어지게 되었고, 코드의 길이를 줄이고 싶어졌습니다. <span style="color:red">**반복되는 태그를 하나의 틀로 만들어놓고, 안에 내용만 바꿔줄 수 있으면 좋지 않을까?**</span>라는 고민을 하다가 `template`태그와 `importNode`에 대해 알게 되었습니다. 
+처음에는 받아온 데이터를 일일이 자식 요소로 HTML에 작성해 줬습니다. 그러다가 반복되는 요소를 통해 HTML의 길이가 길어지게 되었고, 코드의 길이를 줄이고 싶어졌습니다. <span style="color:red">**반복되는 요소를 하나의 틀로 만들어놓고, 안에 내용만 바꿔줄 수 있으면 좋지 않을까?**</span>라는 고민을 하다가 `template`요소와 `importNode`에 대해 알게 되었습니다. 
 
 <br>
 
 아래는 제가 사용한 방식입니다. 
 
-### HTML
+### index.html
+<br>
 
 ```html
 <!-- 3시간 간격으로 5일간의 기온과 날씨 알려주는 template -->
@@ -321,11 +329,12 @@ function onGeoOk(position) {
 </template>
 ```
 
-`template` 태그를 사용한 이유는 반복되는 태그를 줄임으로서, 코드의 길이를 줄이기 위함입니다.
+`template` 요소를 사용한 이유는 반복되는 요소를 줄임으로서, 코드의 길이를 줄이기 위함입니다.
 
 <br>
 
 ### getWeather
+<br>
 
 
 ```javascript
@@ -351,7 +360,7 @@ for (let i = 0; i < weatherDatas; i++) {
 ```
 [weatherLists](#1-3시간-간격으로-5일간의-기온과-날씨를-알려주는-기능), [subWeatherLists](#2-현재-시간을-기준으로-가까운-시간대의-기온과-상세-날씨-체감온도-습도-풍향-및-풍속을-알려주는-기능), [weeklyWeatherLists](#3-주간-날씨의-습도-최고-기온-최저-기온-및-날씨를-알려주는-기능입니다)는 HTML 상에서 template를 자식 요소로 받을 부모입니다. 
 
-아래의 template 변수들은 HTML상에 있는 `template` 태그입니다. 
+아래의 template 변수들은 HTML상에 있는 `template` 요소입니다. 
 
 **for문**은 내가 받아온 ` const weatherDatas = data.list.length;`의 길이만큼 반복하게 됩니다. 각각의 `template`는 `importNode`를 통해 복제되며, **true**를 지정하여 자식 노드를 포함 시키겠다고 선언하였습니다. 
 
@@ -421,7 +430,7 @@ timeArr = Chart에 넣을 시간
 <br>
 
 다음은 `getWeather`함수에서 <span style="color:red">**main-weather**</span>를 구하는 방식입니다.
-<br>
+<br><br>
 
 ```javascript
 // main-weather 
@@ -448,7 +457,7 @@ i가 0이 아니고 `concreteTime`이 15시일 때는 한국 시간으로 오전
 
 그 순간에 `calcData` 에는 calcDay함수를 통해 구해진 실제 날짜가 초기화되고 `weatherPeriod` 배열에 담기게 됩니다. 
 
-그렇게 `weatherPeriod`에 담긴 값은 `.weather-period`라는 class를 가진 태그에 <span style="color:skyblue">날짜별 예보 ( 예보를 시작한 날짜 ~ 예보가 끝나는 날짜 )</span>를 나타내게 됩니다.
+그렇게 `weatherPeriod`에 담긴 값은 `weather-period`라는 class를 가진 요소에 <span style="color:skyblue">날짜별 예보 ( 예보를 시작한 날짜 ~ 예보가 끝나는 날짜 )</span>를 나타내게 됩니다.
 
 <br>
 
@@ -457,6 +466,7 @@ i가 0이 아니고 `concreteTime`이 15시일 때는 한국 시간으로 오전
 <br>
 
 **getMainWeatherData**를 매개변수로 `getMainWeather`함수를 호출 했습니다. 
+<br><br>
 
 ```javascript
 /**
@@ -482,7 +492,7 @@ function getMainWeather(getMainWeatherData) {
 }
 ```
 
-`.weather-main`이라는 클래스를 가진 태그에 `insertAdjacentHTML` 메서드를 사용하여 자식 태그로 **iconLoader** 함수를 호출한 return값의 첫 번째 값을 넣습니다.
+`weather-main`이라는 클래스를 가진 요소에 `insertAdjacentHTML` 메서드를 사용하여 자식 요소로 **iconLoader** 함수를 호출한 return값의 첫 번째 값을 넣습니다.
 
 <br>
 
@@ -679,6 +689,7 @@ iconLoader -> extractWeatherId -> getWeatherList -> getData -> getDescriptionWea
         return `<i class="wi ${descriptionWeather[objectLength].list[listLength + 3]}"></i>`;
     }
 ```
+<br>
 매개변수로 받은 weatherTime은 utc 기준이기 때문에 한국 기준으로 바꿔서 시간대에 맞는 icon을 가져오게 됩니다. 
 
 <br>
@@ -707,9 +718,9 @@ function getMainWeather(getMainWeatherData) {
 }
 ```
 
-`.temp`라는 클래스를 가진 태그에 weather Data에서 가져온 온도를 `textContent`로 지정합니다.
+`temp`라는 클래스를 가진 요소에 weather Data에서 가져온 온도를 `textContent`로 지정합니다.
 
-`.day`라는 클래스를 가진 태그에는 **getWeatherDay** 함수를 호출한 값을 `textContent`로 지정합니다. 
+`day`라는 클래스를 가진 요소에는 **getWeatherDay** 함수를 호출한 값을 `textContent`로 지정합니다. 
 
 <br>
 
@@ -726,7 +737,7 @@ function getWeatherDay(i, concreteDayData, concreteTime) {
     }
 }
 ```
-
+<br>
 첫번째로 받아온 data는 **오늘**이라고 표시하고, 그 외에는 하루가 바뀔 때마다 실제 한국 날짜를 보여줍니다. 
 
 마지막으로 **weatherLists**에 **weatherLi**를 `append` 해줘서 3시간 간격으로 5일동안의 날씨 icon과 온도 및 날짜를 알려줄 수 있게 됐습니다. 
@@ -762,6 +773,7 @@ function getWeatherDay(i, concreteDayData, concreteTime) {
   getChart(tempArr, timeArr);
 
 ```
+<br>
 
 `getChart` 함수를 호출시키기 전에 매개변수로 `tempArr`과 `timeArr`를 넘겨줍니다. `tempArr`는 전체 data의 온도를 담고있고, `timeArr`는 전체 data의 날짜를 담고 있습니다. 날짜는 **utc 시간이 기준인 data를 한국 시간으로 바꿔서 저장하였습니다.** 
 
@@ -838,25 +850,41 @@ function getChart(tempArr, timeArr) {
 
 이 함수는 **Chart.js** 라이브러리를 사용하여 선 그래프를 생성합니다. 함수는 두 개의 매개 변수 `tempArr`과 `timeArr`를 받습니다. 
 
+<br>
+
 캔버스 요소를 가져와서 2D 컨텍스트를 설정합니다.
+
+<br>
 
 ```javascript
 const tempChart = document.getElementById("temp-chart").getContext("2d");
 ```
+<br>
+
 gradientStroke라는 변수를 선언하고, 이는 `createLinearGradient()` 메서드를 사용하여 2D 컨텍스트에서 선형 그라데이션을 만듭니다.
+
+<br>
 
 ```javascript
 let gradientStroke = tempChart.createLinearGradient(0, 50, 0, 0);
 gradientStroke.addColorStop(1, '#f11f61');
 gradientStroke.addColorStop(0, '#79a5fe');
 ```
+<br>
+
 Chart 객체를 생성하고, options 객체와 함께 인수로 전달합니다.
+
+<br>
+
 ```javascript
 new Chart(tempChart, {
     ...
 });
 ```
+<br>
 옵션 객체는 다음과 같습니다.
+
+<br>
 
 ```javascript
 options: {
@@ -890,14 +918,27 @@ options: {
 ```
 그래프의 선 스타일, 축 레이블, 축 스타일 등을 정의합니다.
 
+<br>
+
 ```javascript
 scaleLineColor: "rgba(0,0,0,0)",
 ```
+
+<br>
+
 그래프 유형을 'line'으로 설정합니다.
+
+<br>
+
 ```javascript
 type: 'line',
 ```
+
+<br>
+
 데이터를 정의합니다. labels는 x축 레이블을 나타내며, datasets는 선 그래프의 데이터를 나타냅니다.
+
+<br>
 
 ```javascript
 data: {
@@ -925,7 +966,11 @@ data: {
 }
 ```
 
+<br>
+
 그래프의 크기 조정 및 범례 설정을 해줍니다.
+
+<br>
 
 ```javascript
 responsive: false,
@@ -933,7 +978,11 @@ legend: {
     display: false,
 },
 ```
+<br>
+
 y축과 x축의 스타일을 정의합니다.
+
+<br>
 
 ```javascript
 scales: {
@@ -964,8 +1013,17 @@ scales: {
 
 ## 현재 시간을 기준으로 가까운 시간대의 기온과 상세 날씨, 체감온도, 습도, 풍향 및 풍속을 알려주기
 
+<br>
+
+### 📌 목차
+- [1. subWeather data 가져오기](#getsubweatherdata)
+  
+- [2. subWeather Background Image 가져오기](#subweatherbackground)
+  
+<br>
 
 ### **getWeather**
+<br>
 
 ```javascript
  let SubWeatherTrue = false;
@@ -1050,21 +1108,21 @@ function getSubWeather(getSubWeatherData) {
 
 시간의 경우 한국 시간, 그리고 12시를 기준으로 오전 오후를 나눠서 설정해줍니다. 
 
-`.time`이라는 클래스명을 가진 태그에 시간을 넣어줍니다. 
+`time`이라는 클래스명을 가진 요소에 시간을 넣어줍니다. 
 
-`.weather-main`이라는 클래스명을 가진 태그에 날씨 icon을 넣어줍니다. 
+`weather-main`이라는 클래스명을 가진 요소에 날씨 icon을 넣어줍니다. 
 
-`.temp`라는 클래스명을 가진 태그에 subTemp를 넣어줍니다. 
+`temp`라는 클래스명을 가진 요소에 subTemp를 넣어줍니다. 
 
-`weather-description`이라는 클래스명을 가진 태그에 날씨 상세 묘사를 넣어줍니다.
+`weather-description`이라는 클래스명을 가진 요소에 날씨 상세 묘사를 넣어줍니다.
 
-`.feel-temp`라는 클래스명을 가진 태그에 체감 온도를 넣어줍니다.
+`feel-temp`라는 클래스명을 가진 요소에 체감 온도를 넣어줍니다.
 
-`.humidity`라는 클래스명을 가진 태그에 습도를 넣어줍니다. 
+`humidity`라는 클래스명을 가진 요소에 습도를 넣어줍니다. 
 
 풍향은 0 ~ 360을 기준으로 90도씩 나눠서 풍향을 정해줍니다. 
 
-`.wind`라는 클래스명을 가진 태그에 풍향과 풍속을 넣어줍니다. 
+`wind`라는 클래스명을 가진 요소에 풍향과 풍속을 넣어줍니다. 
 
 `subWeatherData`의 경우 메인 페이지를 벗어나 서브 페이지로 이동했을 때, 같은 정보를 `fetch` 메서드로 호출하지 않고 세션 스토리지에 data를 저장하고 그 data를 이용하기 위해 사용할 변수입니다.
 
@@ -1094,4 +1152,945 @@ function subWeatherBackground(nowHour) {
 `subWeatherBackground` 함수는 **nowHour**에 맞춰서 backgroundImage를 설정해주기 위한 함수입니다. 
 
 시간에 따라 아침, 오후, 밤으로 나눠서 3가지의 배경으로 표현합니다. 
+<br>
+<br><br>
+
+## 주간 날씨의 습도, 최고 기온, 최저 기온 및 날씨를 알려주기
+
+<br>
+
+### 📌 목차
+- [1. 필요한 변수 선언 및 getWeeklyWeather 호출](#getweeklyweatherdata)
+  
+- [2. 요일 가져오기](#getday)
+  
+
+<br>
+
+### **getWeather**
+<br>
+
+```javascript
+  // weekly weather
+  let changeDate = new Date(calcDay(concreteDayData)[1]);
+  let getWeekOfDay = changeDate.getDay();
+  let maxTemp = `${data.list[i].main.temp_max}`;
+  let minTemp = `${data.list[i].main.temp_min}`;
+  let humidity = `${data.list[i].main.humidity}`;
+
+  //  weeklyMaxTemp, weeklyMinTemp, weekend, weeklyMaxIcon, weeklyMinIcon 차례대로 월,화,수,목,금,토,일
+  let weeklyMaxTemp = [[], [], [], [], [], [], []];
+  let weeklyMinTemp = [[], [], [], [], [], [], []];
+  let weekend = [0, 0, 0, 0, 0, 0, 0];
+  let weeklyMaxIcon = [[], [], [], [], [], [], []];
+  let weeklyMinIcon = [[], [], [], [], [], [], []];
+  let dailyMaxTempAry = [];
+  let dailyMinTempAry = [];
+  let getToday = [];
+
+  // 생략 
+
+  const getWeeklyWeatherData = [getWeekOfDay, weeklyWeatherLi, humidity, maxTemp, minTemp, data, i, concreteDayData, weeklyMaxTemp, weeklyMinTemp, weekend, weeklyWeatherLists, concreteTime, weeklyMaxIcon, weeklyMinIcon, dailyMaxTempAry, dailyMinTempAry, getToday];
+
+  getWeeklyWeather(getWeeklyWeatherData);
+```
+
+### **getWeeklyWeatherData**
+<br>
+
+```javascript
+/**
+ * 
+ * @param {object} getWeeklyWeatherData 
+ * getWeeklyWeatherData[0] = getWeekOfDay ( 요일 구하기 위한 숫자 )
+ * getWeeklyWeatherData[1] = weeklyWeatherLi ( weekly weather template )
+ * getWeeklyWeatherData[2] = humidity ( 습도 )
+ * getWeeklyWeatherData[3] = maxTemp ( 최고 기온 )
+ * getWeeklyWeatherData[4] = minTemp ( 최저 기온 )
+ * getWeeklyWeatherData[5] = data ( weather API data )
+ * getWeeklyWeatherData[6] = i ( data 개수 )
+ * getWeeklyWeatherData[7] = concreteDayData  ( 데이터 별 날짜 )
+ * getWeeklyWeatherData[8] = weeklyMaxTemp ( 주간별 최고 기온 )
+ * getWeeklyWeatherData[9] = weeklyMinTemp ( 주간별 최저 기온 )
+ * getWeeklyWeatherData[10] = weekend ( 월, 화, 수, 목, 금, 토, 일 )
+ * getWeeklyWeatherData[11] = weeklyWeatherLists ( #weekly-weather-lists )
+ * getWeeklyWeatherData[12] = concreteTime ( utc 기준 12시 = 한국 시간 21시 마지막 출력 )
+ * getWeeklyWeatherData[13] = weeklyMaxIcon ( 시간대별 최고 기온 icon ary )
+ * getWeeklyWeatherData[14] = weeklyMinIcon ( 시간대별 최저 기온 icon ary)
+ * getWeeklyWeatherData[15] = dailyMaxTempAry ( 요일별 최고 기온을 담는 배열 )
+ * getWeeklyWeatherData[16] = dailyMinxTempAry ( 요일별 최저 기온을 담는 배열 )
+ * getWeeklyWeatherData[17] = getToday ( 요일을 저장하기 위한 배열 )
+ */
+function getWeeklyWeather(getWeeklyWeatherData) {
+
+    const ONE_WEEK = 7;
+    const LAST_CLOCK = 12; // utc 기준 12시는 한국 기준 21시 
+    let dailyMaxTemp = [];
+    let dailyMinTemp = [];
+    let getMaxTempAry = [];
+    let getMinTempAry = [];
+    let getMaxTempIcon;
+    let getMinTempIcon;
+
+    getWeeklyWeatherData[17].push(getWeeklyWeatherData[0]);
+
+    for (let i = 0; i < ONE_WEEK; i++) {
+        if (getWeeklyWeatherData[0] === i) {
+            getWeeklyWeatherData[8][i][getWeeklyWeatherData[10][i]] = getWeeklyWeatherData[3];
+            getWeeklyWeatherData[9][i][getWeeklyWeatherData[10][i]] = getWeeklyWeatherData[4];
+
+            getWeeklyWeatherData[13][i][getWeeklyWeatherData[10][i]] = [getWeeklyWeatherData[3], iconLoader(getWeeklyWeatherData[5], getWeeklyWeatherData[6], getWeeklyWeatherData[7])[0]];
+
+            getMaxTempAry = getWeeklyWeatherData[13][i].reduce((pre, cur) => {
+                return [...pre, ...cur];
+            })
+
+            getWeeklyWeatherData[14][i][getWeeklyWeatherData[10][i]] = [getWeeklyWeatherData[4], iconLoader(getWeeklyWeatherData[5], getWeeklyWeatherData[6], getWeeklyWeatherData[7])[0]];
+
+            getMinTempAry = getWeeklyWeatherData[14][i].reduce((pre, cur) => {
+                return [...pre, ...cur];
+            })
+
+            // 반복문이 실행되면서 요일이 바뀌면 weekend 배열도 요일이 바뀐다.
+            getWeeklyWeatherData[10][i]++; 
+
+            dailyMaxTemp[0] = Math.max(...getWeeklyWeatherData[8][i]);
+            dailyMinTemp[0] = Math.min(...getWeeklyWeatherData[9][i]);
+            getMaxTempIcon = getMaxTempAry.indexOf(String(dailyMaxTemp[0])) + 1;
+            getMinTempIcon = getMinTempAry.indexOf(String(dailyMinTemp[0])) + 1;
+
+        }
+    }
+
+    if (getWeeklyWeatherData[12] === LAST_CLOCK || getWeeklyWeatherData[6] === getWeeklyWeatherData[5].list.length - 1) {
+
+        getWeeklyWeatherData[1].querySelector('.max-weather-main').insertAdjacentHTML('afterbegin', getMaxTempAry[getMaxTempIcon]);
+
+        getWeeklyWeatherData[1].querySelector('.min-weather-main').insertAdjacentHTML('afterbegin', getMinTempAry[getMinTempIcon]);
+
+        getWeeklyWeatherData[1].querySelector('.max-temp').textContent = `${Math.round(dailyMaxTemp[0] * 10) / 10}˚`;
+        getWeeklyWeatherData[1].querySelector('.min-temp').textContent = `${Math.round(dailyMinTemp[0] * 10) / 10}˚`;
+
+        getWeeklyWeatherData[1].querySelector('.today').textContent = getDay(getWeeklyWeatherData[0]);
+        getWeeklyWeatherData[1].querySelector('.humidity').insertAdjacentHTML('afterend', `<i class="wi wi-raindrop humidity"> <span class= "pnt">${getWeeklyWeatherData[2]}%</span></i>`);
+
+        getWeeklyWeatherData[11].append(getWeeklyWeatherData[1]);
+
+        let eliminateDuplicateAry = [...new Set(getWeeklyWeatherData[17])];
+
+        const getClothesAry = [getWeeklyWeatherData[15], getWeeklyWeatherData[16], ONE_WEEK, (Math.round(dailyMaxTemp[0] * 10) / 10), (Math.round(dailyMinTemp[0] * 10) / 10), eliminateDuplicateAry];
+        clothesLoader(getClothesAry);
+    }
+}
+```
+<br>
+
+위의 함수에서는 일주일을 기준으로 반복문을 사용합니다. 
+
+주간 최고 기온을 구하기 위해 **weeklyMaxTemp**라는 이중 배열에 **weekend** 배열을 이용하여 **maxTemp**의 값을 담아줍니다. 
+
+마찬가지로 주간 최저 기온을 구하기 위해 **weeklyMinTemp**라는 이중 배열에 **weekend** 배열을 이용하여 **minTemp**의 값을 담아줍니다. 
+
+시간대별 최고 기온 icon을 구하기 위해 **WeeklyMaxIcon**라는 이중 배열에 **weekend** 배열을 이용하여 **maxTemp**와 그때의 날씨 icon을 담아줍니다. 
+
+그 후에 `getMaxTempAry`라는 변수에 **weeklyMaxIcon** 배열을 `reduce` 메서드를 이용하여 1차원 배열로 바꿔서 저장해줍니다. 
+
+마찬가지로 시간대별 최저 기온 icon을 구하기 위해 **WeeklyMinIcon**라는 이중 배열에 **weekend** 배열을 이용하여 **minTemp**와 그 때의 날씨 icon을 담아줍니다.
+
+그 후에 `getMinTempAry`라는 변수에 **weeklyMinIcon** 배열을 `reduce` 메서드를 이용하여 1차원 배열로 바꿔서 저장해줍니다. 
+
+**dailyMaxTemp**와 **dailyMinTemp** 변수는 최고 기온과 최저 기온을 구하기 위한 변수입니다. 구해진 기온은 각각 **getMaxTempIcon**과 **getMinTempIcon** 변수에서 icon의 위치를 구하기 위해 사용됩니다. 
+
+**WeeklyMaxIcon**과 **WeeklyMinIcon**을 이중 배열로 최고, 최저 기온과 그때의 날씨 icon을 한번에 저장한 이유는 아래와 같습니다. 
+
+최고 기온과 최저 기온의 값을 찾은 후, 그 값의 위치를 찾으면 그 다음 순서에는 그때의 날씨 icon이 들어있기 때문에 내가 찾은 기온에 맞는 날씨 icon을 가져올 수 있습니다. 
+<br><br>
+
+```javascript
+ if (getWeeklyWeatherData[12] === LAST_CLOCK || getWeeklyWeatherData[6] === getWeeklyWeatherData[5].list.length - 1) {
+  // 생략
+```
+<br>
+
+위의 조건문에는 두가지 조건이 있습니다. 둘 중 하나라도 만족하면 조건문은 실행됩니다. 
+
+**전자:** `LAST_CLOCK`은 utc기준 오후 12시를 의미합니다. 이는 utc 기준인 **concreTime**이 12시가 됐을 때, 한국 시간으로는 9시간을 더하여 다음 날이 된 것입니다. 
+<br>
+
+**후자:** 데이터의 반복된 횟수를 의미한 i가 전체 data의 마지막 순서가 됐을 때를 의미합니다. 
+
+전자나 후자 중 하나라도 만족했을 때,  **weeklyWeatherLi** template에 값을 넣습니다. 
+
+`max-weather-main`이라는 클래스명을 가진 요소에 최고 기온일 때 icon을 넣습니다. 
+
+`min-weather-main`이라는 클래스명을 가진 요소에 최저 기온일 때 icon을 넣습니다. 
+
+`max-temp`라는 클래스명을 가진 요소에 그날의 최고 기온을 넣습니다. 
+
+`min-temp`라는 클래스명을 가진 요소에 그날의 최저 기온을 넣습니다. 
+
+`today`라는 클래스명을 가진 요소에 `getDay` 함수를 호출한 값을 넣습니다. 
+
+<br>
+
+### **getDay**
+```javascript
+// 요일 구해주는 함수
+function getDay(day) {
+    day === 0 ? day = "일요일" :
+        day === 1 ? day = "월요일" :
+            day === 2 ? day = "화요일" :
+                day === 3 ? day = "수요일" :
+                    day === 4 ? day = "목요일" :
+                        day === 5 ? day = "금요일" :
+                            day = "토요일";
+    return day;
+}
+```
+<br>
+
+`humidity`라는 클래스명을 가진 요소의 습도를 나타내는 icon과 그날의 습도를 넣어줍니다. 
+
+마지막으로 **weeklyWeatherLists**에 **weeklyWeatherLi**를 `append` 해줌으로 주간 날씨의 습도, 최고 기온, 최저 기온 및 날씨를 알려줄 수 있게 됩니다. 
+
+<br><br>
+
+## 평균 온도를 기준으로 기온별 옷차림 알려주기 
+
+<br>
+
+### 📌 목차
+- [1. 요일별 멘트 설정 및 평균 기온 산출](#clothesloader)
+  
+- [2. 기온에 맞는 옷차림 가져오기](#getclothes)
+  
+- [3. 기온에 따른 옷차림 선정 방법](#getclothesbytemperature)
+<br>
+
+<br>
+
+```javascript
+// getWeeklyWeather
+function getWeeklyWeather(getWeeklyWeatherData) {
+
+    getWeeklyWeatherData[17].push(getWeeklyWeatherData[0]);
+  
+  //생략
+
+let eliminateDuplicateAry = [...new Set(getWeeklyWeatherData[17])];
+
+        const getClothesAry = [getWeeklyWeatherData[15], getWeeklyWeatherData[16], ONE_WEEK, (Math.round(dailyMaxTemp * 10) / 10), (Math.round(dailyMinTemp * 10) / 10), eliminateDuplicateAry];
+        clothesLoader(getClothesAry);
+       }
+}
+     
+```
+
+`getToday`에 `getWeekOfDay`를 담아줍니다.  
+**getWeekOfDay**는 요일을 구하기 위한 숫자입니다.
+
+`eliminateDuplicateAry`를 통해 담긴 숫자를 `Set`을 통해 중복 값을 없애줍니다. 
+
+<br>
+
+### **clothesLoader**
+<br>
+
+```javascript
+/**
+ * 
+ * @param {*} getClothesAry
+ * getClothesAry[0]: dailyMaxTempAry ( 요일별 최고 기온을 담는 배열 )
+ * getClothesAry[1]: dailyMinTempAry ( 요일별 최저 기온을 담는 배열 )
+ * getClothesAry[2]: ONE_WEEK 일주일 
+ * getClothesAry[3]: Math.round (dailyMaxTemp[0]*10)/10 (요일별 최고 기온) 
+ * getClothesAry[4]: Math.round (dailyMinTemp[0]*10)/10 (요일별 최저 기온) 
+ * getClothesAry[5]: eliminateDuplicateAry (요일이 담긴 배열) 
+*/
+function clothesLoader(getClothesAry) {
+    let clone = [];
+    let waitTempDay; // 산출되지 않은 요일
+    clone = [...getClothesAry[5]];
+    getClothesAry[0].push(getClothesAry[3]);
+    getClothesAry[1].push(getClothesAry[4]);
+
+    for (let i = 1; i < getClothesAry[2]; i++) {
+        
+        if (getClothesAry[0][i - 1] !== undefined) {
+            document.querySelector(`.clothes-temp-area${i}`).textContent = `${getDay(clone[i - 1])} 최고 기온은 ${getClothesAry[0][i - 1]}˚, 최저 기온은 ${getClothesAry[1][i - 1]}˚ 입니다.`;
+            document.querySelector(`.clothes-by-temperature${i}`).textContent = "오늘의 코디";
+            document.querySelector(`.show-text${i}`).textContent = `※ 오늘의 코디는 최고 기온과 최저 기온의 평균을 기준으로 산출합니다. ( 평균 온도 ${Math.round((getClothesAry[0][i - 1] + getClothesAry[1][i - 1]) / 2)}˚ ) `;
+
+            waitTempDay =  clone[i - 1];
+            
+            getClothes(i, getClothesAry[0], getClothesAry[1]);
+        } else if (getClothesAry[0][i - 1] === undefined) {
+            document.querySelector(`.clothes-by-temperature${i}`).textContent = `${getDay(waitTempDay+1)} 기온을 산출중 입니다.`;
+        }
+    }
+}
+
+```
+
+`clone`이라는 배열에 `eliminateDuplicateAry`를 새로 담아줍니다. 
+
+그리고 `dailMaxTempAry`와 `dailyMinTempAry`에는 각각 요일별 최고 기온과 최저 기온을 배열에 넣어줍니다. 
+
+반복문은 **전체 요일 - 1**만큼 반복하는데 그 이유는 슬라이드로 표시할 요일이 총 6개이기 때문입니다.  
+반복하면서 조건의 성립 여부에 따라 다른 코드가 실행됩니다.
+
+dailyMaxTempAry[i-1]이 **undefined**가 아니라면, 조건 내의 요소에는 위와 같은 문구들이 입력됩니다. 
+
+그리고 `getClothes` 함수를 실행합니다. 
+
+만약 dailyMaxTempAry[i-1]이 **undefined**이라면, 기온을 산출중이라는 멘트가 입력됩니다.  
+
+가져온 첫 번째 데이터의 시간이 오전 12시라면, 마지막 데이터는 첫 번째 날짜의 5일 뒤 21시기 때문에, 6번째 슬라이드에는 들어갈 기온이 없는 상태입니다. 이때 온도가 undefined으로 나오고, 온도를 기반으로 옷차림을 가져오지 못하기 때문에 이를 방지하기 위함입니다. 
+
+<br>
+
+### **getClothes**
+
+**getClothes**는 모듈화 시켜놓은 `clothes.mjs`에서 import하여 가져온 함수입니다. 
+
+```javascript
+import { getClothes } from './clothes.mjs';
+```
+<br>
+
+```javascript
+// clothes.mjs
+import { clothesTemperature, clothesRoute } from './clothesLists.mjs';
+
+export const getClothes = (i, maxTemp, minTemp) => {
+    const TEMP_LENGTH = clothesTemperature.length;
+    let avgTemp = (Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2));
+
+    if (avgTemp < clothesTemperature[TEMP_LENGTH - 1].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 1, i);
+    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 2].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 2, i);
+    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 3].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 3, i);
+    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 4].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 4, i);
+    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 5].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 5, i);
+    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 6].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 6, i);
+    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 7, i);
+    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 8].temperature) {
+        getClothesByTemperature(TEMP_LENGTH - 8, i);
+    } else {
+        return;
+    }
+}
+```
+
+`clothes.mjs` 파일은 `clothesLists.mjs` 파일을 import 하고 있습니다. 
+
+TEMP_LENGTH는 `clothesLists.mjs`에서 import 해온 clothesTemperature의 length 값으로 초기화 시켰습니다. 
+
+이는 아래의 조건문에서 온도를 가져와 평균 온도와 비교하면서 **평균 온도보다 크다면, 조건문을 만족시켜 `getClothesByTemperature` 함수를 실행시키기 위함입니다.** 
+
+즉, 기온에 따른 옷차림을 가져오는 방식은 그날의 최고 온도와 최저 온도의 평균을 기점으로, 온도별로 정해진 옷차림을 만족시킬 때까지 조건문을 반복하여 조건을 성립했을 때, 정해진 옷차림을 가져오는 것 입니다.
+
+
+<br>
+
+### **getClothesByTemperature**
+
+<br>
+
+다음은 기온이 정해졌을 때 옷차림을 가져오는 방식입니다.
+
+<br>
+
+```javascript
+function getClothesByTemperature(num, i) {
+
+    let closet = [
+        {
+            clothes: {
+                outerRandom: Math.floor(Math.random() * clothesRoute[num].clothes.outer.length),
+                topRandom: Math.floor(Math.random() * clothesRoute[num].clothes.top.length),
+                pantsRandom: Math.floor(Math.random() * clothesRoute[num].clothes.pants.length),
+                socksRandom: Math.floor(Math.random() * clothesRoute[num].clothes.socks.length),
+                accRandom: Math.floor(Math.random() * clothesRoute[num].clothes.acc.length),
+            },
+        }
+    ];
+
+    // get clothes
+    document.querySelector(`.by-temperature-outer${i}`).style.backgroundImage = `${clothesRoute[num].clothes.outer[closet[0].clothes.outerRandom]}`;
+    document.querySelector(`.by-temperature-top${i}`).style.backgroundImage = `${clothesRoute[num].clothes.top[closet[0].clothes.topRandom]}`;
+    document.querySelector(`.by-temperature-pants${i}`).style.backgroundImage = `${clothesRoute[num].clothes.pants[closet[0].clothes.pantsRandom]}`;
+    document.querySelector(`.by-temperature-socks${i}`).style.backgroundImage = `${clothesRoute[num].clothes.socks[closet[0].clothes.socksRandom]}`;
+    document.querySelector(`.by-temperature-acc${i}`).style.backgroundImage = `${clothesRoute[num].clothes.acc[closet[0].clothes.accRandom]}`;
+
+    // get clothes tags
+    document.querySelector(`.by-temperature-outer-tag${i}`).textContent = `${clothesRoute[num].clothesName.outer[closet[0].clothes.outerRandom]}`;
+    document.querySelector(`.by-temperature-top-tag${i}`).textContent = `${clothesRoute[num].clothesName.top[closet[0].clothes.topRandom]}`;
+    document.querySelector(`.by-temperature-pants-tag${i}`).textContent = `${clothesRoute[num].clothesName.pants[closet[0].clothes.pantsRandom]}`;
+    document.querySelector(`.by-temperature-socks-tag${i}`).textContent = `${clothesRoute[num].clothesName.socks[closet[0].clothes.socksRandom]}`;
+    document.querySelector(`.by-temperature-acc-tag${i}`).textContent = `${clothesRoute[num].clothesName.acc[closet[0].clothes.accRandom]}`;
+}
+```
+`closet` 배열안에 `clothes` 객체에는 종류별 random 값을 갖고 있습니다. 
+
+<br>
+
+### **clothesRoute**
+
+<br>
+
+```javascript
+// clothesLists.mjs 
+
+export const clothesRoute = [
+    {
+        temperature:28,
+        clothes:{
+            outer:[
+                ""
+            ],
+            top: [
+                "url('./images/clothes/28~/top/민소매.png')",
+                "url('./images/clothes/28~/top/반팔 셔츠1.png')",
+                "url('./images/clothes/28~/top/반팔 셔츠2.png')",
+                "url('./images/clothes/28~/top/반팔 셔츠3.png')",
+                "url('./images/clothes/28~/top/반팔 티1.png')",
+                "url('./images/clothes/28~/top/반팔 티2.png')",
+            ],
+            // 생략 
+
+            clothesName:{
+            outer:[
+                ""
+            ],
+            top: [
+                "민소매",
+                "반팔 셔츠",
+                "반팔 셔츠",
+                "반팔 셔츠",
+                "반팔 티",
+                "반팔 티",
+            ], 
+```
+clothesRoute 안의 종류별로 옷차림을 정해놓고, 1부터 정해놓은 옷의 최대 수 만큼 무작위로 숫자를 생성합니다.
+
+그리고 각각의 슬라이드에 무작위로 정해진 png 파일과 그에 맞는 이름을 가져와서 각각의 요소에 입력하게 됩니다. 
+
+<br>
+
+## 유튜브 API를 이용하여 "오늘 비와?" 채널의 최근 날씨 예보 알려주기 
+
+<br>
+
+### 📌 목차
+- [1. 즉시 실행함수 호출](#즉시-실행함수-호출)
+  
+- [2. Youtube data 가져오기](#getyoutube)
+  
+<br>
+
+<br>
+
+### 즉시 실행함수 호출 
+
+<br>
+
+```javascript
+/// getYoutube.js 
+
+(function youtube() {
+
+    const YOUTUBE_API = ""; // 발급받은 API KEY 넣기 
+    const YOUTUBE_CHANNEL = "UCs1omgoHHPENxs4b-fwMpPQ";
+
+    const url = `https://www.googleapis.com/youtube/v3/search?list=PLsU45F2D-sEanSDUJ0LUye7uK8A66zDiL&part=snippet&maxResults=1&channelId=${YOUTUBE_CHANNEL}&type=video&order=date&key=${YOUTUBE_API}`;
+    
+    fetch(url)
+        .then(response => {
+            if (response.status >= 200 && response.status < 300) {
+                return response.json();
+            } else {
+                return response.json().then(errData => {
+                    console.log(errData);
+                    throw new Error('Something went wrong');
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            throw new Error('Something went wrong.');
+        })
+        .then((data) => {
+            getYoutube(data);
+        })
+})();
+
+```
+
+`getYoutube.js` 파일 안에 있는 `Youtube` 함수는 즉시실행 함수로, 웹 페이지가 load되면 즉시 실행됩니다. 
+
+url 변수에 내가 발급받은 API KEY와 **오늘 비와?** 채널의 고유 KEY를 넣고 `fetch` 메서드를 사용하여 data를 받습니다.
+
+이는 `weather.js`에서 **openWeatherMap API** API를 이용하여 data를 받아오는 방식과 동일합니다. 
+
+data를 받아오는데 이상이 없다면 `getYoutube` 함수를 실행하게 됩니다. 
+
+<br>
+
+### getYoutube
+
+<br>
+
+```javascript
+function getYoutube(data) {
+    const videoLists = document.querySelector('.youtube-container');
+    const videoTemplate = document.querySelector('.youtube-iframe-template');
+    const weatheriframe = document.importNode(videoTemplate.content, true);
+    const videoId = data.items[0].id.videoId
+
+    let link = data.items[0].snippet.thumbnails.high.url;
+    weatheriframe.querySelector('.youtube-link').setAttribute('href', `https://www.youtube.com/watch?v=${videoId}`);
+    weatheriframe.querySelector('.thumbnail').style.backgroundImage = `url(${link})`;
+    weatheriframe.querySelector('.thumbnail-title').insertAdjacentHTML('afterbegin', `${data.items[0].
+    snippet.title}`);
+
+    videoLists.append(weatheriframe);
+}
+```
+
+### index.js 
+
+```html
+ <template class="youtube-iframe-template">
+      <a class="youtube-link" href="" target="_blank" rel="noopener noreferrer">
+        <div class="thumbnail"></div>
+        <p class="thumbnail-title"></p>
+      </a>
+    </template>
+```
+
+<br>
+
+받아온 data를 웹 페이지에서 나타내는 방식은 `weather.js`에서 template을 사용한 방식과 같습니다. 
+
+data에서 **videoId**를 추출하여 `youtube-link`라는 클래스명을 가진 요소에 `setAttribute` 메서드로 href 경로를 지정해줍니다. 
+
+그리고 data에서 thumbnail을 추출하여 `thumbnail`이라는 클래스명을 가진 요소의 backgroundImage에 경로를 지정해줍니다. 
+
+마지막으로 `thumbnail-title`이라는 클래스명을 가진 요소에 data에서 추출한 영상의 title을 넣어줍니다. 
+
+
+<br>
+
+## 기온별 옷차림 선정 Tip 알려주기 
+
+<br>
+
+### choiceTip.js 
+
+<br>
+
+```javascript
+const container = document.querySelector(".container");
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+
+(function addEvent() {
+  prev.addEventListener('click', translateContainer.bind(this, 1));
+  next.addEventListener('click', translateContainer.bind(this, -1));
+})();
+
+function translateContainer(direction) {
+  const selectedBtn = (direction === 1) ? 'prev' : 'next';
+  container.style.transitionDuration = '500ms';
+  container.style.transform = `translateX(${direction * (100 / 5)}%)`;
+  container.ontransitionend = () => reorganizeEl(selectedBtn);
+}
+
+function reorganizeEl(selectedBtn) {
+  container.removeAttribute('style');
+  (selectedBtn === 'prev') ? container.insertBefore(container.lastElementChild, container.firstElementChild) : container.appendChild(container.firstElementChild);
+}
+```
+<br>
+
+위 코드는 웹 페이지에서 슬라이드 쇼를 구현하는 코드입니다. 
+
+HTML에서 클래스가 `container`인 요소와 `prev`, `next` 버튼을 찾아서 가져옵니다. 
+
+그 후 즉시 실행함수를 통해 이전 및 다음 버튼에 클릭 이벤트 리스너를 추가합니다. 
+
+클릭 이벤트가 발생하면 `translateContainer` 함수가 호출되며, 이 함수는 방향 인수를 받아서 container 요소를 해당 방향으로 이동시킵니다. 
+
+`translateContainer` 함수에서는 방향 인수에 따라 이전 버튼 또는 다음 버튼을 선택하고, container 요소를 이동시키기 위해 `transitionDuration` 및 `transform` 스타일 속성을 설정합니다. 
+
+이동이 완료되면 `container.ontransitionend` 이벤트 리스너가 호출됩니다. 이벤트 리스너에서는 `reorganizeEl` 함수가 호출되어 container 요소의 순서를 조정합니다.
+
+`reorganizeEl` 함수는 선택한 버튼에 따라 container 요소의 순서를 변경합니다. `prev` 버튼이 클릭된 경우 마지막 요소가 첫 번째 요소의 앞에 추가됩니다. 또는, `next` 버튼이 클릭된  경우 첫 번째 요소가 container의 마지막 요소의 뒤에 추가됩니다. 
+
+마지막으로, `reorganizeEl` 함수는 container 요소의 모든 스타일 속성을 제거하여 이전 스타일이 유지되지 않도록 합니다. 
+
+<br>
+
+## 내가 입었던 옷차림 기록하기 
+
+<br>
+
+### 📌 목차
+- [1. 이미지 가져오기](#이미지-가져오기)
+
+- [2. 이미지 등록하기](#이미지-등록하기)
+
+- [3. 이미지 저장하기](#이미지-저장하기)
+
+- [4. 이미지 삭제하기](#이미지-삭제하기)
+
+<br>
+<br>
+
+
+## **uploadImage.js**
+
+
+<br>
+
+### 이미지 가져오기 
+<br>
+
+```javascript
+// load Image 
+(function loadImage() {
+
+  const loadImage = localStorage.getItem(IMG_KEY);
+  try {
+    if (localStorage.hasOwnProperty(IMG_KEY)) {
+      const parseImage = JSON.parse(loadImage);
+      images = parseImage;
+
+      parseImage.length === 0 ? fileName.value = `파일을 등록해주세요.` : fileName.value = `${parseImage.length}개의 파일이 등록되어 있습니다.`;
+      
+      parseImage.forEach(paintImage);
+    }
+  } catch (error) {
+    console.log("Unable to fetch items from local storage.");
+  }
+
+})();
+```
+<br>
+
+즉시 실행함수를 통해 이미지를 로드하는 함수를 실행합니다. 
+
+`loadImage` 변수에 로컬 스토리지에 **IMG_KEY**라는 이름으로 저장된 data를 초기화 시킵니다. 
+
+만약 로컬 스토리지에 **IMG_KEY** 라는 이름으로 저장된 data가 있다면 
+`loadImage`를 객체로 변환하여 `parseImage` 변수에 초기화 시킵니다. 
+
+그리고 전역 변수로 선언된 `images`에 초기화 시킵니다.
+
+load된 data가 있다면 파일의 개수를 가져와서 `fileName`의 value에 개수를 지정해줍니다. 
+
+파일이 있을 때와 없을 때의 value 값은 달라지게 위와 같이 달라지게 됩니다.
+
+만약 이 작업을 수행하지 못하면 error가 발생하는데 이때 발생하는 error는 로컬 스토리지에 **IMG_KEY** 라는 이름으로 저장된 데이터가 없을 때 발생하는 것이 아닌, data를 가져오는 행위 자체를 어떤 이유로 하지 못할 때 발생합니다. 
+
+**IMG_KEY** 라는 이름으로 저장된 데이터를 가져왔다면, 그 수만큼 `paintImage` 함수를 반복하게 됩니다. 
+
+<br>
+
+```javascript
+// paint Image 
+function paintImage(newImageObj) {
+  const imgPreview = document.querySelector('.img-preview');
+
+  const uploadContainer = document.createElement('div');
+  uploadContainer.classList.add("upload-container");
+  uploadContainer.id = newImageObj.id;
+
+  const log = document.createElement('div');
+  log.classList.add('log');
+  log.textContent = newImageObj.log;
+
+  const img = document.createElement('img');
+  img.setAttribute('src', newImageObj.src);
+
+  const btn = document.createElement('span');
+  btn.textContent = "X";
+  btn.addEventListener('click', deleteImage)
+
+  uploadContainer.appendChild(btn);
+  uploadContainer.appendChild(log);
+  uploadContainer.appendChild(img);
+  imgPreview.appendChild(uploadContainer);
+}
+```
+
+등록된 파일의 수만큼 `paintImage` 함수를 반복합니다. 
+
+이 함수는 `newImageObj`라는 매개변수를 받아들입니다. 
+
+먼저, 함수 내부에서 `img-preview`라는 클래스명을 가진 요소를 찾아 변수 `imgPreview`에 할당합니다. 
+
+그 후, `uploadContainer`라는 새로운 div 요소를 생성하고 `uploadContainer`에 `upload-container`라는 클래스명을 추가하며, `newImageObj` 객체의 id 속성을 `uploadContainer`의 id 속성으로 설정합니다.
+
+다음으로, `log`라는 새로운 div 요소를 생성하고 `log`에 `log`라는 클래스명을 추가하며, `newImageObj` 객체의 `log` 속성 값을 `log` 요소의 텍스트 내용으로 설정합니다.
+
+그 다음 `img` 라는 새로운 img 요소를 생성하고, **src** 속성 값을 `newImageObj` 객체의 **src** 속성으로 설정합니다.
+
+그 후에 `btn`이라는 새로운 span 요소를 생성하고 **X** 라는 텍스트 내용을 추가합니다. `btn` 요소에 **"click"** 이벤트 핸들러를 추가하여 `deleteImage` 함수를 호출하도록 설정합니다. 
+
+마지막으로 `uploadContainer`에 `btn`, `log`, `img` 요소를 추가하고, `imgPreview`에 `uploadContainer`를 추가하여 새로운 이미지 요소를 HTML 페이지에 렌더링 합니다. 
+
+<br>
+
+### 이미지 등록하기
+
+<br>
+
+```javascript
+const getFileBtn = document.querySelector('#image');
+const fileName = document.querySelector('#fileName-preview');
+let routeLength = 0;
+
+getFileBtn.addEventListener('change', (event) => {
+  let route = event.target.files
+  const routeAry = (Array.from(route));
+  routeLength += route.length;
+
+    fileName.value = (`${routeLength}개의 파일이 등록되었습니다.`).trim();
+  handleImg(routeAry);
+})
+```
+<br>
+
+위 코드는 파일 업로드 기능을 구현하는 코드입니다.
+
+`image`라는 id를 갖는 요소를 가져와서 `getFileBtn`이라는 변수에 할당시킵니다. 
+
+이 요소는 사용자가 파일을 업로드 할 수 있는 버튼입니다. 
+
+그리고 `fileName-preview`라는 id를 갖는 요소를 가져와서 `fileName`이라는 변수에 할당시킵니다. 
+
+
+`getFileBtn`에 **change** 이벤트 핸들러를 추가합니다. 이벤트가 발생하면, 업로드된 파일 정보를 `route` 변수에 할당합니다. 
+
+`route` 변수는 FileList 객체를 가지므로, 배열로 변환하여 `routeAry` 변수에 할당합니다. 
+
+`routeLength` 변수에는 현재까지 업로드된 파일의 개수를 누적합니다. 
+
+`fileName` 요소의 값을 업로드된 파일 개수를 표시하는 문자열로 설정합니다. 
+
+마지막으로, `handleImg` 함수를 호출하여 업로드된 이미지 파일들을 처리합니다. 
+
+<br>
+
+### 이미지 저장하기  
+
+```javascript
+// upload한 image 
+function handleImg(routeAry) {
+  routeAry.forEach((data) => {
+    if (data.type.includes('image')) {
+      // 파일 제한을 둬서 이미지만 골라서 출력 
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(data);
+
+      fileReader.addEventListener('load', (event) => {
+
+        let date = new Date();
+        let today = date.toLocaleDateString();
+        const newImageObj = {
+          id: Date.now(),
+          log: today,
+          src: event.target.result
+        }
+        images.push(newImageObj);
+        paintImage(newImageObj);
+        saveImage();
+      })
+    }
+  })
+}
+```
+
+위 함수는 업로드된 이미지 파일들을 처리하는 함수 `handleImg`를 정의하는 코드입니다.
+
+`handleImg` 함수는 `routeAry`라는 매개변수를 받습니다. 
+`routeAry`는 업로드된 파일들의 목록을 담은 배열입니다. 
+
+`forEach` 메서드를 사용하여 배열의 모든 요소에 대해 반복 작업을 수행합니다. 
+
+반복문 내에서 각 파일의 타입이 **image**인지 확인하고, 이미지 파일일 경우 `FileReader` 객체를 생성합니다. **FileReader`는 파일을 비동기적으로 읽는 객체로, **readAsDataURL** 메서드를 사용하여 해당 파일을 읽어들입니다. 
+
+`load` 이벤트 리스너를 추가하여 파일 읽기 작업이 완료된 후에 실행될 콜백 함수를 정의합니다. `event.target.result`를 사용하여 파일의 데이터 URL을 가져옵니다. 
+
+데이터 URL은 파일의 내용을 Base64로 인코딩한 문자열로, 이미지 파일을 화면에 출력할 수 있는 형식으로 변환합니다. 
+
+그 다음, 새로운 이미지 객체를 생성합니다. 객체에는 고유한 ID, 현재 날짜, 데이터 URL 정보가 포함됩니다. 
+
+`paintImage` 함수를 호출하여 새로운 이미지를 HTML 페이지에 출력합니다. 
+
+마지막으로, `saveImage` 함수를 호출하여 `images` 배열에 저장된 이미지 정보를 로컬 스토리지에 저장합니다. 
+
+
+### saveImage 
+
+<br>
+
+```javascript
+// save Image 
+function saveImage() {
+  localStorage.setItem(IMG_KEY, JSON.stringify(images));
+}
+```
+
+
+<br>
+
+### 이미지 삭제하기 
+
+<br>
+
+```javascript
+
+// 전체 제거 
+const deleteAllBtn = document.querySelector('.delete-all');
+deleteAllBtn.addEventListener('click', () => {
+  localStorage.removeItem(IMG_KEY);
+  const imgPreview = document.querySelector('.img-preview');
+  imgPreview.replaceChildren();
+  fileName.value = "";
+});
+
+// delete image
+function deleteImage(event) {
+
+  // 내가 선택한 이미지 제거 
+  const img = event.target.parentElement;
+  img.remove();
+  images = images.filter(image => image.id !== parseInt(img.id));
+  saveImage();
+}
+```
+<br>
+
+`deleteAllBtn` 버튼을 클릭하면 `localStorage` 에서 **IMG_KEY**를 제거합니다. **IMG_KEY**는 이미지 정보를 저장하기 위해 사용되는 로컬 스토리지 키 입니다. 이후에 `imgPreview` 라는 HTML 요소를 가져와 `replaceChildren` 메서드를 사용하여 해당 요소의 모든 자식 요소를 제거합니다. 
+
+`deleteImage` 함수는 `event` 객체를 매개변수로 받습니다. 
+
+해당 객체는 클릭 이벤트에 대한 정보를 담고 있습니다. 클릭된 요소의 부모 요소인 `img` 요소를 가져오며, 이는 이미지가 출력된 HTML 요소입니다. 
+
+`remove` 메서드를 사용하여 `img`요소를 제거하며, `images` 배열에서 해당 이미지의 ID와 일치하는 요소를 찾아 `filter` 메서드를 사용하여 배열에서 삭제합니다. 
+
+마지막으로 `saveImage` 함수를 호출하여 업데이트 된 이미지 정보를 로컬 스토리지에 저장합니다. 
+
+<br>
+
+
+## 옷 컬러 매치를 간단하게 알려주기 
+
+<br>
+
+```javascript
+const pickColor = document.querySelectorAll('.clothes-color');
+const detailClothesBox = document.querySelectorAll('.detail-clothes-box');
+
+pickColor.forEach(pick => {
+  pick.addEventListener('input', (event) => {
+    let changeColor = event.target.value;
+    let changeClothesColor = event.currentTarget.previousElementSibling;
+    changeClothesColor.style.color = changeColor;
+  })
+})
+```
+
+<br>
+
+위 코드는 `pickColor`라는 클래스를 가진 여러 오소에 대한 이벤트 리스너를 등록합니다. 
+
+각각의 `pickColor` 요소는 색상 선택을 위한 입력 필드를 나타냅니다.
+
+`forEach` 메서드를 사용하여 모든 `pickColor` 요소에 대해 반복하며, 각 요소에 **input** 이벤트 리스너를 등록합니다.
+
+**input** 이벤트가 발생하면, 이벤트 핸들러 함수가 실행됩니다. 
+이 함수는 이벤트 객체를 매개변수로 받습니다.
+
+`event.target` 속성을 사용하여 발생한 이벤트를 처리하는 요소를 가져옵니다. 여기서는 색상 선택 입력 필드를 나타내는 요소를 가져옵니다. 
+
+그 후에 `event.currentTarget` 속성을 사용하여 이벤트를 등록한 요소를 가져옵니다. 여기서는 `pick` 변수를 통해 현재 선택된 색상 입력 필드 요소를 가져옵니다. 
+
+`previousElementSibling` 속성을 사용하여 선택된 색상 입력 필드 요소의 이전 형제 요소를 가져옵니다. 
+
+이전 형제 요소는 색상 선택 입력 필드 이전에 위치한 `detailClothesBox` 요소입니다. 
+
+그 후에 `style.color` 속성을 사용하여 `changeClothesColor` 변수에서 가져온 요소의 글자 색을 선택된 색상으로 변경합니다. 
+
+이를 통해 선택한 색상에 따라 해당 옷의 색상을 변경할 수 있습니다.
+
+<br>
+<br>
+
+***
+
+<br>
+
+### **개선점**
+
+
+
+<br>
+
+### **비가 왔을 때 우산이나 우비 챙기는 알림 만들기** 
+
+<br>
+
+처음에는 주간 날씨를 알려줄 때 최고 기온이나 최저 기온에 비가 오는 예보가 있으면, 우산이나 우비를 챙기라는 간단한 알림을 만들었습니다. 
+
+하지만, 보기에 너무 조잡스러워 보이고 기능적으로 유연한 동작이 되지 않아보여서 삭제했습니다. 
+
+주간 날씨가 아니더라도 비 예보가 잡혀있다면, 우산이나 우비를 챙기라는 이벤트를 발생시켜도 좋을 것 같습니다. 
+
+<br>
+
+### **Clothes Diary Image 저장 방식**
+
+<br>
+
+Clothes Diary 에서는 업로드한 image를 로컬 스토리지에 저장하고 있습니다. 
+
+로컬 스토리지의 최대 용량은 브라우저와 운영체제의 종류에 따라 다릅니다. 
+
+하지만, 일반적으로 브라우저당 **5MB**의 저장 용량을 가집니다. 
+
+따라서 로컬 스토리지에 image를 저장하는 방식은 적절하지 않습니다. 
+
+로컬 스토리지에 image와 같은 용량이 큰 파일을 저장하기 보다는 DB를 사용하여 저장하는 방식이 더 적절합니다. 
+
+현재 이 방식은 간단하게 **Clothes For You** 에는 내가 입은 옷을 기록할 수 있는 **Clothes Diary** 라는 기능을 구현해 놓은 것에 만족할 수 밖에 없는 수준입니다. 
+
+만약 DB를 이용한다면, 사용자의 개인 정보를 같이 받아서 로그인과 회원가입을 해서 사이트를 이용할 수 있는 방식으로 확장할 수 있다는 개선 방안이 있습니다.
+
+또한, 훨씬 더 많은 image도 저장할 수 있습니다. 
+
+<br>
+
+### **Color Match의 활용성**
+
+<br>
+
+**Color Match**에서는 UI 측면으로 아쉬운 부분이 있습니다. 
+
+머리 속으로 그려봤던 "이렇게 옷을 매치하거나, 이런 식으로 색 배치를 해서 입으면 어떨까?" 라는 생각을 자주 했던 제 생각에서 나온 이 기능은 아직 부족한 점이 많은 것 같습니다. 
+
+첫 번째로 확실하게 기능의 의도를 파악하기 어렵습니다. 배치되어 있는 옷들은 **fontello**를 이용하여 png 파일을 `i` 태그의 요소로 바꾼 것 입니다. 
+
+원하는 png 파일을 구하는 데 있어 어려움이 있던 것도 있지만, 직관적이지 못하고, 사용자에게 도움이 될만한 기능이 되지 못한다는 생각이 듭니다. 
+
+두 번째로 `input` 요소의 `type=color`를 이용한 방식입니다. 색을 변경하는 데 있어 가장 먼저 든 방법이 `type=color`를 이용한 방법이라서 이를 사용했지만, 다소 아쉽다는 생각이 듭니다. 지금은 떠오르지 않지만, 사용자에게 더 좋은 방향으로 다가갈 수 있는 방법이 떠오르면 바꿀 예정입니다. 
 
