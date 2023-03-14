@@ -1,7 +1,7 @@
 import { mainWeather, descriptionWeather } from './weatherList.mjs';
 import { getClothes } from './clothes.mjs';
 
-const API_KEY = "";
+const API_KEY = "de9afcffc19013aaef1ec97ef50bc2fc";
 
 function getDecsriptionWeather(objectLength, listLength) {
     return `${descriptionWeather[objectLength].list[listLength + 4]}`;
@@ -407,7 +407,7 @@ function getWeather(data) {
         koreaTime === 24 ? koreaTime = 0 :
             koreaTime === 27 ? koreaTime = 3 :
                 koreaTime === 30 ? koreaTime = 6 : "";
-        // chart를 위한 시간 배열화 
+       
         koreaTime >= 12 ? timeArr.push(`${koreaTime}:00 pm`) : timeArr.push(`0${koreaTime}:00 am`);
 
         let changeDate = new Date(calcDay(concreteDayData)[1]);
@@ -434,8 +434,6 @@ function getWeather(data) {
 
         // sub-weather 
         const getSubWeatherData = [data, i, koreaTime, subWeatherLi, concreteDayData, humidity, subWeatherLists, nowHour]
-       
-        nowHour + 3 === 24 ? nowHour = 0 : nowHour = nowHour;
 
         if (SubWeatherTrue === false) {
             SubWeatherTrue = true;
