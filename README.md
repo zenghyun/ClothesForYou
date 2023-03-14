@@ -968,11 +968,12 @@ scales: {
 ### **getWeather**
 
 ```javascript
+ let SubWeatherTrue = false;
+ // 생략 
+
 // sub-weather
 const getSubWeatherData = [data, i, koreaTime, subWeatherLi, concreteDayData, humidity, subWeatherLists, nowHour]
        
-        nowHour + 3 === 24 ? nowHour = 0 : nowHour = nowHour;
-
         if (SubWeatherTrue === false) {
             SubWeatherTrue = true;
 
@@ -980,3 +981,117 @@ const getSubWeatherData = [data, i, koreaTime, subWeatherLi, concreteDayData, hu
             subWeatherBackground(nowHour);
         }
 ```
+
+`getSubWeather` 함수와 `subWeatherBackground` 함수를 호출하기 위해서는 `SubWeatherTrue`라는 변수가 **false**일 때만 동작하는 조건문을 성립해야 합니다. 
+
+이 조건문은 처음에만 **false**를 만족시켜 조건문 내의 코드를 동작시키고 그 이후로는 더이상 조건을 만족시키지 못해 실행되지 않습니다.
+
+<br>
+
+### **getSubWeatherData**
+<br>
+
+```javascript
+/**
+ * 
+ * @param {object} getSubWeatherData 
+ *  getSubWeatherData[0] = data ( weather API data )
+ *  getSubWeatherData[1] = i ( data 개수 )
+ *  getSubWeatherData[2] = koreaTime ( 한국 시간 )
+ *  getSubWeatherData[3] = subWeatherLi ( sub weather template )
+ *  getSubWeatherData[4] = concreteDayData ( 데이터 별 날짜 )
+ *  getSubWeatherData[5] = humidity ( 습도 )
+ *  getSubWeatherData[6] = subWeatherLists ( sub-weather-lists )
+ *  getSubWeatherData[7] = nowHour ( 현재 시간 )
+ */
+function getSubWeather(getSubWeatherData) {
+    let feelsLikeTemp = Math.round(`${getSubWeatherData[0].list[getSubWeatherData[1]].main.feels_like}` * 10) / 10;
+    let deg = `${getSubWeatherData[0].list[getSubWeatherData[1]].wind.deg}`;
+    let wind = `${getSubWeatherData[0].list[getSubWeatherData[1]].wind.speed}`;
+    let subTemp = Math.round(`${getSubWeatherData[0].list[getSubWeatherData[1]].main.temp}` * 10) / 10;
+
+    getSubWeatherData[2] >= 12 ? getSubWeatherData[2] = `오후 ${getSubWeatherData[2]}시 기준` : getSubWeatherData[2] = `오전 ${getSubWeatherData[2]}시 기준`;
+
+    getSubWeatherData[3].querySelector('.time').textContent = getSubWeatherData[2];
+
+    getSubWeatherData[3].querySelector('.weather-main').insertAdjacentHTML('afterbegin', iconLoader(getSubWeatherData[0], getSubWeatherData[1], getSubWeatherData[4])[0]);
+
+    getSubWeatherData[3].querySelector('.temp').textContent = `${subTemp}˚`;
+
+    getSubWeatherData[3].querySelector('.weather-description').textContent = iconLoader(getSubWeatherData[0], getSubWeatherData[1], getSubWeatherData[4])[1];
+
+    getSubWeatherData[3].querySelector('.feel-temp').textContent = `체감 온도 ${feelsLikeTemp}˚`;
+
+    getSubWeatherData[3].querySelector('.humidity').textContent = `습도 ${getSubWeatherData[5]}%`;
+
+    deg >= 0 && deg < 89 ? deg = "북동풍" :
+        deg >= 90 && deg < 179 ? deg = "남동풍" :
+            deg >= 180 && deg < 269 ? deg = "남서풍" : deg = "북서풍";
+
+    getSubWeatherData[3].querySelector('.wind').textContent = `${deg} ${wind}m/s`;
+
+    const subWeatherData = [{
+        time: getSubWeatherData[2],
+        weatherIcon: iconLoader(getSubWeatherData[0], getSubWeatherData[1], getSubWeatherData[4])[0],
+        subTemp: subTemp,
+        weatherDescription: iconLoader(getSubWeatherData[0], getSubWeatherData[1], getSubWeatherData[4])[1],
+        feelTemp: feelsLikeTemp,
+        humidity: getSubWeatherData[5],
+        deg: deg,
+        wind: wind,
+        nowHour: getSubWeatherData[7],
+    }];
+    let mySubWeatherData = JSON.stringify(subWeatherData);
+    sessionStorage.setItem('subWeather', mySubWeatherData);
+    getSubWeatherData[6].append(getSubWeatherData[3]);
+}
+```
+체감온도, 풍향, 풍속, subTemp를 구해줍니다.<br>
+
+시간의 경우 한국 시간, 그리고 12시를 기준으로 오전 오후를 나눠서 설정해줍니다. 
+
+`.time`이라는 클래스명을 가진 태그에 시간을 넣어줍니다. 
+
+`.weather-main`이라는 클래스명을 가진 태그에 날씨 icon을 넣어줍니다. 
+
+`.temp`라는 클래스명을 가진 태그에 subTemp를 넣어줍니다. 
+
+`weather-description`이라는 클래스명을 가진 태그에 날씨 상세 묘사를 넣어줍니다.
+
+`.feel-temp`라는 클래스명을 가진 태그에 체감 온도를 넣어줍니다.
+
+`.humidity`라는 클래스명을 가진 태그에 습도를 넣어줍니다. 
+
+풍향은 0 ~ 360을 기준으로 90도씩 나눠서 풍향을 정해줍니다. 
+
+`.wind`라는 클래스명을 가진 태그에 풍향과 풍속을 넣어줍니다. 
+
+`subWeatherData`의 경우 메인 페이지를 벗어나 서브 페이지로 이동했을 때, 같은 정보를 `fetch` 메서드로 호출하지 않고 세션 스토리지에 data를 저장하고 그 data를 이용하기 위해 사용할 변수입니다.
+
+<br>
+
+### **subWeatherBackground**
+<br>
+
+```javascript
+function subWeatherBackground(nowHour) {
+    const subWeatherArea = document.querySelector('.sub-weather');
+
+    if (nowHour > 6 && nowHour < 17) {
+        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
+        subWeatherArea.style.color = "#333032";
+    }
+    else if (nowHour >= 17 && nowHour <= 20) {
+        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
+        subWeatherArea.style.color = "#aeeaff";
+    } else {
+        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
+        subWeatherArea.style.color = "#eeeb99";
+    }
+}
+```
+
+`subWeatherBackground` 함수는 **nowHour**에 맞춰서 backgroundImage를 설정해주기 위한 함수입니다. 
+
+시간에 따라 아침, 오후, 밤으로 나눠서 3가지의 배경으로 표현합니다. 
+
