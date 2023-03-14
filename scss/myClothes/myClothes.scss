@@ -220,6 +220,8 @@ body {
                         margin: 15px;
                         width: 230px;
                         height: 280px;
+                        cursor: pointer;
+
                         .log {
                             width: 210px;
                             text-align: center;
@@ -238,7 +240,9 @@ body {
                           color: rgb(255, 73, 73);
                           margin-left: 200px;
                           font-size: 20px;
-                          cursor: pointer;
+                         }
+                         span:hover {
+                          color: #eec7c7;
                          }
                     }
                 }
