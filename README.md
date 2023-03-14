@@ -253,7 +253,9 @@ function onGeoOk(position) {
 }
 ```
 
-`onGekOk`를 통해 위도와 경도를 받아온 후, url을 통해 OpenweatherMapAPI에 data를 요청합니다. <br>
+`onGekOk`를 통해 위도와 경도를 받아온 후, url을 통해 OpenweatherMapAPI에 data를 요청합니다.
+ <br>
+
 이때, 요청에 의한 응답 신호가 **200과 300사이**라면 제대로 된 응답이라고 판단하여, 데이터를 받아옵니다. 그 외의 응답 신호를 받는다면, `Something went wrong -server side.`라는 에러 메시지를 출력합니다. 만약 응답 신호를 받지 못했을 때는 `Something went wrong.`라는 메시지를 출력합니다. <br>
 
 제대로 된 응답 신호를 통해 데이터를 받아왔다면, 그 데이터(객체)를 JSON 포맷의 문자열로 변환하여 세션 스토리지에 **location**이라는 이름으로 저장한 후, `getWeather` 함수를 호출합니다. <br>
