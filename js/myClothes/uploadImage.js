@@ -10,7 +10,7 @@ getFileBtn.addEventListener('change', (event) => {
   const routeAry = (Array.from(route));
   routeLength += route.length;
 
-    fileName.value = (`${routeLength}개의 파일이 등록되었습니다.`).trim();
+  fileName.value = (`${routeLength}개의 파일이 등록되었습니다.`).trim();
   handleImg(routeAry);
 })
 
@@ -88,7 +88,6 @@ function handleImg(routeAry) {
       })
     }
   })
-
 }
 
 // load Image 
@@ -101,7 +100,7 @@ function handleImg(routeAry) {
       images = parseImage;
 
       parseImage.length === 0 ? fileName.value = `파일을 등록해주세요.` : fileName.value = `${parseImage.length}개의 파일이 등록되어 있습니다.`;
-      
+
       parseImage.forEach(paintImage);
     }
   } catch (error) {
