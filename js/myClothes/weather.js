@@ -1,15 +1,15 @@
 function subWeatherBackground(nowHour) {
   const subWeatherArea = document.querySelector('.sub-weather');
 
-  if (nowHour > 6 && nowHour < 17) {
-    subWeatherArea.style.backgroundImage = "url('../images/weather/06시~16시.gif')";
+  if (nowHour >= 6 && nowHour <= 15) {
+    subWeatherArea.style.backgroundImage = "url('../images/weather/06시~15시.gif')";
     subWeatherArea.style.color = "#333032";
   }
-  else if (nowHour >= 17 && nowHour <= 20) {
-    subWeatherArea.style.backgroundImage = "url('../images/weather/16시~20시.gif')";
+  else if (nowHour >= 16 && nowHour <= 19) {
+    subWeatherArea.style.backgroundImage = "url('../images/weather/16시~19시.gif')";
     subWeatherArea.style.color = "#aeeaff";
   } else {
-    subWeatherArea.style.backgroundImage = "url('../images/weather/20시~06시.gif')";
+    subWeatherArea.style.backgroundImage = "url('../images/weather/20시~05시.gif')";
     subWeatherArea.style.color = "#eeeb99";
   }
 }

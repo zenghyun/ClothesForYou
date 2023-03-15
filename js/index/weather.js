@@ -119,14 +119,8 @@ function getChart(tempArr, timeArr) {
 
 // 요일 구해주는 함수
 function getDay(day) {
-    day === 0 ? day = "일요일" :
-        day === 1 ? day = "월요일" :
-            day === 2 ? day = "화요일" :
-                day === 3 ? day = "수요일" :
-                    day === 4 ? day = "목요일" :
-                        day === 5 ? day = "금요일" :
-                            day = "토요일";
-    return day;
+    const NumOfWeekend = [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일",];
+    return  NumOfWeekend[day];
 }
 
 /**
@@ -137,7 +131,7 @@ function getDay(day) {
  * getClothesAry[2]: ONE_WEEK 일주일 
  * getClothesAry[3]: Math.round (dailyMaxTemp[0]*10)/10 (요일별 최고 기온) 
  * getClothesAry[4]: Math.round (dailyMinTemp[0]*10)/10 (요일별 최저 기온) 
- * getClothesAry[5]: eliminateDuplicateAry (요일) 
+ * getClothesAry[5]: eliminateDuplicateAry (요일이 담긴 배열) 
 */
 function clothesLoader(getClothesAry) {
     let clone = [];
@@ -145,19 +139,19 @@ function clothesLoader(getClothesAry) {
     clone = [...getClothesAry[5]];
     getClothesAry[0].push(getClothesAry[3]);
     getClothesAry[1].push(getClothesAry[4]);
+
     for (let i = 1; i < getClothesAry[2]; i++) {
-        
-        
+
         if (getClothesAry[0][i - 1] !== undefined) {
             document.querySelector(`.clothes-temp-area${i}`).textContent = `${getDay(clone[i - 1])} 최고 기온은 ${getClothesAry[0][i - 1]}˚, 최저 기온은 ${getClothesAry[1][i - 1]}˚ 입니다.`;
             document.querySelector(`.clothes-by-temperature${i}`).textContent = "오늘의 코디";
             document.querySelector(`.show-text${i}`).textContent = `※ 오늘의 코디는 최고 기온과 최저 기온의 평균을 기준으로 산출합니다. ( 평균 온도 ${Math.round((getClothesAry[0][i - 1] + getClothesAry[1][i - 1]) / 2)}˚ ) `;
 
-            waitTempDay =  clone[i - 1];
-            
+            waitTempDay = clone[i - 1];
+
             getClothes(i, getClothesAry[0], getClothesAry[1]);
         } else if (getClothesAry[0][i - 1] === undefined) {
-            document.querySelector(`.clothes-by-temperature${i}`).textContent = `${getDay(waitTempDay+1)} 기온을 산출중 입니다.`;
+            document.querySelector(`.clothes-by-temperature${i}`).textContent = `${getDay(waitTempDay + 1)} 기온을 산출중 입니다.`;
         }
     }
 }
@@ -197,7 +191,6 @@ function getWeeklyWeather(getWeeklyWeatherData) {
     let getMinTempIcon;
 
     getWeeklyWeatherData[17].push(getWeeklyWeatherData[0]);
-
     for (let i = 0; i < ONE_WEEK; i++) {
         if (getWeeklyWeatherData[0] === i) {
             getWeeklyWeatherData[8][i][getWeeklyWeatherData[10][i]] = getWeeklyWeatherData[3];
@@ -248,20 +241,22 @@ function getWeeklyWeather(getWeeklyWeatherData) {
 
 
 
+
 function subWeatherBackground(nowHour) {
     const subWeatherArea = document.querySelector('.sub-weather');
 
-    if (nowHour > 6 && nowHour < 17) {
-        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
+    if (nowHour >= 6 && nowHour <= 15) {
+        subWeatherArea.style.backgroundImage = "url('./images/weather/06시~15시.gif')";
         subWeatherArea.style.color = "#333032";
     }
-    else if (nowHour >= 17 && nowHour <= 20) {
-        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
+    else if (nowHour >= 16 && nowHour <= 19) {
+        subWeatherArea.style.backgroundImage = "url('./images/weather/16시~19시.gif')";
         subWeatherArea.style.color = "#aeeaff";
     } else {
-        subWeatherArea.style.backgroundImage = "url('저장된 파일 경로')";
+        subWeatherArea.style.backgroundImage = "url('./images/weather/20시~05시.gif')";
         subWeatherArea.style.color = "#eeeb99";
     }
+
 }
 /**
  * 
@@ -409,7 +404,7 @@ function getWeather(data) {
         koreaTime === 24 ? koreaTime = 0 :
             koreaTime === 27 ? koreaTime = 3 :
                 koreaTime === 30 ? koreaTime = 6 : "";
-       
+
         koreaTime >= 12 ? timeArr.push(`${koreaTime}:00 pm`) : timeArr.push(`0${koreaTime}:00 am`);
 
         let changeDate = new Date(calcDay(concreteDayData)[1]);
