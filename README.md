@@ -124,7 +124,7 @@
 <br>
   
 
-|오전 6시 ~ 오후 3시|오후 4시 ~ 오후 10시|오후 11시 ~ 아침 5시|
+|오전 6시 ~ 오후 3시|오후 4시 ~ 오후 7시|오후 8시 ~ 아침 5시|
 |------|---|---|
 |<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217871-af572b11-81b0-4b2a-bd57-091b975124de.gif" width="300px" height="300px"></p> |<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217877-86bcc4f5-7fae-4f51-a103-debe73297d53.gif" width="300px" height="300px"></p> |<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217881-ebc8b420-d818-4d3e-8e41-0a4aac83ea97.gif" width="300px" height="300px"></p> |
 
@@ -1347,14 +1347,8 @@ function getWeeklyWeather(getWeeklyWeatherData) {
 ```javascript
 // 요일 구해주는 함수
 function getDay(day) {
-    day === 0 ? day = "일요일" :
-        day === 1 ? day = "월요일" :
-            day === 2 ? day = "화요일" :
-                day === 3 ? day = "수요일" :
-                    day === 4 ? day = "목요일" :
-                        day === 5 ? day = "금요일" :
-                            day = "토요일";
-    return day;
+    const NumOfWeekend = [ "일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일",];
+    return  NumOfWeekend[day];
 }
 ```
 <br>
