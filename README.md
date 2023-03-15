@@ -46,7 +46,7 @@
 
 - `CSS`
 
-- `SASS`
+- `SCSS`
 
 - `JAVASCRIPT`
 
