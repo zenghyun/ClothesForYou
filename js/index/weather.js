@@ -198,15 +198,11 @@ function getWeeklyWeather(getWeeklyWeatherData) {
 
             getWeeklyWeatherData[13][i][getWeeklyWeatherData[10][i]] = [getWeeklyWeatherData[3], iconLoader(getWeeklyWeatherData[5], getWeeklyWeatherData[6], getWeeklyWeatherData[7])[0]];
 
-            getMaxTempAry = getWeeklyWeatherData[13][i].reduce((pre, cur) => {
-                return [...pre, ...cur];
-            })
+            getMaxTempAry = getWeeklyWeatherData[13][i].reduce((pre, cur) => [...pre, ...cur]);
 
             getWeeklyWeatherData[14][i][getWeeklyWeatherData[10][i]] = [getWeeklyWeatherData[4], iconLoader(getWeeklyWeatherData[5], getWeeklyWeatherData[6], getWeeklyWeatherData[7])[0]];
 
-            getMinTempAry = getWeeklyWeatherData[14][i].reduce((pre, cur) => {
-                return [...pre, ...cur];
-            })
+            getMinTempAry = getWeeklyWeatherData[14][i].reduce((pre, cur) => [...pre, ...cur]);
 
             getWeeklyWeatherData[10][i]++;
 
