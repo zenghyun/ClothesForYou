@@ -1251,15 +1251,11 @@ function getWeeklyWeather(getWeeklyWeatherData) {
 
             getWeeklyWeatherData[13][i][getWeeklyWeatherData[10][i]] = [getWeeklyWeatherData[3], iconLoader(getWeeklyWeatherData[5], getWeeklyWeatherData[6], getWeeklyWeatherData[7])[0]];
 
-            getMaxTempAry = getWeeklyWeatherData[13][i].reduce((pre, cur) => {
-                return [...pre, ...cur];
-            })
+            getMaxTempAry = getWeeklyWeatherData[13][i].reduce((pre, cur) => [...pre, ...cur]);
 
             getWeeklyWeatherData[14][i][getWeeklyWeatherData[10][i]] = [getWeeklyWeatherData[4], iconLoader(getWeeklyWeatherData[5], getWeeklyWeatherData[6], getWeeklyWeatherData[7])[0]];
 
-            getMinTempAry = getWeeklyWeatherData[14][i].reduce((pre, cur) => {
-                return [...pre, ...cur];
-            })
+            getMinTempAry = getWeeklyWeatherData[14][i].reduce((pre, cur) => [...pre, ...cur]);
 
             // 반복문이 실행되면서 요일이 바뀌면 weekend 배열도 요일이 바뀐다.
             getWeeklyWeatherData[10][i]++; 
