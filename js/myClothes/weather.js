@@ -16,33 +16,34 @@ function subWeatherBackground(nowHour) {
 /**
  * 
  * @param {object} parsedData 
- *  parsedData[0].time = concreteTime
- *  parsedData[0].weatherIcon = weatherIcon ( i tag icon )
- *  parsedData[0].subTemp = icon 옆에 표시할 온도
- *  parsedData[0].weatherDescription = 날씨 상세 묘사  
- *  parsedData[0].feelTemp = 체감온도
- *  parsedData[0].humidity = 습도
- *  parsedData[0].deg = 바람이 부는 방향
- *  parsedData[0].wind = 풍속
+ *  time = concreteTime
+ *  weatherIcon = weatherIcon ( i tag icon )
+ *  subTemp = icon 옆에 표시할 온도
+ *  weatherDescription = 날씨 상세 묘사  
+ *  feelTemp = 체감온도
+ *  humidity = 습도
+ *  deg = 바람이 부는 방향
+ *  wind = 풍속
  */
 function getSubWeather(parsedData) {
+  const { time, weatherIcon, subTemp, weatherDescription, feelTemp, humidity, deg, wind } = parsedData;
   const subWeatherLists = document.querySelector('#sub-weather-lists');
   const subWeatherTemplate = document.querySelector('.sub-weather-template');
   const subWeatherLi = document.importNode(subWeatherTemplate.content, true);
 
-  subWeatherLi.querySelector('.time').textContent = parsedData[0].time;
+  subWeatherLi.querySelector('.time').textContent = time;
 
-  subWeatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', parsedData[0].weatherIcon);
+  subWeatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', weatherIcon);
 
-  subWeatherLi.querySelector('.temp').textContent = `${parsedData[0].subTemp}˚`;
+  subWeatherLi.querySelector('.temp').textContent = `${subTemp}˚`;
 
-  subWeatherLi.querySelector('.weather-description').textContent = parsedData[0].weatherDescription;
+  subWeatherLi.querySelector('.weather-description').textContent = weatherDescription;
 
-  subWeatherLi.querySelector('.feel-temp').textContent = `체감 온도 ${parsedData[0].feelTemp}˚`;
+  subWeatherLi.querySelector('.feel-temp').textContent = `체감 온도 ${feelTemp}˚`;
 
-  subWeatherLi.querySelector('.humidity').textContent = `습도 ${parsedData[0].humidity}%`;
+  subWeatherLi.querySelector('.humidity').textContent = `습도 ${humidity}%`;
 
-  subWeatherLi.querySelector('.wind').textContent = `${parsedData[0].deg} ${parsedData[0].wind}m/s`;
+  subWeatherLi.querySelector('.wind').textContent = `${deg} ${wind}m/s`;
 
   subWeatherLists.append(subWeatherLi);
 }
@@ -56,7 +57,7 @@ function getSubWeather(parsedData) {
     if (sessionStorage.hasOwnProperty("subWeather")) {
       const parsedData = JSON.parse(loadData);
       getSubWeather(parsedData);
-      subWeatherBackground(parsedData[0].nowHour);
+      subWeatherBackground(parsedData.nowHour);
     }
   } catch (error) {
     console.log("Data not found in session storage");
