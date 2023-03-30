@@ -418,18 +418,56 @@ main-weather를 구하기 위해서는 아래와 같은 변수들이 필요합�
   calcData = 연도-월-일 양식의 실제 날짜를 가져온 값 ex: 2023-03-10
 
 // 실제 한국 날짜 구하는 함수 
-function calcDay(concreteDayData) {
-    let date = concreteDayData.split(' ')[0]; ex: 2023-03-10
-    let concreteTime = parseInt(concreteDayData.split(' ')[1].slice(0, 2)); ex: 9
-    let koreaDate = date.substr(0, date.length - 2); ex: 2023-03
-    let setDate = parseInt(date.substr(-2)); ex: 10
-    if (concreteTime >= 15) { // utc 시간 + 9 = 실제 한국 시간 concreteTime이 15 이상이면 12시가 지나 하루가 바뀜 
+function calcDay(concreteDayData, includeMonth = null) {
+    let date = concreteDayData.split(' ')[0];
+    let concreteTime = parseInt(concreteDayData.split(' ')[1].slice(0, 2));
+    let koreaDate = date.substr(0, date.length - 4);
+    let setMonth = parseInt(date.substr(6, 1));
+    let setDate = parseInt(date.substr(-2));
+   
+    if (concreteTime >= 15) {
         setDate += 1;
     }
-    setDate < 10 ? setDate = `0${String(setDate)}` : setDate = String(setDate);
+    switch (setMonth) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+          if(setDate > 31) {
+            setDate = 1;
+            
+            setMonth += 1;
+          }
+          break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if(setDate > 30) {
+                setDate = 1;
+                setMonth += 1;
+              }
+          break;
+        case 2:
+            if(setDate > 28) {
+                setDate = 1;
+                setMonth += 1;
+              }
+          break;
+      }
 
-    return [koreaDate, (koreaDate + setDate)];
-    // return의 [1] 방에는 실제 한국 날짜가 담기게 된다. 
+    setDate < 10 ? setDate = `0${String(setDate)}` : setDate = String(setDate);
+   
+    if(includeMonth) {
+        includeMonth.push(setMonth);
+        return [`${koreaDate}${includeMonth[0]}-`, `${koreaDate}${setMonth}-${setDate}`];
+    } else {
+        return [`${koreaDate}${setMonth}-`, `${koreaDate}${setMonth}-${setDate}`];
+    }
+
 }
 
 temp = data에서 받아온 온도 
@@ -452,7 +490,7 @@ timeArr = Chart에 넣을 시간
             let calcData = calcDay(concreteDayData)[1];
             weatherPeriod.push(calcData);
 
-            document.querySelector('.weather-period').textContent = `날짜별 예보 (${calcDay(concreteDayData)[0] + weatherPeriod[0]} ~ ${weatherPeriod[weatherPeriod.length - 1]})`;
+            document.querySelector('.weather-period').textContent = `날짜별 예보 (${calcDay(concreteDayData, includeMonth)[0] + weatherPeriod[0]} ~ ${weatherPeriod[weatherPeriod.length - 1]})`;
         }
 
 
@@ -1200,6 +1238,7 @@ function subWeatherBackground(nowHour) {
   let dailyMaxTempAry = [];
   let dailyMinTempAry = [];
   let getToday = [];
+  let includeMonth = []; 
 
   // 생략 
 
