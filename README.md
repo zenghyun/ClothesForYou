@@ -1285,26 +1285,23 @@ function getWeeklyWeather(getWeeklyWeatherData) {
     let getMinTempIcon;
 
     getToday.push(getWeekOfDay);
-    for (let i = 0; i < ONE_WEEK; i++) {
-        if (getWeekOfDay === i) {
-            weeklyMaxTemp[i][weekend[i]] = maxTemp;
-            weeklyMinTemp[i][weekend[i]] = minTemp;
-
-           weeklyMaxIcon[i][weekend[i]] = [maxTemp, iconLoader(data, i, concreteDayData)[0]];
-
-            getMaxTempAry =weeklyMaxIcon[i].reduce((pre, cur) => [...pre, ...cur]);
-
-            weeklyMinIcon[i][weekend[i]] = [minTemp, iconLoader(data, i, concreteDayData)[0]];
-
-            getMinTempAry = weeklyMinIcon[i].reduce((pre, cur) => [...pre, ...cur]);
-
-            weekend[i]++;
-
-            dailyMaxTemp = Math.max(...weeklyMaxTemp[i]);
-            dailyMinTemp = Math.min(...weeklyMinTemp[i]);
+   for (let j = 0; j < ONE_WEEK; j++) {
+        if (getWeekOfDay === j) {
+            weeklyMaxTemp[j][weekend[j]] = maxTemp;
+            weeklyMinTemp[j][weekend[j]] = minTemp;
+            weeklyMaxIcon[j][weekend[j]] = [maxTemp, iconLoader(data, i, concreteDayData)[0]];
+            
+            getMaxTempAry = weeklyMaxIcon[j].reduce((pre, cur) => [...pre, ...cur]);
+            
+            weeklyMinIcon[j][weekend[j]] = [minTemp, iconLoader(data, i, concreteDayData)[0]];
+            
+            getMinTempAry = weeklyMinIcon[j].reduce((pre, cur) => [...pre, ...cur]);
+            
+            weekend[j]++;
+            dailyMaxTemp = Math.max(...weeklyMaxTemp[j]);
+            dailyMinTemp = Math.min(...weeklyMinTemp[j]);
             getMaxTempIcon = getMaxTempAry.indexOf(String(dailyMaxTemp)) + 1;
             getMinTempIcon = getMinTempAry.indexOf(String(dailyMinTemp)) + 1;
-
         }
     }
 
