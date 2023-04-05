@@ -6,11 +6,7 @@
 <br>
 
 ## 배포 주소 
-- <a
-            href="https://clothes4oryou.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >ClothesForYou</a>
+- <a href="https://clothes4oryou.netlify.app/" target="_blank" rel="noopener noreferrer">ClothesForYou</a>
 <br>
 <br>
 
