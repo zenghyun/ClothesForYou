@@ -1516,7 +1516,7 @@ export const getClothes = (i, maxTemp, minTemp) => {
         getClothesByTemperature(TEMP_LENGTH - 6, i);
     } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature) {
         getClothesByTemperature(TEMP_LENGTH - 7, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 8].temperature) {
+    } else if (avgTemp <= clothesTemperature[TEMP_LENGTH - 8].temperature || avgTemp > clothesTemperature[TEMP_LENGTH - 1].temperature) {
         getClothesByTemperature(TEMP_LENGTH - 8, i);
     } else {
         return;
