@@ -31,25 +31,16 @@ function getClothesByTemperature(num, i) {
 
 export const getClothes = (i, maxTemp, minTemp) => {
     const TEMP_LENGTH = clothesTemperature.length;
-    let avgTemp = (Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2));
+    let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
+    let index = TEMP_LENGTH - 1;
 
-    if (avgTemp <= clothesTemperature[TEMP_LENGTH - 1].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 1, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 2].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 2, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 3].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 3, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 4].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 4, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 5].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 5, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 6].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 6, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 7, i);
-    } else if (avgTemp <= clothesTemperature[TEMP_LENGTH - 8].temperature || avgTemp > clothesTemperature[TEMP_LENGTH - 1].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 8, i);
-    } else {
-        return;
+    for (let j = TEMP_LENGTH - 1; j >= 0; j--) {
+        if (avgTemp <= clothesTemperature[j].temperature) {
+            index = j;
+        } else {
+            break;
+        }
     }
-}
+
+    getClothesByTemperature(index, i);
+};

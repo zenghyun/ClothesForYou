@@ -1,7 +1,6 @@
 import { mainWeather, descriptionWeather } from './weatherList.mjs';
 import { getClothes } from './clothes.mjs';
-
-const API_KEY = "";
+const API_KEY = "de9afcffc19013aaef1ec97ef50bc2fc";
 
 function getDecsriptionWeather(objectLength, listLength) {
     return `${descriptionWeather[objectLength].list[listLength + 4]}`;
@@ -233,9 +232,6 @@ function getWeeklyWeather(getWeeklyWeatherData) {
     }
 }
 
-
-
-
 function subWeatherBackground(nowHour) {
     const subWeatherArea = document.querySelector('.sub-weather');
 
@@ -392,16 +388,26 @@ function calcDay(concreteDayData, includeMonth = null) {
 
 }
 
+function getKoreaTime(koreaTime) {
+const KOREA_TIME_TYPE = {
+    24 : 0,
+    27 : 3,
+    30 : 6,
+    UNDEFINED: koreaTime,
+};
+return KOREA_TIME_TYPE[koreaTime] ?? KOREA_TIME_TYPE.UNDEFINED;
+}
+
 function getWeather(data) {
     const weatherDatas = data.list.length;
 
-    const weatherLists = document.querySelector('#weather-lists');
-    const subWeatherLists = document.querySelector('#sub-weather-lists');
-    const weeklyWeatherLists = document.querySelector('#weekly-weather-lists');
+    const weatherLists = document.getElementById('weather-lists');
+    const subWeatherLists = document.getElementById('sub-weather-lists');
+    const weeklyWeatherLists = document.getElementById('weekly-weather-lists');
 
-    const weatherTemplate = document.querySelector('.weather-template');
-    const subWeatherTemplate = document.querySelector('.sub-weather-template');
-    const weeklyWeatherTemplate = document.querySelector('.weekly-weather-template');
+    const weatherTemplate = document.getElementById('weather-template');
+    const subWeatherTemplate = document.getElementById('sub-weather-template');
+    const weeklyWeatherTemplate = document.getElementById('weekly-weather-template');
 
     let tempArr = [];
     let timeArr = [];
@@ -433,13 +439,8 @@ function getWeather(data) {
         let concreteDayData = `${data.list[i].dt_txt}`;
         let concreteTime = parseInt(concreteDayData.split(' ')[1].slice(0, 2));
 
-        // utc 시간 한국 표준 시간으로 변환 
-        let koreaTime = concreteTime + 9;
-
-        koreaTime === 24 ? koreaTime = 0 :
-            koreaTime === 27 ? koreaTime = 3 :
-                koreaTime === 30 ? koreaTime = 6 : "";
-
+        // utc 시간 한국 표준 시간으로 변환
+        const koreaTime = getKoreaTime(concreteTime+9);
         koreaTime >= 12 ? timeArr.push(`${koreaTime}:00 pm`) : timeArr.push(`0${koreaTime}:00 am`);
 
         let changeDate = new Date(calcDay(concreteDayData)[1]);
@@ -483,38 +484,30 @@ function getWeather(data) {
     getChart(tempArr, timeArr);
 }
 
-function onGeoOk(position) {
+async function onGeoOk(position) {
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
     try {
-        fetch(url)
-            .then(response => {
-                if (response.status >= 200 && response.status < 300) {
-                    return response.json();
-                } else {
-                    return response.json().then(errData => {
-                        console.log(errData);
-                        throw new Error('Something went wrong -server side.');
-                    });
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                throw new Error('Something went wrong.');
-            })
-            .then((data) => {
-                let myData = JSON.stringify(data);
-                sessionStorage.setItem('location', myData);
-                getWeather(data);
-            })
-
+        const response = await fetch(url);
+        if (response.status >= 200 && response.status < 300) {
+            const data = await response.json();
+            let myData = JSON.stringify(data);
+            sessionStorage.setItem('location', myData);
+            getWeather(data);
+        } else {
+            const errData = await response.json();
+            console.log(errData);
+            throw new Error('Something went wrong - server side.');
+        }
     } catch (error) {
-        console.log("Data not found");
+        console.log(error);
+        throw new Error('Something went wrong.');
     }
 }
+
 
 function onGeoError() {
     const NOTICE = `

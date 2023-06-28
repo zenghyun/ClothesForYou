@@ -13,7 +13,7 @@ function getYoutube(data) {
 
 (function youtube() {
 
-    const YOUTUBE_API = "";
+    const YOUTUBE_API = "AIzaSyAbeeym1EwOe9RvjseMaOZB5h-7RYcS4l0";
     const YOUTUBE_CHANNEL = "UCs1omgoHHPENxs4b-fwMpPQ";
 
     const url = `https://www.googleapis.com/youtube/v3/search?list=PLsU45F2D-sEanSDUJ0LUye7uK8A66zDiL&part=snippet&maxResults=1&channelId=${YOUTUBE_CHANNEL}&type=video&order=date&key=${YOUTUBE_API}`;

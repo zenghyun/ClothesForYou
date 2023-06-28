@@ -20,10 +20,10 @@
 
 <br>
 
-| <p style="font-size:20px">이정현</p> |
-| :------------: |
-|   <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213911-72bc1119-ba49-4d3f-8249-d7031c8fd0d9.jpg" width="250px" height="300px"></p>   |   
-|  <p style="font-size:18px"> [@zenghyun](https://github.com/zenghyun)  </p>   |  
+|                                                                 <p style="font-size:20px">이정현</p>                                                                  |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213911-72bc1119-ba49-4d3f-8249-d7031c8fd0d9.jpg" width="250px" height="300px"></p> |
+|                                               <p style="font-size:18px"> [@zenghyun](https://github.com/zenghyun)  </p>                                               |
 
 <br>
 <br>
@@ -71,27 +71,27 @@
 ## 📷 페이지 사진
 <br>
 
-|메인 페이지 - 날짜별 예보|메인 페이지 - 상세 날짜|
-|------|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="700px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="400px" height="300px"></p>|
+| 메인 페이지 - 날짜별 예보                                                                                                                                             | 메인 페이지 - 상세 날짜                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220312-968e2ac2-b45b-4b04-b04a-e7c71c6a548a.png" width="700px" height="300px"></p> | <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220336-0810835a-44bb-4087-ae34-afa5cfeafe13.png" width="400px" height="300px"></p> |
 
 <br>
 
-|메인 페이지 - 오늘의 코디 |메인 페이지 - 주간 날씨|
-|---|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="500px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220354-2fd281ac-c989-4850-ae0c-43603b654a57.png" width="300px" height="300px"></p>|
+| 메인 페이지 - 오늘의 코디                                                                                                                                             | 메인 페이지 - 주간 날씨                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="500px" height="300px"></p> | <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220354-2fd281ac-c989-4850-ae0c-43603b654a57.png" width="300px" height="300px"></p> |
 
 <br>
 
-|메인 페이지 - 날씨 예보|메인 페이지 - Choice Tip|
-|---|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220369-b86b7f9c-190e-4913-9354-5db9b556a188.png" width="300px" height="300px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220384-1c56a14a-42eb-41e5-9eac-86efebd4b732.png" width="300px" height="300px"></p>|
+| 메인 페이지 - 날씨 예보                                                                                                                                               | 메인 페이지 - Choice Tip                                                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220369-b86b7f9c-190e-4913-9354-5db9b556a188.png" width="300px" height="300px"></p> | <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220384-1c56a14a-42eb-41e5-9eac-86efebd4b732.png" width="300px" height="300px"></p> |
 
 <br>
 
-|서브 페이지 - Clothes Diary|서브 페이지 - Color Match|
-|------|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220394-842c5456-fa10-410c-a183-7a8703dcbfa9.png" width="250px" height="250px"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220401-f779cbaa-9e5e-4e5e-8d33-476a9de84d16.png" width="250px" height="250px"></p>|
+| 서브 페이지 - Clothes Diary                                                                                                                                           | 서브 페이지 - Color Match                                                                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220394-842c5456-fa10-410c-a183-7a8703dcbfa9.png" width="250px" height="250px"></p> | <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224220401-f779cbaa-9e5e-4e5e-8d33-476a9de84d16.png" width="250px" height="250px"></p> |
 
 
 <br>
@@ -99,7 +99,8 @@
 
 ## 시작 가이드 
 - OpenWeatherMap API를 사용하기 위한 API KEY가 필요합니다.  [OpenWeatherMap API](https://openweathermap.org/price) <br>
-  ## **weather.js** <br>
+import { subWeatherBackground } from '../common/function';
+  ## **app.js** <br>
 
   ```javascript
     const API_KEY = ""; // 발급받은 API KEY를 넣어주세요.
@@ -120,9 +121,9 @@
 <br>
   
 
-|오전 6시 ~ 오후 3시|오후 4시 ~ 오후 7시|오후 8시 ~ 아침 5시|
-|------|---|---|
-|<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217871-af572b11-81b0-4b2a-bd57-091b975124de.gif" width="300px" height="300px"></p> |<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217877-86bcc4f5-7fae-4f51-a103-debe73297d53.gif" width="300px" height="300px"></p> |<p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217881-ebc8b420-d818-4d3e-8e41-0a4aac83ea97.gif" width="300px" height="300px"></p> |
+| 오전 6시 ~ 오후 3시                                                                                                                                                   | 오후 4시 ~ 오후 7시                                                                                                                                                   | 오후 8시 ~ 아침 5시                                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217871-af572b11-81b0-4b2a-bd57-091b975124de.gif" width="300px" height="300px"></p> | <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217877-86bcc4f5-7fae-4f51-a103-debe73297d53.gif" width="300px" height="300px"></p> | <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224217881-ebc8b420-d818-4d3e-8e41-0a4aac83ea97.gif" width="300px" height="300px"></p> |
 
 <br>
 
@@ -226,36 +227,28 @@
 <br>
 
 ```javascript
-function onGeoOk(position) {
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
+async function onGeoOk(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
 
-  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
-  try {
-    fetch(url)
-      .then((response) => {
+    try {
+        const response = await fetch(url);
         if (response.status >= 200 && response.status < 300) {
-          return response.json();
+            const data = await response.json();
+            const myData = JSON.stringify(data);
+            sessionStorage.setItem('location', myData);
+            getWeather(data);
         } else {
-          return response.json().then((errData) => {
+            const errData = await response.json();
             console.log(errData);
-            throw new Error("Something went wrong -server side.");
-          });
+            throw new Error('Something went wrong - server side.');
         }
-      })
-      .catch((error) => {
+    } catch (error) {
         console.log(error);
-        throw new Error("Something went wrong.");
-      })
-      .then((data) => {
-        let myData = JSON.stringify(data);
-        sessionStorage.setItem("location", myData);
-        getWeather(data);
-      });
-  } catch (error) {
-    console.log("Data not found");
-  }
+        throw new Error('Something went wrong.');
+    }
 }
 ```
 
@@ -298,7 +291,7 @@ function onGeoOk(position) {
 
 ```html
 <!-- 3시간 간격으로 5일간의 기온과 날씨 알려주는 template -->
-<template class="weather-template">
+<template id="weather-template">
   <li class="weather-item">
     <span class="weather-main"></span>
     <span class="temp"></span>
@@ -307,7 +300,7 @@ function onGeoOk(position) {
 </template>
 
 <!-- 현재 시간을 기준으로 가까운 시간대의 날씨 정보를 알려주는 template -->
-<template class="sub-weather-template">
+<template id="sub-weather-template">
   <li class="weather-item">
     <span class="weather-main"></span>
     <span class="temp"></span>
@@ -324,7 +317,7 @@ function onGeoOk(position) {
 </template>
 
 <!-- 주간 최고기온과 최저기온을 알려주는 template -->
-<template class="weekly-weather-template">
+<template id="weekly-weather-template">
   <li class="weather-item weekly-weather-item">
     <span class="today"></span>
     <span class="humidity"></span>
@@ -348,13 +341,13 @@ function onGeoOk(position) {
 function getWeather(data) {
     const weatherDatas = data.list.length;
 
-    const weatherLists = document.querySelector('#weather-lists');
-    const subWeatherLists = document.querySelector('#sub-weather-lists');
-    const weeklyWeatherLists = document.querySelector('#weekly-weather-lists');
+    const weatherLists = document.getElementById('weather-lists');
+    const subWeatherLists = document.getElementById('sub-weather-lists');
+    const weeklyWeatherLists = document.getElementById('weekly-weather-lists');
 
-    const weatherTemplate = document.querySelector('.weather-template');
-    const subWeatherTemplate = document.querySelector('.sub-weather-template');
-    const weeklyWeatherTemplate = document.querySelector('.weekly-weather-template');
+    const weatherTemplate = document.getElementById('weather-template');
+    const subWeatherTemplate = document.getElementById('sub-weather-template');
+    const weeklyWeatherTemplate = document.getElementById('weekly-weather-template');
 
     /* 생략 */
 
@@ -573,13 +566,15 @@ function extractWeatherId(concreteDayData, loadedMainWeather, weatherLoader) {
 }
 ``` 
 
-`extractWeatherId` 에서는 **weather.js** 파일을 모듈화 시켜놓은 **weatherList.mjs** 파일에서 **import** 한 `mainWeather` 라는 이름으로 저장된 배열을 가져와서 사용합니다.
+import { subWeatherBackground } from '../common/function';
+`extractWeatherId` 에서는 **app.js** 파일을 모듈화 시켜놓은 **weatherList.mjs** 파일에서 **import** 한 `mainWeather` 라는 이름으로 저장된 배열을 가져와서 사용합니다.
 
 <br>
 
 
 ```javascript
-// weather.js 파일 상단에 import
+import { subWeatherBackground } from '../common/function';
+// app.js 파일 상단에 import
 import { mainWeather, descriptionWeather } from './weatherList.mjs';
 import { getClothes } from './clothes.mjs';
 ```
@@ -807,14 +802,22 @@ function getWeatherDay(i, concreteDayData, concreteTime) {
 
    tempArr.push(temp);
 
- // utc 시간 한국 표준 시간으로 변환 
-      let koreaTime = concreteTime + 9;
+// getKoreaTime
+function getKoreaTime(koreaTime) {
 
-        koreaTime === 24 ? koreaTime = 0 :
-            koreaTime === 27 ? koreaTime = 3 :
-                koreaTime === 30 ? koreaTime = 6 : "";
-       
-  koreaTime >= 12 ? timeArr.push(`${koreaTime}:00 pm`) : timeArr.push(`0${koreaTime}:00 am`);
+const KOREA_TIME_TYPE = {
+    24 : 0,
+    27 : 3,
+    30 : 6,
+    UNDEFINED: koreaTime,
+};
+
+return KOREA_TIME_TYPE[koreaTime] ?? KOREA_TIME_TYPE.UNDEFINED;
+}
+
+ // utc 시간 한국 표준 시간으로 변환
+        const koreaTime = getKoreaTime(concreteTime+9);
+        koreaTime >= 12 ? timeArr.push(`${koreaTime}:00 pm`) : timeArr.push(`0${koreaTime}:00 am`);
 
  }
 
@@ -1500,28 +1503,19 @@ import { clothesTemperature, clothesRoute } from './clothesLists.mjs';
 
 export const getClothes = (i, maxTemp, minTemp) => {
     const TEMP_LENGTH = clothesTemperature.length;
-    let avgTemp = (Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2));
+    let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
+    let index = TEMP_LENGTH - 1;
 
-    if (avgTemp < clothesTemperature[TEMP_LENGTH - 1].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 1, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 2].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 2, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 3].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 3, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 4].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 4, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 5].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 5, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 6].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 6, i);
-    } else if (avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 7, i);
-    } else if (avgTemp <= clothesTemperature[TEMP_LENGTH - 8].temperature || avgTemp > clothesTemperature[TEMP_LENGTH - 1].temperature) {
-        getClothesByTemperature(TEMP_LENGTH - 8, i);
-    } else {
-        return;
+    for (let j = TEMP_LENGTH - 1; j >= 0; j--) {
+        if (avgTemp <= clothesTemperature[j].temperature) {
+            index = j;
+        } else {
+            break;
+        }
     }
-}
+
+    getClothesByTemperature(index, i);
+};
 ```
 
 `clothes.mjs` 파일은 `clothesLists.mjs` 파일을 import 하고 있습니다. 
@@ -1673,7 +1667,8 @@ clothesRoute 안의 종류별로 옷차림을 정해놓고, 1부터 정해놓은
 
 url 변수에 내가 발급받은 API KEY와 **오늘 비와?** 채널의 고유 KEY를 넣고 `fetch` 메서드를 사용하여 data를 받습니다.
 
-이는 `weather.js`에서 **openWeatherMap API** API를 이용하여 data를 받아오는 방식과 동일합니다. 
+import { subWeatherBackground } from '../common/function';
+이는 `app.js`에서 **openWeatherMap API** API를 이용하여 data를 받아오는 방식과 동일합니다. 
 
 data를 받아오는데 이상이 없다면 `getYoutube` 함수를 실행하게 됩니다. 
 
@@ -1713,7 +1708,8 @@ function getYoutube(data) {
 
 <br>
 
-받아온 data를 웹 페이지에서 나타내는 방식은 `weather.js`에서 template을 사용한 방식과 같습니다. 
+import { subWeatherBackground } from '../common/function';
+받아온 data를 웹 페이지에서 나타내는 방식은 `app.js`에서 template을 사용한 방식과 같습니다. 
 
 data에서 **videoId**를 추출하여 `youtube-link`라는 클래스명을 가진 요소에 `setAttribute` 메서드로 href 경로를 지정해줍니다. 
 
