@@ -1,6 +1,6 @@
 import { mainWeather, descriptionWeather } from './weatherList.mjs';
 import { getClothes } from './clothes.mjs';
-const API_KEY = "de9afcffc19013aaef1ec97ef50bc2fc";
+const API_KEY = "";
 
 function getDecsriptionWeather(objectLength, listLength) {
     return `${descriptionWeather[objectLength].list[listLength + 4]}`;
