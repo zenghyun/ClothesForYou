@@ -30,17 +30,39 @@ function getClothesByTemperature(num, i) {
 }
 
 export const getClothes = (i, maxTemp, minTemp) => {
-    const TEMP_LENGTH = clothesTemperature.length;
-    let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
-    let index = TEMP_LENGTH - 1;
+  const TEMP_LENGTH = clothesTemperature.length;
+  let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
 
-    for (let j = TEMP_LENGTH - 1; j >= 0; j--) {
-        if (avgTemp <= clothesTemperature[j].temperature) {
-            index = j;
-        } else {
-            break;
-        }
-    }
 
-    getClothesByTemperature(index, i);
+switch (true) {
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 1].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 1, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 2].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 2, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 3].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 3, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 4].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 4, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 5].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 5, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 6].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 6, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 7, i);
+    document.querySelector(`.by-temperature-outer${i}`).style.width = '0px';
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 8].temperature || avgTemp >= clothesTemperature[TEMP_LENGTH - 8].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 8, i);
+    document.querySelector(`.by-temperature-outer${i}`).style.width = '0px';
+    break;
+  default:
+    return;
+}
+
 };
