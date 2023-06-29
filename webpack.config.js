@@ -5,7 +5,7 @@ var CopyWebpackPlugin = require("copy-webpack-plugin");
 var TerserWebpackPlugin = require("terser-webpack-plugin"); // TerserWebpackPlugin import
 
 module.exports = {
-  mode: "none",
+  mode: "production",
   entry: {
     main: "./js/index/app.js",
     additional: [
@@ -72,7 +72,6 @@ module.exports = {
       template: "./views/myClothes.html",
       chunks: ["myClothes"], // myClothes.js와 연결
     }),
-    new webpack.ProgressPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: "css", to: "css" },
