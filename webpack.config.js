@@ -2,7 +2,6 @@ var path = require("path");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
-var TerserWebpackPlugin = require("terser-webpack-plugin"); // TerserWebpackPlugin import
 
 module.exports = {
   mode: "production",
@@ -56,10 +55,6 @@ module.exports = {
         },
       },
     ],
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserWebpackPlugin()], // TerserWebpackPlugin 사용
   },
   plugins: [
     new HtmlWebpackPlugin({
