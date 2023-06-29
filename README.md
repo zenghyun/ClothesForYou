@@ -1502,19 +1502,41 @@ import { getClothes } from './clothes.mjs';
 import { clothesTemperature, clothesRoute } from './clothesLists.mjs';
 
 export const getClothes = (i, maxTemp, minTemp) => {
-    const TEMP_LENGTH = clothesTemperature.length;
-    let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
-    let index = TEMP_LENGTH - 1;
+  const TEMP_LENGTH = clothesTemperature.length;
+  let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
 
-    for (let j = TEMP_LENGTH - 1; j >= 0; j--) {
-        if (avgTemp <= clothesTemperature[j].temperature) {
-            index = j;
-        } else {
-            break;
-        }
-    }
 
-    getClothesByTemperature(index, i);
+switch (true) {
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 1].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 1, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 2].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 2, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 3].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 3, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 4].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 4, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 5].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 5, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 6].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 6, i);
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 7, i);
+    document.querySelector(`.by-temperature-outer${i}`).style.width = '0px';
+    break;
+  case avgTemp < clothesTemperature[TEMP_LENGTH - 8].temperature || avgTemp >= clothesTemperature[TEMP_LENGTH - 8].temperature:
+    getClothesByTemperature(TEMP_LENGTH - 8, i);
+    document.querySelector(`.by-temperature-outer${i}`).style.width = '0px';
+    break;
+  default:
+    return;
+}
+
 };
 ```
 
@@ -1523,6 +1545,8 @@ export const getClothes = (i, maxTemp, minTemp) => {
 TEMP_LENGTH는 `clothesLists.mjs`에서 import 해온 clothesTemperature의 length 값으로 초기화 시켰습니다. 
 
 이는 아래의 조건문에서 온도를 가져와 평균 온도와 비교하면서 **평균 온도보다 크다면, 조건문을 만족시켜 `getClothesByTemperature` 함수를 실행시키기 위함입니다.** 
+
+또한, 평균 온도가 23도 이상이면, 외투를 추천해주지 않기 때문에 외투를 나타내는 요소의 width를 0px로 지정하여 나머지 아이템들을 중앙 배치 시켰습니다. 
 
 즉, 기온에 따른 옷차림을 가져오는 방식은 그날의 최고 온도와 최저 온도의 평균을 기점으로, 온도별로 정해진 옷차림을 만족시킬 때까지 조건문을 반복하여 조건을 성립했을 때, 정해진 옷차림을 가져오는 것 입니다.
 
