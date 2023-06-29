@@ -495,7 +495,7 @@ body #main-container #multi-container .show-youtube-container .youtube-container
   border-radius: 20px;
   background-position: center center;
   background-size: cover;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 body #main-container #multi-container .show-youtube-container .youtube-container .thumbnail-title {
   text-align: center;
