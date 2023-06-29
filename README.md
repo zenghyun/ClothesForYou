@@ -175,7 +175,7 @@ import { subWeatherBackground } from '../common/function';
 
  - [Color Match](#color-match의-활용성)
 
- - [webpack의 필요성](#webpack의-필요성)
+ - [webpack의 필요성](#webpack의-필요성) **해결!**
 ---
 
 <br>
@@ -2154,8 +2154,98 @@ Clothes Diary 에서는 업로드한 image를 로컬 스토리지에 저장하�
 
 <br>
 
-### **webpack의 필요성**
+### **webpack의 필요성**  **해결!** 
 
 일반적으로 특정 웹 사이트를 접근할 때 5초 이내로 웹 사이트가 표시되지 않으면 대부분의 사용자들은 해당 사이트를 벗어나거나 집중력을 잃게 됩니다. 
 
 현재 이 프로젝트에서 로딩 속도를 늦추는 가장 큰 원인은 브라우저에서 서버로 요청하는 파일 숫자가 많다는 것 입니다. 로딩 속도를 줄이기 위해 webpack을 사용하여 파일들을 압축하고 병합하는 작업을 하면 좋을 것 같습니다. 
+
+<br>
+
+### [자세한 후기](https://despiteallthat.tistory.com/261)
+
+<br>
+
+```js
+var path = require("path");
+var webpack = require("webpack");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var CopyWebpackPlugin = require("copy-webpack-plugin");
+
+module.exports = {
+  mode: "production",
+  entry: {
+    main: "./js/index/app.js",
+    additional: [
+      "./js/index/choiceTip.js",
+      "./js/index/clothesSlider.js",
+      "./js/index/getYoutube.js",
+      "./js/index/scroll.js",
+    ],
+    myClothes: [
+        "./js/myClothes/app.js",
+        "./js/myClothes/colorSet.js",
+        "./js/myClothes/scroll.js",
+        "./js/myClothes/uploadImage.js",
+      ],
+  },
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|pages)/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          { loader: "sass-loader" },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          outputPath: "./images",
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./index.html", 
+      excludeChunks: ["myClothes"], // myClothes.js를 index.html에 적용하지 않음
+    }),
+    new HtmlWebpackPlugin({
+      filename: "views/myClothes.html",
+      template: "./views/myClothes.html",
+      chunks: ["myClothes"], // myClothes.js와 연결
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "css", to: "css" },
+        { from: "scss", to: "scss" },
+        { from: "images", to: "images"},
+        { from: "images", to: "images"},
+        { from: "font", to: "font"},
+      ],
+    }),
+  ],
+};
+
+```
