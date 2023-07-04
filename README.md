@@ -175,7 +175,15 @@ import { subWeatherBackground } from '../common/function';
 
  - [Color Match](#color-match의-활용성)
 
+<br>
+<br>
+
+## 🛠 개선점
+
  - [webpack의 필요성](#webpack의-필요성) **해결!**
+
+ - [gif 파일을 mp4로 대체하기](#gif-파일을-mp4로-대체하기)
+
 ---
 
 <br>
@@ -521,7 +529,7 @@ i가 0이 아니고 `concreteTime`이 15시일 때는 한국 시간으로 오전
 function getMainWeather(getMainWeatherData) {
     const { weatherLi, data, i, concreteDayData, temp, koreaTime, weatherLists } = getMainWeatherData;
 
-    weatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', iconLoader(data, i, concreteDayData)[0]);
+    weatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', ㅎ(data, i, concreteDayData)[0]);
 
     weatherLi.querySelector('.temp').textContent = `${temp}˚`;
 
@@ -628,14 +636,14 @@ export const mainWeather = [
 function getWeatherList(concreteDayData, weatherLoader, loadedId) {
     const weatherTime = parseInt(concreteDayData.split(' ')[1].slice(0, 2));
     for (let i = 0; i < descriptionWeather.length; i++) {
-        if (loadedId === descriptionWeather[i].id) {
-            for (let j = 0; j < descriptionWeather[i].list.length; j++) {
-                if (weatherLoader === descriptionWeather[i].list[j]) {
-                    return getData(weatherTime, i, j);
-                }
-            }
-        }
+    if (loadedId === descriptionWeather[i].id) {
+      const list = descriptionWeather[i].list;
+      const j = list.indexOf(weatherLoader);
+      if (j !== -1) {
+        return getData(weatherTime, i, j);
+      }
     }
+  }
 }
 ```
 <br>
@@ -718,16 +726,18 @@ iconLoader -> extractWeatherId -> getWeatherList -> getData -> getDescriptionWea
 <br>
 
 ```javascript
- // utc 시간 기준 9시간 더한게 현재 한국 시간 
-    if (weatherTime >= 21 || weatherTime <= 6) {
-        //  utc 기준 21시 ~ 6시 => 한국 기준 아침 6시 ~ 오후 3시 
+  // utc 시간 기준 9시간 더한게 현재 한국 시간 
+    switch(true) {
+         //  utc 기준 21시 ~ 6시 => 한국 기준 아침 6시 ~ 오후 3시 
+        case (weatherTime >= 21 || weatherTime <= 6) : 
         return `<i class="wi ${descriptionWeather[objectLength].list[listLength + 1]}"></i>`;
-    } else if (weatherTime >= 7 && weatherTime <= 13) {
         //  utc 기준 7시 ~ 13시 => 한국 기준 오후 4시 ~ 밤 10시 
+        case (weatherTime >= 7 && weatherTime <= 13) :
         return `<i class="wi ${descriptionWeather[objectLength].list[listLength + 2]}"></i>`;
-    } else if (weatherTime >= 14 && weatherTime <= 20) {
         //  utc 기준 14시 ~ 20시 => 한국 기준 밤 11시 ~ 오전 5시 
+        case (weatherTime >= 14 && weatherTime <= 20) : 
         return `<i class="wi ${descriptionWeather[objectLength].list[listLength + 3]}"></i>`;
+        default:  return;
     }
 ```
 <br>
@@ -774,7 +784,7 @@ function getWeatherDay(i, concreteDayData, concreteTime) {
     if (i === 0) {
         return `\u00A0\u00A0\u00A0\u00A0\u00A0 오늘`;
     }
-    else if (concreteTime === 0) {
+    if (concreteTime === 0) {
         return calcDay(concreteDayData)[1];
     }
 }
@@ -1134,11 +1144,23 @@ function getSubWeather(getSubWeatherData) {
 
     subWeatherLi.querySelector('.humidity').textContent = `습도 ${humidity}%`;
 
-    deg >= 0 && deg < 89 ? deg = "북동풍" :
-        deg >= 90 && deg < 179 ? deg = "남동풍" :
-            deg >= 180 && deg < 269 ? deg = "남서풍" : deg = "북서풍";
+    let direction;
 
-    subWeatherLi.querySelector('.wind').textContent = `${deg} ${wind}m/s`;
+  switch (true) {
+    case deg >= 0 && deg < 89:
+      direction = "북동풍";
+      break;
+    case deg >= 90 && deg < 179:
+      direction = "남동풍";
+      break;
+    case deg >= 180 && deg < 269:
+      direction = "남서풍";
+      break;
+    default:
+      direction = "북서풍";
+  }
+
+    subWeatherLi.querySelector('.wind').textContent = `${direction} ${wind}m/s`;
 
     const subWeatherData = {
         time: getKoreaTime,
@@ -1147,7 +1169,7 @@ function getSubWeather(getSubWeatherData) {
         weatherDescription: iconLoader(data, i, concreteDayData)[1],
         feelTemp: feelsLikeTemp,
         humidity,
-        deg,
+        direction,
         wind,
         nowHour,
     };
@@ -2161,7 +2183,7 @@ Clothes Diary 에서는 업로드한 image를 로컬 스토리지에 저장하�
 
 <br>
 
-### **webpack의 필요성**  **해결!** 
+### **webpack의 필요성** 
 
 일반적으로 특정 웹 사이트를 접근할 때 5초 이내로 웹 사이트가 표시되지 않으면 대부분의 사용자들은 해당 사이트를 벗어나거나 집중력을 잃게 됩니다. 
 
@@ -2256,3 +2278,29 @@ module.exports = {
 };
 
 ```
+
+<br>
+
+### gif 파일을 mp4로 대체하기
+
+<br>
+
+```html
+// 개선 전 
+  <img src="./images/weather/06시~15시.gif" alt="" />
+  <img src="./images/weather/16시~19시.gif" alt="" />
+  <img src="./images/weather/20시~05시.gif" alt="" />
+
+// 개선 후 
+
+  <video autoplay loop muted playsinline>
+    <source src="./images/weather/06시~15시.mp4" type="video/mp4" />
+  </video>
+  <video autoplay loop muted playsinline>
+    <source src="./images/weather/16시~19시.mp4" type="video/mp4" />
+  </video>
+  <video autoplay loop muted playsinline>
+    <source src="./images/weather/20시~05시.mp4" type="video/mp4" />
+  </video>
+```
+Lighthouse를 사용하여 성능 검사시 gif 파일 사용으로 인한 2.5~3.1초 가량의 페이지 로딩 지연 현상이 발생하여 mp4로 대체하여 해결하였습니다. 
