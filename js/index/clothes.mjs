@@ -29,6 +29,13 @@ function getClothesByTemperature(num, i) {
     document.querySelector(`.by-temperature-acc-tag${i}`).textContent = `${clothesRoute[num].clothesName.acc[closet[0].clothes.accRandom]}`;
 }
 
+function removeOuter(i) {
+  if (window.innerWidth < 420) {
+    document.querySelector(`.by-temperature-clothes-list${i}`).style.marginLeft = '-40px';
+  }
+  document.querySelector(`.by-temperature-outer${i}`).style.width = '0px';
+}
+
 export const getClothes = (i, maxTemp, minTemp) => {
   const TEMP_LENGTH = clothesTemperature.length;
   let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
@@ -55,11 +62,11 @@ switch (true) {
     break;
   case avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature:
     getClothesByTemperature(TEMP_LENGTH - 7, i);
-    document.querySelector(`.by-temperature-outer${i}`).style.width = '0px';
+    removeOuter(i);
     break;
   case avgTemp < clothesTemperature[TEMP_LENGTH - 8].temperature || avgTemp >= clothesTemperature[TEMP_LENGTH - 8].temperature:
     getClothesByTemperature(TEMP_LENGTH - 8, i);
-    document.querySelector(`.by-temperature-outer${i}`).style.width = '0px';
+    removeOuter(i);
     break;
   default:
     return;
