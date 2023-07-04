@@ -1,6 +1,6 @@
 import { mainWeather, descriptionWeather } from './weatherList.mjs';
 import { getClothes } from './clothes.mjs';
-const API_KEY = "";
+const API_KEY = "de9afcffc19013aaef1ec97ef50bc2fc";
 
 function getDecsriptionWeather(objectLength, listLength) {
     return `${descriptionWeather[objectLength].list[listLength + 4]}`;
@@ -140,6 +140,8 @@ function clothesLoader(getClothesAry) {
     clone = [...eliminateDuplicateAry];
     dailyMaxTempAry.push(dailyMaxTemp);
     dailyMinTempAry.push(dailyMinTemp);
+
+
 
     for (let i = 1; i < ONE_WEEK; i++) {
 
