@@ -1,7 +1,7 @@
 # 🌈 Clothes For You
 <br>
 
- <p align="center"><img src="https://user-images.githubusercontent.com/114131063/224213723-a74ee0a5-0ce3-4233-808d-5592fb6b3cc1.png" width="500px" height="400px"></p> 
+ <p align="center"><img src="https://github.com/zenghyun/ClothesForYou/assets/114131063/d0d67f9c-3d4d-4b4d-adfe-11c75513cb8f" width="500px" height="400px"></p> 
 <br>
 <br>
 
@@ -99,7 +99,7 @@
 
 ## 시작 가이드 
 - OpenWeatherMap API를 사용하기 위한 API KEY가 필요합니다.  [OpenWeatherMap API](https://openweathermap.org/price) <br>
-import { subWeatherBackground } from '../common/function';
+
   ## **app.js** <br>
 
   ```javascript
@@ -439,7 +439,6 @@ function calcDay(concreteDayData, includeMonth = null) {
         case 12:
           if(setDate > 31) {
             setDate = 1;
-            
             setMonth += 1;
           }
           break;
@@ -531,7 +530,7 @@ i가 0이 아니고 `concreteTime`이 15시일 때는 한국 시간으로 오전
 function getMainWeather(getMainWeatherData) {
     const { weatherLi, data, i, concreteDayData, temp, koreaTime, weatherLists } = getMainWeatherData;
 
-    weatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', ㅎ(data, i, concreteDayData)[0]);
+    weatherLi.querySelector('.weather-main').insertAdjacentHTML('afterbegin', iconLoader(data, i, concreteDayData)[0]);
 
     weatherLi.querySelector('.temp').textContent = `${temp}˚`;
 
@@ -576,7 +575,6 @@ function extractWeatherId(concreteDayData, loadedMainWeather, weatherLoader) {
 }
 ``` 
 
-import { subWeatherBackground } from '../common/function';
 `extractWeatherId` 에서는 **app.js** 파일을 모듈화 시켜놓은 **weatherList.mjs** 파일에서 **import** 한 `mainWeather` 라는 이름으로 저장된 배열을 가져와서 사용합니다.
 
 <br>
