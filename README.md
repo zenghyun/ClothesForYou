@@ -1533,40 +1533,24 @@ function removeOuter(i) {
 export const getClothes = (i, maxTemp, minTemp) => {
   const TEMP_LENGTH = clothesTemperature.length;
   let avgTemp = Math.round((maxTemp[i - 1] + minTemp[i - 1]) / 2);
+  let selectedTemperatureIndex = -1;
 
+  for (let j = TEMP_LENGTH - 1; j >= TEMP_LENGTH - 8; j--) {
+    if (avgTemp < clothesTemperature[j].temperature) {
+      selectedTemperatureIndex = j;
+      break;
+    }
+  }
 
-switch (true) {
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 1].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 1, i);
-    break;
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 2].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 2, i);
-    break;
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 3].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 3, i);
-    break;
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 4].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 4, i);
-    break;
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 5].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 5, i);
-    break;
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 6].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 6, i);
-    break;
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 7].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 7, i);
-    removeOuter(i);
-    break;
-  case avgTemp < clothesTemperature[TEMP_LENGTH - 8].temperature || avgTemp >= clothesTemperature[TEMP_LENGTH - 8].temperature:
-    getClothesByTemperature(TEMP_LENGTH - 8, i);
-    removeOuter(i);
-    break;
-  default:
-    return;
-}
+  if (selectedTemperatureIndex !== -1) {
+    getClothesByTemperature(selectedTemperatureIndex, i);
 
+    if (selectedTemperatureIndex <= TEMP_LENGTH - 7) {
+      removeOuter(i);
+    }
+  }
 };
+
 ```
 
 `clothes.mjs` 파일은 `clothesLists.mjs` 파일을 import 하고 있습니다. 
