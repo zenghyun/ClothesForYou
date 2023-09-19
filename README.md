@@ -2044,6 +2044,9 @@ function deleteImage(event) {
   const img = event.target.parentElement;
   img.remove();
   images = images.filter(image => image.id !== parseInt(img.id));
+   images.length > 0
+    ? (fileName.value = `${images.length}개의 파일이 등록되었습니다.`)
+    : (fileName.value = `파일을 등록해주세요.`);
   saveImage();
 }
 ```
@@ -2056,6 +2059,8 @@ function deleteImage(event) {
 해당 객체는 클릭 이벤트에 대한 정보를 담고 있습니다. 클릭된 요소의 부모 요소인 `img` 요소를 가져오며, 이는 이미지가 출력된 HTML 요소입니다. 
 
 `remove` 메서드를 사용하여 `img`요소를 제거하며, `images` 배열에서 해당 이미지의 ID와 일치하는 요소를 찾아 `filter` 메서드를 사용하여 배열에서 삭제합니다. 
+
+그리고 fileName.value를 해당 file의 개수의 맞게 변경합니다.
 
 마지막으로 `saveImage` 함수를 호출하여 업데이트 된 이미지 정보를 로컬 스토리지에 저장합니다. 
 
