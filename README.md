@@ -2037,6 +2037,15 @@ deleteAllBtn.addEventListener('click', () => {
   fileName.value = "";
 });
 
+// 이미지 개수 문구 업데이트
+function updateImageCount() {
+  const imgCount = images.length;
+  fileName.value =
+    imgCount > 0
+      ? `${imgCount}개의 파일이 등록되었습니다.`
+      : "파일을 등록해주세요.";
+}
+
 // delete image
 function deleteImage(event) {
 
@@ -2044,10 +2053,9 @@ function deleteImage(event) {
   const img = event.target.parentElement;
   img.remove();
   images = images.filter(image => image.id !== parseInt(img.id));
-   images.length > 0
-    ? (fileName.value = `${images.length}개의 파일이 등록되었습니다.`)
-    : (fileName.value = `파일을 등록해주세요.`);
   saveImage();
+  routeLength = images.length;
+  updateImageCount();
 }
 ```
 <br>
