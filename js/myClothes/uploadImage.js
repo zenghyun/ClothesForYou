@@ -7,7 +7,6 @@ let images = [];
 getFileBtn.addEventListener("change", (event) => {
   let route = event.target.files;
   const routeAry = Array.from(route);
-  console.log(route.length);
   routeLength += route.length;
 
   fileName.value = `${routeLength}개의 파일이 등록되었습니다.`.trim();
