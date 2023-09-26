@@ -408,6 +408,14 @@ main-weather를 구하기 위해서는 아래와 같은 변수들이 필요합�
 <br>
 
 ```javascript
+// 10 아래 달,월 0 설정 함수
+function setUnderTenDate(date) {
+  let returnDate;
+  date < 10 ? (returnDate = `0${String(date)}`) : (returnDate = String(date));
+  return returnDate;
+}
+
+
   i = OpenWeatherMap API를 통해 가져온 data의 length만큼 for문을 반복할 때 값 
 
   nowDate = 실제 날짜를 가져온 값 ex: 3월 10일이면 10을 가져옴 
@@ -420,54 +428,58 @@ main-weather를 구하기 위해서는 아래와 같은 변수들이 필요합�
 
 // 실제 한국 날짜 구하는 함수 
 function calcDay(concreteDayData, includeMonth = null) {
-    let date = concreteDayData.split(' ')[0];
-    let concreteTime = parseInt(concreteDayData.split(' ')[1].slice(0, 2));
-    let koreaDate = date.substr(0, date.length - 4);
-    let setMonth = parseInt(date.substr(6, 1));
-    let setDate = parseInt(date.substr(-2));
-   
-    if (concreteTime >= 15) {
-        setDate += 1;
-    }
-    switch (setMonth) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-          if(setDate > 31) {
-            setDate = 1;
-            setMonth += 1;
-          }
-          break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            if(setDate > 30) {
-                setDate = 1;
-                setMonth += 1;
-              }
-          break;
-        case 2:
-            if(setDate > 28) {
-                setDate = 1;
-                setMonth += 1;
-              }
-          break;
+  let date = concreteDayData.split(" ")[0];
+  let concreteTime = parseInt(concreteDayData.split(" ")[1].slice(0, 2));
+  let koreaDate = date.substr(0, date.length - 5);
+  let setMonth = parseInt(date.substr(6, 1));
+  let setDate = parseInt(date.substr(-2));
+
+  if (concreteTime >= 15) {
+    setDate += 1;
+  }
+  switch (setMonth) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+      if (setDate > 31) {
+        setDate = 1;
+
+        setMonth += 1;
       }
+      break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+      if (setDate > 30) {
+        setDate = 1;
+        setMonth += 1;
+      }
+      break;
+    case 2:
+      if (setDate > 28) {
+        setDate = 1;
+        setMonth += 1;
+      }
+      break;
+  }
 
-    setDate < 10 ? setDate = `0${String(setDate)}` : setDate = String(setDate);
-   
-    if(includeMonth) {
-        includeMonth.push(setMonth);
-        return [`${koreaDate}${includeMonth[0]}-`, `${koreaDate}${setMonth}-${setDate}`];
-    } else {
-        return [`${koreaDate}${setMonth}-`, `${koreaDate}${setMonth}-${setDate}`];
-    }
-
+  setDate = setUnderTenDate(setDate);
+  setMonth = setUnderTenDate(setMonth);
+  
+  if (includeMonth) {
+    includeMonth.push(setMonth);
+    return [
+      `${koreaDate}${includeMonth[0]}-`,
+      `${koreaDate}${setMonth}-${setDate}`,
+    ];
+  } else {
+    return [`${koreaDate}${setMonth}-`, `${koreaDate}${setMonth}-${setDate}`];
+  }
 }
 
 temp = data에서 받아온 온도 
@@ -482,8 +494,7 @@ timeArr = Chart에 넣을 시간
 ```javascript
 // main-weather 
         if (i === 0) {
-            nowDate < 10 ? nowDate = `0${String(nowDate)}` : nowDate = String(nowDate);
-            weatherPeriod.push(nowDate);
+           weatherPeriod.push(setUnderTenDate(nowDate));
         }
         //  concreTime이 15시인 순간, 한국 시간은 다음날 0시 
         else if (i !== 0 && concreteTime === 15) {

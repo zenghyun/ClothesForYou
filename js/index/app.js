@@ -408,8 +408,7 @@ function getSubWeather(getSubWeatherData) {
     default:
       direction = "북서풍";
   }
-  
-    
+
   subWeatherLi.querySelector(".wind").textContent = `${direction} ${wind}m/s`;
 
   const subWeatherData = {
@@ -468,11 +467,18 @@ function getMainWeather(getMainWeatherData) {
   weatherLists.append(weatherLi);
 }
 
+// 10 아래 달,월 0 설정 함수
+function setUnderTenDate(date) {
+  let returnDate;
+  date < 10 ? (returnDate = `0${String(date)}`) : (returnDate = String(date));
+  return returnDate;
+}
+
 // 실제 한국 날짜 구하는 함수
 function calcDay(concreteDayData, includeMonth = null) {
   let date = concreteDayData.split(" ")[0];
   let concreteTime = parseInt(concreteDayData.split(" ")[1].slice(0, 2));
-  let koreaDate = date.substr(0, date.length - 4);
+  let koreaDate = date.substr(0, date.length - 5);
   let setMonth = parseInt(date.substr(6, 1));
   let setDate = parseInt(date.substr(-2));
 
@@ -510,10 +516,9 @@ function calcDay(concreteDayData, includeMonth = null) {
       break;
   }
 
-  setDate < 10
-    ? (setDate = `0${String(setDate)}`)
-    : (setDate = String(setDate));
-
+  setDate = setUnderTenDate(setDate);
+  setMonth = setUnderTenDate(setMonth);
+  
   if (includeMonth) {
     includeMonth.push(setMonth);
     return [
@@ -567,7 +572,7 @@ function getWeather(data) {
   let dailyMinTempAry = [];
   let getToday = [];
   let includeMonth = [];
-  
+
   for (let i = 0; i < weatherDatas; i++) {
     const weatherLi = document.importNode(weatherTemplate.content, true);
     const subWeatherLi = document.importNode(subWeatherTemplate.content, true);
@@ -595,11 +600,9 @@ function getWeather(data) {
 
     // main-weather
     if (i === 0) {
-      nowDate < 10
-        ? (nowDate = `0${String(nowDate)}`)
-        : (nowDate = String(nowDate));
-      weatherPeriod.push(nowDate);
+      weatherPeriod.push(setUnderTenDate(nowDate));
     }
+
     //  concreTime이 15시인 순간, 한국 시간은 다음날 0시
     else if (i !== 0 && concreteTime === 15) {
       let calcData = calcDay(concreteDayData)[1];
@@ -683,12 +686,10 @@ async function onGeoOk(position) {
     } else {
       modal.hide();
       const errData = await response.json();
-      console.log(errData);
       throw new Error("Something went wrong - server side.");
     }
   } catch (error) {
     modal.hide();
-    console.log(error);
     throw new Error("Something went wrong.");
   }
 }
@@ -708,7 +709,6 @@ mac OS: Safari -> 기본 설정 -> 웹 사이트 -> 목록 -> 위치 -> 허용
     `;
   alert(NOTICE);
 }
-
 
 (function getAPIData() {
   try {
