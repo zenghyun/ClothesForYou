@@ -482,9 +482,14 @@ function calcDay(concreteDayData, includeMonth = null) {
   let setMonth = parseInt(date.substr(6, 1));
   let setDate = parseInt(date.substr(-2));
 
+  if(setMonth === 0) {
+    setMonth = Number(`1${setMonth}`);
+  }
+
   if (concreteTime >= 15) {
     setDate += 1;
   }
+  
   switch (setMonth) {
     case 1:
     case 3:
@@ -518,7 +523,7 @@ function calcDay(concreteDayData, includeMonth = null) {
 
   setDate = setUnderTenDate(setDate);
   setMonth = setUnderTenDate(setMonth);
-  
+
   if (includeMonth) {
     includeMonth.push(setMonth);
     return [

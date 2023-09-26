@@ -433,6 +433,10 @@ function calcDay(concreteDayData, includeMonth = null) {
   let koreaDate = date.substr(0, date.length - 5);
   let setMonth = parseInt(date.substr(6, 1));
   let setDate = parseInt(date.substr(-2));
+  
+  if(setMonth === 0) {
+    setMonth = Number(`1${setMonth}`);
+  }
 
   if (concreteTime >= 15) {
     setDate += 1;
