@@ -41,7 +41,9 @@ async function onGeoOk(position) {
     } else {
       modal.hide();
       const errData = await response.json();
-      throw new Error(`Something went wrong - server side. errData: ${errData}`);
+      throw new Error(
+        `Something went wrong - server side. errData: ${errData}`
+      );
     }
   } catch (error) {
     modal.hide();
@@ -117,10 +119,19 @@ function getWeather(data) {
     const kr_hours = setTwoDigit(kr_curr.getHours());
     const kr_minutes = setTwoDigit(kr_curr.getMinutes());
     const kr_seconds = setTwoDigit(kr_curr.getSeconds());
-    
-    const kr_formattedDateTime = kr_year + '-' + kr_month + '-' + kr_day + ' ' + kr_hours + ':' + kr_minutes + ':' + kr_seconds;
 
-    let concreteTime = calcDay(kr_formattedDateTime)[2];
+    const kr_formattedDateTime =
+      kr_year +
+      "-" +
+      kr_month +
+      "-" +
+      kr_day +
+      " " +
+      kr_hours +
+      ":" +
+      kr_minutes +
+      ":" +
+      kr_seconds;
 
     kr_hours >= 12
       ? timeArr.push(`${kr_hours}:00 pm`)
@@ -131,12 +142,12 @@ function getWeather(data) {
     let minTemp = `${data.list[i].main.temp_min}`;
     let humidity = `${data.list[i].main.humidity}`;
 
-     if (i === 0 || kr_hours === "00") {
+    if (i === 0 || kr_hours === "00") {
       let calcData = calcDay(kr_formattedDateTime)[0];
       weatherPeriod.push(calcData);
 
       document.querySelector(".weather-period").textContent = `날짜별 예보 (${
-       weatherPeriod[0]
+        weatherPeriod[0]
       } ~ ${weatherPeriod[weatherPeriod.length - 1]})`;
     }
     const getMainWeatherData = {
@@ -165,7 +176,7 @@ function getWeather(data) {
       SubWeatherTrue = true;
 
       getSubWeather(getSubWeatherData);
-      subWeatherBackground(kr_hours);
+      subWeatherBackground(kr_formattedDateTime);
     }
 
     // weekly weather
@@ -182,7 +193,6 @@ function getWeather(data) {
       weeklyMinTemp,
       weekend,
       weeklyWeatherLists,
-      concreteTime,
       weeklyMaxIcon,
       weeklyMinIcon,
       dailyMaxTempAry,
@@ -202,15 +212,15 @@ function setTwoDigit(date) {
 }
 
 /**
- * 
- * @param {*} kr_formattedDateTime 
+ *
+ * @param {*} kr_formattedDateTime
  * kr_formattedDate : 실제 한국 날짜 ex) 2023-01-01
  * kr_formattedTime : 실제 한국 시간 ex) 06:00:00
  * kr_numberTypeHours : 시간 ex) 6
  */
 function calcDay(kr_formattedDateTime) {
-  const kr_formattedDate = kr_formattedDateTime.split(' ')[0];
-  const kr_formattedTime = kr_formattedDateTime.split(' ')[1];
+  const kr_formattedDate = kr_formattedDateTime.split(" ")[0];
+  const kr_formattedTime = kr_formattedDateTime.split(" ")[1];
   const kr_numberTypeHours = Number(kr_formattedTime.split(":")[0]);
 
   return [kr_formattedDate, kr_formattedTime, kr_numberTypeHours];
@@ -228,12 +238,22 @@ function calcDay(kr_formattedDateTime) {
  * weatherLists: main-weather-lists
  */
 function getMainWeather(getMainWeatherData) {
-  const { weatherLi, data, i, kr_formattedDateTime, kr_hours, temp, weatherLists } =
-    getMainWeatherData;
+  const {
+    weatherLi,
+    data,
+    i,
+    kr_formattedDateTime,
+    kr_hours,
+    temp,
+    weatherLists,
+  } = getMainWeatherData;
 
   weatherLi
     .querySelector(".weather-main")
-    .insertAdjacentHTML("afterbegin", iconLoader(data, i, kr_formattedDateTime)[0]);
+    .insertAdjacentHTML(
+      "afterbegin",
+      iconLoader(data, i, kr_formattedDateTime)[0]
+    );
 
   weatherLi.querySelector(".temp").textContent = `${temp}˚`;
 
@@ -256,8 +276,8 @@ function getWeatherDay(i, kr_formattedDateTime, kr_hours) {
   }
 }
 
-function subWeatherBackground(kr_hours) {
-  const kr_numberTypeHours = Number(kr_hours);
+function subWeatherBackground(kr_formattedDateTime) {
+  const kr_numberTypeHours = calcDay(kr_formattedDateTime);
   const subWeatherArea = document.querySelector(".sub-weather");
 
   if (kr_numberTypeHours >= 6 && kr_numberTypeHours <= 15) {
@@ -302,7 +322,7 @@ function getSubWeather(getSubWeatherData) {
   let wind = `${data.list[i].wind.speed}`;
   let subTemp = Math.round(`${data.list[i].main.temp}` * 10) / 10;
   let getKoreaTime = kr_hours;
-  
+
   getKoreaTime >= 12
     ? (getKoreaTime = `오후 ${getKoreaTime}시 기준`)
     : (getKoreaTime = `오전 ${getKoreaTime}시 기준`);
@@ -311,7 +331,10 @@ function getSubWeather(getSubWeatherData) {
 
   subWeatherLi
     .querySelector(".weather-main")
-    .insertAdjacentHTML("afterbegin", iconLoader(data, i, kr_formattedDateTime)[0]);
+    .insertAdjacentHTML(
+      "afterbegin",
+      iconLoader(data, i, kr_formattedDateTime)[0]
+    );
 
   subWeatherLi.querySelector(".temp").textContent = `${subTemp}˚`;
 
@@ -364,10 +387,18 @@ function getSubWeather(getSubWeatherData) {
 function iconLoader(data, i, kr_formattedDateTime) {
   const loadedMainWeather = `${data.list[i].weather[0].main}`;
   const weatherLoader = `${data.list[i].weather[0].description}`;
-  return extractWeatherId(kr_formattedDateTime, loadedMainWeather, weatherLoader);
+  return extractWeatherId(
+    kr_formattedDateTime,
+    loadedMainWeather,
+    weatherLoader
+  );
 }
-function extractWeatherId(kr_formattedDateTime, loadedMainWeather, weatherLoader) {
 
+function extractWeatherId(
+  kr_formattedDateTime,
+  loadedMainWeather,
+  weatherLoader
+) {
   for (let i = 0; i < mainWeather.length; i++) {
     if (loadedMainWeather === mainWeather[i].title) {
       const loadedId = mainWeather[i].id;
@@ -397,7 +428,7 @@ function getData(kr_formattedDateTime, objectLength, listLength) {
 
 function getIcon(kr_formattedDateTime, objectLength, listLength) {
   const kr_numberTypeHours = calcDay(kr_formattedDateTime)[2];
-  
+
   switch (true) {
     // 한국 기준 아침 6시 ~ 오후 3시
     case kr_numberTypeHours >= 6 && kr_numberTypeHours <= 15:
@@ -438,7 +469,6 @@ function getDecsriptionWeather(objectLength, listLength) {
  * weeklyMinTemp: 주간별 최저 기온
  * weekend: 월, 화, 수, 목, 금, 토, 일
  * weeklyWeatherLists: weekly-weather-lists
- * concreteTime: utc 기준 12시 = 한국 시간 21시 마지막 출력
  * weeklyMaxIcon: 시간대별 최고 기온 icon ary
  * weeklyMinIcon: 시간대별 최저 기온 icon ary
  * dailyMaxTempAry: 요일별 최고 기온을 담는 배열
@@ -459,7 +489,6 @@ function getWeeklyWeather(getWeeklyWeatherData) {
     weeklyMinTemp,
     weekend,
     weeklyWeatherLists,
-    concreteTime,
     weeklyMaxIcon,
     weeklyMinIcon,
     dailyMaxTempAry,
@@ -467,7 +496,7 @@ function getWeeklyWeather(getWeeklyWeatherData) {
     getToday,
   } = getWeeklyWeatherData;
   const ONE_WEEK = 7;
-  const LAST_CLOCK = 21; // utc 기준 12시는 한국 기준 21시
+  const LAST_CLOCK = 21; // 한국 기준 21시
   let dailyMaxTemp = [];
   let dailyMinTemp = [];
   let getMaxTempAry = [];
@@ -503,7 +532,7 @@ function getWeeklyWeather(getWeeklyWeatherData) {
     }
   }
 
-  if (concreteTime === LAST_CLOCK || i === data.list.length - 1) {
+  if (calcDay(kr_formattedDateTime)[2] === LAST_CLOCK || i === data.list.length - 1) {
     weeklyWeatherLi
       .querySelector(".max-weather-main")
       .insertAdjacentHTML("afterbegin", getMaxTempAry[getMaxTempIcon]);
@@ -675,12 +704,3 @@ function getChart(tempArr, timeArr) {
     },
   });
 }
-
-
-
-
-
-
-
-
-
