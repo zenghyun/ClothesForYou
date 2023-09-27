@@ -1,18 +1,18 @@
-function subWeatherBackground(nowHour) {
-  const subWeatherArea = document.querySelector('.sub-weather');
+(function loadData() {
 
-  if (nowHour >= 6 && nowHour <= 15) {
-    subWeatherArea.style.backgroundImage = "url('../images/weather/06시~15시.gif')";
-    subWeatherArea.style.color = "#333032";
+  const loadData = sessionStorage.getItem("subWeather");
+  try {
+    if (sessionStorage.hasOwnProperty("subWeather")) {
+      const parsedData = JSON.parse(loadData);
+      getSubWeather(parsedData);
+      subWeatherBackground(parsedData.kr_hours);
+    }
+  } catch (error) {
+    console.log("Data not found in session storage");
   }
-  else if (nowHour >= 16 && nowHour <= 19) {
-    subWeatherArea.style.backgroundImage = "url('../images/weather/16시~19시.gif')";
-    subWeatherArea.style.color = "#aeeaff";
-  } else {
-    subWeatherArea.style.backgroundImage = "url('../images/weather/20시~05시.gif')";
-    subWeatherArea.style.color = "#eeeb99";
-  }
-}
+
+})();
+
 /**
  * 
  * @param {object} parsedData 
@@ -22,11 +22,11 @@ function subWeatherBackground(nowHour) {
  *  weatherDescription = 날씨 상세 묘사  
  *  feelTemp = 체감온도
  *  humidity = 습도
- *  deg = 바람이 부는 방향
+ *  direction = 바람이 부는 방향
  *  wind = 풍속
  */
 function getSubWeather(parsedData) {
-  const { time, weatherIcon, subTemp, weatherDescription, feelTemp, humidity, deg, wind } = parsedData;
+  const { time, weatherIcon, subTemp, weatherDescription, feelTemp, humidity, direction, wind } = parsedData;
   const subWeatherLists = document.querySelector('#sub-weather-lists');
   const subWeatherTemplate = document.querySelector('.sub-weather-template');
   const subWeatherLi = document.importNode(subWeatherTemplate.content, true);
@@ -43,24 +43,26 @@ function getSubWeather(parsedData) {
 
   subWeatherLi.querySelector('.humidity').textContent = `습도 ${humidity}%`;
 
-  subWeatherLi.querySelector('.wind').textContent = `${deg} ${wind}m/s`;
+  subWeatherLi.querySelector('.wind').textContent = `${direction} ${wind}m/s`;
 
   subWeatherLists.append(subWeatherLi);
 }
 
+function subWeatherBackground(kr_hours) {
+  const kr_numberTypeHours = Number(kr_hours);
+  const subWeatherArea = document.querySelector('.sub-weather');
 
-
-(function loadData() {
-
-  const loadData = sessionStorage.getItem("subWeather");
-  try {
-    if (sessionStorage.hasOwnProperty("subWeather")) {
-      const parsedData = JSON.parse(loadData);
-      getSubWeather(parsedData);
-      subWeatherBackground(parsedData.nowHour);
-    }
-  } catch (error) {
-    console.log("Data not found in session storage");
+if (kr_numberTypeHours >= 6 && kr_numberTypeHours <= 15) {
+    subWeatherArea.style.backgroundImage =
+      "url('../images/weather/06시~15시.gif')";
+    subWeatherArea.style.color = "#333032";
+  } else if (kr_numberTypeHours >= 16 && kr_numberTypeHours <= 19) {
+    subWeatherArea.style.backgroundImage =
+      "url('../images/weather/16시~19시.gif')";
+    subWeatherArea.style.color = "#aeeaff";
+  } else {
+    subWeatherArea.style.backgroundImage =
+      "url('../images/weather/20시~05시.gif')";
+    subWeatherArea.style.color = "#eeeb99";
   }
-
-})();
+}

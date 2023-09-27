@@ -4,6 +4,25 @@ const IMG_KEY = "IMG";
 let routeLength = 0;
 let images = [];
 
+// load Image
+(function loadImage() {
+  const loadImage = localStorage.getItem(IMG_KEY);
+  try {
+    if (localStorage.hasOwnProperty(IMG_KEY)) {
+      const parseImage = JSON.parse(loadImage);
+      images = parseImage;
+
+      parseImage.length === 0
+        ? (fileName.value = `파일을 등록해주세요.`)
+        : (fileName.value = `${parseImage.length}개의 파일이 등록되어 있습니다.`);
+
+      parseImage.forEach(paintImage);
+    }
+  } catch (error) {
+    console.log("Unable to fetch items from local storage.");
+  }
+})();
+
 getFileBtn.addEventListener("change", (event) => {
   let route = event.target.files;
   const routeAry = Array.from(route);
@@ -13,38 +32,28 @@ getFileBtn.addEventListener("change", (event) => {
   handleImg(routeAry);
 });
 
-// 전체 제거
-const deleteAllBtn = document.querySelector(".delete-all");
-deleteAllBtn.addEventListener("click", () => {
-  localStorage.removeItem(IMG_KEY);
-  const imgPreview = document.querySelector(".img-preview");
-  imgPreview.replaceChildren();
-  fileName.value = "";
-});
+// upload한 image
+function handleImg(routeAry) {
+  routeAry.forEach((data) => {
+    if (data.type.includes("image")) {
+      // 파일 제한을 둬서 이미지만 골라서 출력
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(data);
 
-// 이미지 개수 문구 업데이트
-function updateImageCount() {
-  const imgCount = images.length;
-  fileName.value =
-    imgCount > 0
-      ? `${imgCount}개의 파일이 등록되었습니다.`
-      : "파일을 등록해주세요.";
-}
-
-// delete image
-function deleteImage(event) {
-  // 내가 선택한 이미지 제거
-  const img = event.target.parentElement;
-  img.remove();
-  images = images.filter((image) => image.id !== parseInt(img.id));
-  saveImage();
-  routeLength = images.length;
-  updateImageCount();
-}
-
-// save Image
-function saveImage() {
-  localStorage.setItem(IMG_KEY, JSON.stringify(images));
+      fileReader.addEventListener("load", (event) => {
+        let date = new Date();
+        let today = date.toLocaleDateString();
+        const newImageObj = {
+          id: Date.now(),
+          log: today,
+          src: event.target.result,
+        };
+        images.push(newImageObj);
+        paintImage(newImageObj);
+        saveImage();
+      });
+    }
+  });
 }
 
 // paint Image
@@ -73,45 +82,43 @@ function paintImage(newImageObj) {
   imgPreview.appendChild(uploadContainer);
 }
 
-// upload한 image
-function handleImg(routeAry) {
-  routeAry.forEach((data) => {
-    if (data.type.includes("image")) {
-      // 파일 제한을 둬서 이미지만 골라서 출력
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(data);
-
-      fileReader.addEventListener("load", (event) => {
-        let date = new Date();
-        let today = date.toLocaleDateString();
-        const newImageObj = {
-          id: Date.now(),
-          log: today,
-          src: event.target.result,
-        };
-        images.push(newImageObj);
-        paintImage(newImageObj);
-        saveImage();
-      });
-    }
-  });
+// 이미지 개수 문구 업데이트
+function updateImageCount() {
+  const imgCount = images.length;
+  fileName.value =
+    imgCount > 0
+      ? `${imgCount}개의 파일이 등록되었습니다.`
+      : "파일을 등록해주세요.";
 }
 
-// load Image
-(function loadImage() {
-  const loadImage = localStorage.getItem(IMG_KEY);
-  try {
-    if (localStorage.hasOwnProperty(IMG_KEY)) {
-      const parseImage = JSON.parse(loadImage);
-      images = parseImage;
+// delete image
+function deleteImage(event) {
+  // 내가 선택한 이미지 제거
+  const img = event.target.parentElement;
+  img.remove();
+  images = images.filter((image) => image.id !== parseInt(img.id));
+  saveImage();
+  routeLength = images.length;
+  updateImageCount();
+}
 
-      parseImage.length === 0
-        ? (fileName.value = `파일을 등록해주세요.`)
-        : (fileName.value = `${parseImage.length}개의 파일이 등록되어 있습니다.`);
+// 전체 제거
+const deleteAllBtn = document.querySelector(".delete-all");
+deleteAllBtn.addEventListener("click", () => {
+  localStorage.removeItem(IMG_KEY);
+  const imgPreview = document.querySelector(".img-preview");
+  imgPreview.replaceChildren();
+  fileName.value = "";
+});
 
-      parseImage.forEach(paintImage);
-    }
-  } catch (error) {
-    console.log("Unable to fetch items from local storage.");
-  }
-})();
+
+// save Image
+function saveImage() {
+  localStorage.setItem(IMG_KEY, JSON.stringify(images));
+}
+
+
+
+
+
+
