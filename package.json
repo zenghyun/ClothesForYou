@@ -4,7 +4,7 @@
   "description": "<br>",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/zenghyun/ClothesForYou#readme",
   "devDependencies": {
-    "@babel/core": "^7.22.5",
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.5",
     "babel-loader": "^9.1.2",
     "copy-webpack-plugin": "^11.0.0",
@@ -31,7 +32,11 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "build": "^0.1.4",
     "core-js": "^3.31.0",
-    "regenerator-runtime": "^0.13.11"
+    "npm": "^9.7.2",
+    "regenerator-runtime": "^0.13.11",
+    "run": "^1.4.0"
   }
 }
