@@ -277,7 +277,7 @@ function getWeatherDay(i, kr_formattedDateTime, kr_hours) {
 }
 
 function subWeatherBackground(kr_formattedDateTime) {
-  const kr_numberTypeHours = calcDay(kr_formattedDateTime);
+  const kr_numberTypeHours = calcDay(kr_formattedDateTime)[2];
   const subWeatherArea = document.querySelector(".sub-weather");
 
   if (kr_numberTypeHours >= 6 && kr_numberTypeHours <= 15) {
